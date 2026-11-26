@@ -5,12 +5,13 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 
 .rs-luminous-card-container {
   box-sizing: border-box;
-  --sz: clamp(14px, 1.15vw, 16px);
+  --sz: clamp(14px, 1.1vw, 16px);
   font-size: var(--sz);
   width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
+  font-family: var(--font-sans, "Ease Semi Display", system-ui, -apple-system, sans-serif);
 }
 
 .rs-luminous-card-container * {
@@ -19,21 +20,20 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 
 .rs-luminous-card {
   position: relative;
-  background: radial-gradient(circle at 50% 0%, #2f2a2a 0%, #161313 72%);
+  background: radial-gradient(circle at 50% 0%, #2b2727 0%, #171515 70%);
   box-shadow:
-    inset 0 1.01rem 0.2rem -1rem #fff0,
-    inset 0 -1.01rem 0.2rem -1rem #0000,
-    0 -1.02rem 0.2rem -1rem #fff0,
-    0 1rem 0.2rem -1rem #0000,
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 8px 20px 0 rgba(0, 0, 0, 0.4),
-    0 0 0 1px #221f1f;
+    inset 0 1.01rem 0.2rem -1rem rgba(255, 255, 255, 0),
+    inset 0 -1.01rem 0.2rem -1rem rgba(0, 0, 0, 0),
+    0 -1.02rem 0.2rem -1rem rgba(255, 255, 255, 0),
+    0 1rem 0.2rem -1rem rgba(0, 0, 0, 0),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 24px 0 rgba(0, 0, 0, 0.35);
   width: 100%;
-  max-width: 19rem;
-  min-height: 29.5rem;
-  border-radius: 1.8rem;
+  max-width: 18.5rem;
+  min-height: 27.5rem;
+  border-radius: 1.6rem;
   color: #fff;
-  padding: 1.15rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,14 +41,14 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   user-select: none;
   transition:
     box-shadow 0.4s ease-in-out,
-    translate 0.4s ease-out,
+    transform 0.4s ease-out,
     border-color 0.4s ease-in-out;
 }
 
 .rs-luminous-card::before {
   content: "";
   display: block;
-  --offset: 0.75rem;
+  --offset: 0.65rem;
   width: calc(100% + 2 * var(--offset));
   height: calc(100% + 2 * var(--offset));
   position: absolute;
@@ -57,9 +57,9 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   top: calc(-1 * var(--offset));
   bottom: calc(-1 * var(--offset));
   margin: auto;
-  box-shadow: inset 0 0 0px 0.06rem rgba(255, 255, 255, 0.16);
-  border-radius: 2.3rem;
-  --ax: 3.2rem;
+  box-shadow: inset 0 0 0px 0.05rem rgba(255, 255, 255, 0.1);
+  border-radius: 2.1rem;
+  --ax: 3rem;
   clip-path: polygon(
     var(--ax) 0,
     0 0,
@@ -87,14 +87,14 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 }
 
 .rs-luminous-card:hover {
-  translate: 0 -0.25rem;
+  transform: translateY(-0.25rem);
 }
 
 .rs-luminous-card:hover::before {
-  --offset: 0.42rem;
-  --ax: 6.2rem;
-  border-radius: 2.1rem;
-  box-shadow: inset 0 0 0 0.08rem var(--card-glow-alpha, rgba(255, 255, 255, 0.28));
+  --offset: 0.35rem;
+  --ax: 5.5rem;
+  border-radius: 1.9rem;
+  box-shadow: inset 0 0 0 0.06rem rgba(255, 255, 255, 0.2);
 }
 
 .rs-luminous-light-layer {
@@ -106,7 +106,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   transform-style: preserve-3d;
   perspective: 400px;
   pointer-events: none;
-  border-radius: 1.8rem;
+  border-radius: 1.6rem;
   overflow: hidden;
 }
 
@@ -115,13 +115,13 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   left: 0;
   right: 0;
   top: 0;
-  bottom: 5.5rem;
+  bottom: 4.8rem;
   margin: auto;
-  width: 66%;
-  height: 1.15rem;
+  width: 64%;
+  height: 1.1rem;
   transform: rotateX(-76deg);
-  background: #110f0f;
-  box-shadow: 0 0 4px 0 #fff0;
+  background: #141212;
+  box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0);
   transition: all 0.4s ease-in-out;
 }
 
@@ -130,7 +130,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   left: 0;
   right: 0;
   top: 0;
-  bottom: 5.5rem;
+  bottom: 4.8rem;
   margin: auto;
   width: 100%;
   height: 100%;
@@ -143,7 +143,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-lumen .min {
   width: 70%;
   height: 3rem;
-  background: linear-gradient(rgba(255, 255, 255, 0), var(--card-glow-alpha, rgba(255, 255, 255, 0.6)));
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
   position: absolute;
   left: 0;
   right: 0;
@@ -151,38 +151,38 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   bottom: 2.5rem;
   margin: auto;
   transform: rotateX(-42deg);
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .rs-luminous-lumen .mid {
   width: 74%;
   height: 13rem;
-  background: linear-gradient(rgba(255, 255, 255, 0), var(--card-glow-alpha, rgba(255, 255, 255, 0.7)));
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.65));
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  bottom: 8.5rem;
+  bottom: 8rem;
   margin: auto;
   transform: rotateX(-42deg);
   filter: blur(1rem);
-  opacity: 0.8;
+  opacity: 0.75;
   border-radius: 100% 100% 0 0;
 }
 
 .rs-luminous-lumen .hi {
-  width: 52%;
+  width: 50%;
   height: 13rem;
-  background: linear-gradient(rgba(255, 255, 255, 0), var(--card-glow, #fff));
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  bottom: 10.5rem;
+  bottom: 10rem;
   margin: auto;
   transform: rotateX(22deg);
   filter: blur(1rem);
-  opacity: 0.65;
+  opacity: 0.6;
   border-radius: 100% 100% 0 0;
 }
 
@@ -191,14 +191,14 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   left: 0;
   right: 0;
   top: 0;
-  bottom: 5.5rem;
+  bottom: 4.8rem;
   margin: auto;
   width: 100%;
   height: 100%;
   pointer-events: none;
   perspective: 400px;
   transition: opacity 0.4s ease-in-out;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 .rs-luminous-darken > * {
@@ -208,7 +208,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-darken .sl {
   width: 64%;
   height: 10rem;
-  background: linear-gradient(#000, #0000);
+  background: linear-gradient(#000, rgba(0, 0, 0, 0));
   position: absolute;
   left: 0;
   right: 0;
@@ -224,7 +224,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-darken .ll {
   width: 62%;
   height: 10rem;
-  background: linear-gradient(#000d, #0000);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   position: absolute;
   left: 0;
   right: 0;
@@ -232,7 +232,7 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   bottom: 0;
   margin: auto;
   filter: blur(0.8rem);
-  opacity: 0.45;
+  opacity: 0.4;
   border-radius: 0 0 100% 100%;
   transform: rotateX(22deg);
 }
@@ -240,14 +240,14 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-darken .slt {
   width: 0.5rem;
   height: 4rem;
-  background: linear-gradient(#0007, #0000);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   position: absolute;
   left: 0;
   right: 11.5rem;
   top: 3.9rem;
   bottom: 0;
   margin: auto;
-  opacity: 0.6;
+  opacity: 0.5;
   border-radius: 0 0 100% 100%;
   transform: skewY(42deg);
 }
@@ -255,14 +255,14 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-darken .srt {
   width: 0.5rem;
   height: 4rem;
-  background: linear-gradient(#0007, #0000);
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   position: absolute;
   right: 0;
   left: 11.5rem;
   top: 3.9rem;
   bottom: 0;
   margin: auto;
-  opacity: 0.6;
+  opacity: 0.5;
   border-radius: 0 0 100% 100%;
   transform: skewY(-42deg);
 }
@@ -276,24 +276,10 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   height: 100%;
 }
 
-.rs-luminous-top {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.rs-luminous-header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .rs-luminous-icon {
-  margin: 1rem auto 0.4rem;
+  margin: 1.4rem auto 0.4rem;
   width: fit-content;
-  filter: drop-shadow(0 -0.8rem 2px transparent);
+  filter: drop-shadow(0 -0.6rem 2px transparent);
   transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
@@ -302,67 +288,18 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   padding-top: 0.4rem;
 }
 
-.rs-luminous-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.rs-luminous-role-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.55rem;
-  border-radius: 0.45rem;
-  margin-top: 0.35rem;
-  margin-bottom: 0.55rem;
-  background: var(--card-badge-bg, rgba(255, 178, 0, 0.15));
-  color: var(--card-glow, #ffb200);
-  border: 1px solid var(--card-badge-border, rgba(255, 178, 0, 0.3));
-}
-
-.rs-luminous-description {
-  margin: 0;
-  padding-bottom: 0.65rem;
-  color: rgba(242, 228, 216, 0.78);
-  font-size: 0.7rem;
-  line-height: 1.45;
-  font-weight: 400;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.rs-luminous-toggle-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0.75rem;
-}
-
-.rs-luminous-toggle-input {
-  display: none;
-}
-
 .rs-luminous-toggle {
   position: relative;
-  height: 1.85rem;
-  width: 4.4rem;
-  border-radius: 0.55rem;
+  height: 1.7rem;
+  width: 3.8rem;
+  border-radius: 0.5rem;
   background: #000;
   box-shadow:
-    inset 0 -8px 8px 0.3rem #0004,
-    inset 0 0 1px 0.3rem #bbb,
-    inset 0 -2px 1px 0.3rem #fff,
-    inset 0 1px 2px 0.3rem #0006,
-    inset 0 0 1px 0.8rem #888;
+    inset 0 -6px 6px 0.2rem rgba(0, 0, 0, 0.5),
+    inset 0 0 1px 0.25rem #999,
+    inset 0 -1px 1px 0.25rem #fff,
+    inset 0 1px 2px 0.25rem rgba(0, 0, 0, 0.6),
+    inset 0 0 1px 0.6rem #555;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   flex-shrink: 0;
@@ -377,9 +314,9 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 3.1rem;
-  height: 0.6rem;
-  border-radius: 0.2rem;
+  width: 2.7rem;
+  height: 0.55rem;
+  border-radius: 0.15rem;
   background: #000;
   transition: all 0.4s ease-in-out;
 }
@@ -387,19 +324,19 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 .rs-luminous-handle {
   position: absolute;
   top: 0;
-  bottom: 0.04rem;
+  bottom: 0.02rem;
   margin: auto;
-  left: 0.55rem;
-  width: 40%;
-  height: 30%;
-  background: #bbb;
-  border-radius: 0.2rem;
+  left: 0.5rem;
+  width: 38%;
+  height: 32%;
+  background: #aaa;
+  border-radius: 0.18rem;
   box-shadow:
-    inset 0 1px 4px 0 #fff,
-    inset 0 -1px 1px 0 #000a,
-    0 0 1px 1px #0003,
-    1px 3px 6px 1px #000a;
-  transition: all 0.4s ease-in-out;
+    inset 0 1px 3px 0 #fff,
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.7),
+    0 0 1px 1px rgba(0, 0, 0, 0.3),
+    1px 2px 4px 1px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   pointer-events: none;
 }
 
@@ -410,12 +347,10 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
   left: 0;
   right: 0;
   margin: auto;
-  bottom: calc(100% + 0.35rem);
-  font-size: 0.58rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--card-glow, #ffb200);
+  bottom: calc(100% + 0.3rem);
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: #888;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   white-space: nowrap;
@@ -426,81 +361,53 @@ MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK25520
 }
 
 .rs-luminous-toggle:not(.active):hover .rs-luminous-handle {
-  transform: translateX(0.18rem);
+  transform: translateX(0.15rem);
 }
 
-/* Checked / Active States */
-.rs-luminous-card.active,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card {
+/* Active Minimal Lumen State */
+.rs-luminous-card.active {
   box-shadow:
-    inset 0 1.01rem 0.1rem -1rem var(--card-glow-alpha, rgba(255, 178, 0, 0.7)),
-    inset 0 -4rem 3rem -3rem #000c,
-    0 -1.02rem 0.2rem -1rem var(--card-glow-alpha, rgba(255, 178, 0, 0.7)),
+    inset 0 1.01rem 0.1rem -1rem rgba(255, 255, 255, 0.55),
+    inset 0 -3.5rem 2.5rem -2.5rem rgba(0, 0, 0, 0.8),
+    0 -1.02rem 0.2rem -1rem rgba(255, 255, 255, 0.55),
     0 1rem 0.2rem -1rem #000,
-    0 0 0 1px var(--card-glow-alpha, rgba(255, 178, 0, 0.35)),
-    0 10px 28px 0 rgba(0, 0, 0, 0.5),
-    0 0 0 1px var(--card-glow, #ffb200);
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 12px 28px 0 rgba(0, 0, 0, 0.45);
 }
 
-.rs-luminous-card.active .rs-luminous-slit,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-slit {
-  background: var(--card-glow, #fff);
-  box-shadow: 0 0 12px 3px var(--card-glow, #fff);
+.rs-luminous-card.active .rs-luminous-slit {
+  background: #ffffff;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.75);
 }
 
-.rs-luminous-card.active .rs-luminous-lumen,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-lumen {
-  opacity: 0.85;
+.rs-luminous-card.active .rs-luminous-lumen {
+  opacity: 0.75;
 }
 
-.rs-luminous-card.active .rs-luminous-darken,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-darken {
-  opacity: 0.85;
+.rs-luminous-card.active .rs-luminous-darken {
+  opacity: 0.8;
 }
 
-.rs-luminous-card.active .rs-luminous-darken .sl,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-darken .sl {
-  opacity: 0.2;
+.rs-luminous-card.active .rs-luminous-icon {
+  filter: drop-shadow(0 -0.8rem 1rem rgba(255, 255, 255, 0.35)) brightness(1.6);
+  transform: translateY(-0.1rem);
 }
 
-.rs-luminous-card.active .rs-luminous-darken .ll,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-darken .ll {
-  opacity: 1;
+.rs-luminous-card.active .rs-luminous-toggle::before {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0.3rem 0.15rem rgba(255, 255, 255, 0.45);
 }
 
-.rs-luminous-card.active .rs-luminous-darken .slt,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-darken .slt {
-  opacity: 1;
-}
-
-.rs-luminous-card.active .rs-luminous-darken .srt,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-darken .srt {
-  opacity: 1;
-}
-
-.rs-luminous-card.active .rs-luminous-icon,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-icon {
-  filter: drop-shadow(0 -0.8rem 1rem var(--card-glow-alpha, rgba(255, 178, 0, 0.55))) brightness(1.75);
-  transform: translateY(-0.15rem) scale(1.05);
-}
-
-.rs-luminous-card.active .rs-luminous-toggle::before,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-toggle::before {
-  background: var(--card-glow, #ffb200);
-  box-shadow: 0 0 0.4rem 0.2rem var(--card-glow-alpha, rgba(255, 178, 0, 0.6));
-}
-
-.rs-luminous-card.active .rs-luminous-handle,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-handle {
-  transform: translateX(1.52rem);
+.rs-luminous-card.active .rs-luminous-handle {
+  transform: translateX(1.35rem);
   box-shadow:
-    inset 0 1px 12px 0 #fff,
-    inset 0 -1px 1px 0 var(--card-glow-alpha, #ffb200),
+    inset 0 1px 8px 0 #fff,
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.8),
     0 0 2px 1px rgba(0, 0, 0, 0.3),
-    1px 3px 6px 1px rgba(0, 0, 0, 0.4);
+    1px 2px 4px 1px rgba(0, 0, 0, 0.3);
 }
 
-.rs-luminous-card.active .rs-luminous-toggle-label,
-.rs-luminous-toggle-input:checked ~ .rs-luminous-card .rs-luminous-toggle-label {
+.rs-luminous-card.active .rs-luminous-toggle-label {
   opacity: 1;
+  color: #ddd;
 }
