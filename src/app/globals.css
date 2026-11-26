@@ -1,15 +1,55 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Exposure';
+  src: url('/stay22/fonts/Exposure-20.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Exposure';
+  src: url('/stay22/fonts/Exposure-20Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ease Semi Display';
+  src: url('/stay22/fonts/EaseSemiDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ease Semi Display';
+  src: url('/stay22/fonts/EaseSemiDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ease Semi Display';
+  src: url('/stay22/fonts/EaseSemiDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
-  --font-serif: var(--font-serif), Georgia, serif;
-  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: 'Exposure', Georgia, serif;
+  --font-sans: 'Ease Semi Display', system-ui, sans-serif;
 
   --color-primary: #2a2626;
   --color-secondary: #786ddc;
   --color-beige: #f2e4d8;
   --color-yellow: #ffb200;
   --color-pink: #de69a5;
-  --color-purple: #3d2473;
+  --color-purple: #2b1842;
 }
 
 :root {
@@ -18,21 +58,30 @@
   --beige: #f2e4d8;
   --yellow: #ffb200;
   --pink: #de69a5;
-  --purple: #3d2473;
+  --purple: #2b1842;
 }
 
 html {
-  background-color: #f2e4d8;
+  background-color: #2b1842;
   color: #2a2626;
   scroll-behavior: smooth;
+  font-family: 'Ease Semi Display', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  background-color: #f2e4d8;
+  background-color: #2b1842;
   color: #2a2626;
-  font-family: var(--font-sans), sans-serif;
+  font-family: 'Ease Semi Display', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+.font-heading {
+  font-family: 'Exposure', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Ease Semi Display', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Stay22 Custom Button Pills */
@@ -50,9 +99,27 @@ body {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .stay22-btn-primary:hover {
-  background-color: #786ddc;
-  color: #ffffff;
+  background-color: #ffb200;
+  color: #2a2626;
   transform: translateY(-2px);
+}
+
+.stay22-btn-yellow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  background-color: #ffb200;
+  color: #2a2626;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stay22-btn-yellow:hover {
+  background-color: #ffa000;
+  transform: translateY(-1px);
 }
 
 .stay22-btn-secondary {

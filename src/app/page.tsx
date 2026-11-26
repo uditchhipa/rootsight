@@ -6,12 +6,13 @@ import { Stay22Products } from "@/components/stay22/Stay22Products";
 import { Stay22CaseStudies } from "@/components/stay22/Stay22CaseStudies";
 import { Stay22Faq } from "@/components/stay22/Stay22Faq";
 import { Stay22Footer } from "@/components/stay22/Stay22Footer";
+import { Stay22ChatWidget } from "@/components/stay22/Stay22ChatWidget";
 
 export default function HomePage() {
   return (
     <>
       <Stay22Navbar />
-      <main className="relative min-h-screen bg-[#f2e4d8] text-[#2a2626]">
+      <main className="relative w-full">
         <Stay22Hero />
         <Stay22ValueProps />
         <Stay22Products />
@@ -19,6 +20,7 @@ export default function HomePage() {
         <Stay22Faq />
       </main>
       <Stay22Footer />
+      <Stay22ChatWidget />
     </>
   );
 }

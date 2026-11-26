@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { RiveAnimation } from "./RiveAnimation";
+import { Fit } from "@rive-app/react-canvas";
 
 const FAQS = [
   {
@@ -21,60 +22,73 @@ const FAQS = [
     q: "When and how are affiliate commissions paid out?",
     a: "Commissions are aggregated into a single monthly payout via direct ACH, Wire Transfer, or PayPal in your preferred currency (USD, EUR, GBP, CAD) with clear transparent reporting.",
   },
+  {
+    q: "Can I customize the look and feel of the integration?",
+    a: "Yes. From fonts and colors to pins and card styles, everything can be white-labeled to blend seamlessly into your existing brand identity.",
+  },
 ];
 
 export function Stay22Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-[#f2e4d8] border-b border-[#2a2626]/10">
+    <section id="faq" className="py-24 md:py-32 bg-[#f2e4d8] border-b border-[#262222]/10">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12 items-start">
           {/* Left Column: Heading + Live Stay22 FAQ Rive Animation */}
           <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#786ddc] bg-white/60 px-4 py-1.5 rounded-full border border-[#786ddc]/20">
+            <p className="text-xs font-bold uppercase tracking-widest text-[#262222]/60">
               Clear Answers
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-black text-[#2a2626] tracking-tight leading-[1.05]">
-              Frequently asked <br />
-              <span className="font-serif italic font-normal text-[#786ddc]">questions.</span>
+            </p>
+            <h2
+              className="font-heading text-4xl sm:text-6xl font-normal text-[#262222] tracking-tight leading-[1.05]"
+              style={{ fontFamily: "'Exposure', Georgia, serif" }}
+            >
+              Questions we{" "}
+              <em
+                className="font-serif italic font-normal text-[#262222]"
+                style={{ fontFamily: "'Exposure', Georgia, serif", fontStyle: "italic" }}
+              >
+                hear a lot.
+              </em>
             </h2>
-            <p className="text-base text-[#2a2626]/75">
+            <p className="text-base text-[#262222]/75 font-medium">
               Everything you need to know about partnering with Stay22 and unlocking revenue from your travel traffic.
             </p>
 
             {/* Live Interactive Stay22 FAQ Rive Animation */}
-            <div className="relative w-full max-w-[340px] aspect-square rounded-3xl bg-[#FAF4EC] border border-[#2a2626]/10 p-6 flex items-center justify-center">
+            <div className="relative w-full max-w-[340px] aspect-square rounded-3xl bg-[#FAF4EC] border border-[#262222]/10 p-6 flex items-center justify-center shadow-md">
               <RiveAnimation
                 src="/stay22/faq.riv"
                 stateMachines="State Machine 1"
+                fit={Fit.Contain}
                 className="w-full h-full object-contain"
               />
             </div>
           </div>
 
           {/* Right Column: FAQ Accordion */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className="lg:col-span-7 space-y-4 pt-4">
             {FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div
                   key={faq.q}
-                  className="rounded-2xl bg-[#FAF4EC] border border-[#2a2626]/10 overflow-hidden transition-all duration-200"
+                  className="rounded-2xl bg-[#FAF4EC] border border-[#262222]/10 overflow-hidden transition-all duration-200"
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#2a2626] hover:text-[#786ddc] transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#262222] hover:text-[#ffb200] transition-colors cursor-pointer"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 text-[#2a2626]/60 transition-transform duration-200 shrink-0 ${
-                        isOpen ? "rotate-180 text-[#786ddc]" : ""
+                      className={`w-5 h-5 text-[#262222]/60 transition-transform duration-200 shrink-0 ${
+                        isOpen ? "rotate-180 text-[#262222]" : ""
                       }`}
                     />
                   </button>
                   {isOpen && (
-                    <div className="px-6 pb-6 text-sm sm:text-base text-[#2a2626]/75 leading-relaxed border-t border-[#2a2626]/5 pt-4">
+                    <div className="px-6 pb-6 text-sm sm:text-base text-[#262222]/80 leading-relaxed border-t border-[#262222]/5 pt-4 font-medium">
                       {faq.a}
                     </div>
                   )}

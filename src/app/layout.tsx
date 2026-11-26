@@ -1,24 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800", "900"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
 export const viewport: Viewport = {
-  themeColor: "#f2e4d8",
-  colorScheme: "light",
+  themeColor: "#24133b",
+  colorScheme: "dark light",
 };
 
 export const metadata: Metadata = {
@@ -48,11 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} scroll-smooth`}
-    >
-      <body className="bg-[#f2e4d8] text-[#2a2626] antialiased selection:bg-[#786ddc] selection:text-white font-sans">
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-[#24133b] text-[#262222] antialiased selection:bg-[#ffb200] selection:text-[#262222]">
         {children}
       </body>
     </html>

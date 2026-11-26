@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { RiveAnimation } from "./RiveAnimation";
+import { Fit, Alignment } from "@rive-app/react-canvas";
 
 const CLIENT_LOGOS = [
   { name: "Hearst", src: "/stay22/images/hearst.png" },
@@ -14,76 +15,106 @@ const CLIENT_LOGOS = [
 ];
 
 export function Stay22Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+
   return (
-    <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden bg-[#f2e4d8]">
-      {/* Decorative Warm Ambient Glow */}
-      <div className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#786ddc]/10 via-[#ffb200]/10 to-[#de69a5]/10 blur-[130px] rounded-full" />
+    <section
+      ref={heroRef}
+      id="hero"
+      className="relative w-full overflow-hidden bg-[#24133b]"
+      style={{
+        // Maintain Stay22's immersive vertical ratio for scroll scrubbing
+        minHeight: "180vh",
+      }}
+    >
+      {/* Fixed/Sticky Rive Animation Background covering the whole screen */}
+      <div className="sticky top-0 left-0 w-full h-screen pointer-events-auto overflow-hidden z-0">
+        <RiveAnimation
+          src="/stay22/hero.riv"
+          stateMachines="State Machine 1"
+          fit={Fit.Cover}
+          alignment={Alignment.TopCenter}
+          scrollScrub={true}
+          scrollTargetRef={heroRef}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-12 items-center">
-          {/* Left Column: Monumental Editorial Copy */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#2a2626]/5 border border-[#2a2626]/15 px-4 py-1.5 text-xs font-bold text-[#2a2626]">
-              <Sparkles className="w-3.5 h-3.5 text-[#786ddc]" />
-              <span>Affiliate Monetization for Creators &amp; Platforms</span>
-            </div>
-
-            {/* Headline with Stay22's Signature Editorial Serif */}
-            <h1 className="text-5xl sm:text-7xl lg:text-[5.25rem] font-black tracking-[-0.03em] text-[#2a2626] leading-[1.02]">
-              We’re the portal <br />
-              <span className="font-serif italic font-normal text-[#786ddc]">between attention</span> <br />
-              and revenue.
+      {/* Hero Typography Content Layers positioned over the Rive Canvas */}
+      <div className="relative z-10 w-full -mt-[100vh] flex flex-col pointer-events-none">
+        {/* PHASE 1: Top Hero Viewport matching Screenshot 2 */}
+        <div className="h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6">
+          <header className="max-w-6xl mx-auto text-center pointer-events-none pt-12 md:pt-16">
+            <h1
+              className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-[6.75rem] xl:text-[7.75rem] font-normal leading-[0.92] tracking-[-0.04em] text-white text-center select-none"
+              style={{
+                fontFamily: "'Exposure', Georgia, serif",
+                textShadow: "0 4px 30px rgba(0,0,0,0.3)",
+              }}
+            >
+              We’re the portal
+              <br />
+              between{" "}
+              <em
+                className="font-serif italic font-normal text-white not-italic"
+                style={{ fontFamily: "'Exposure', Georgia, serif", fontStyle: "italic" }}
+              >
+                attention
+              </em>
             </h1>
-
-            {/* Subheading */}
-            <p className="text-base sm:text-xl text-[#2a2626]/75 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-              The best monetization platforms disappear into your site. Stay22 helps creators and publishers monetize travel intent with seamless, high-converting integrations.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-              <a href="#contact" className="stay22-btn-primary flex items-center gap-2 shadow-lg">
-                <span>Step Through</span>
-                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-              </a>
-
-              <a href="#products" className="stay22-btn-secondary">
-                Explore the Platform
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column: Live Interactive Stay22 Rive Hero Animation */}
-          <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="relative w-full max-w-[500px] aspect-square rounded-3xl bg-transparent flex items-center justify-center">
-              <RiveAnimation
-                src="/stay22/hero.riv"
-                stateMachines="State Machine 1"
-                className="w-full h-full object-contain filter drop-shadow-2xl"
-              />
-            </div>
-          </div>
+          </header>
         </div>
 
-        {/* Client Social Proof Marquee / Logos */}
-        <div className="mt-20 pt-10 border-t border-[#2a2626]/10">
-          <p className="text-center text-xs font-extrabold uppercase tracking-widest text-[#2a2626]/50 mb-8">
-            Powering Travel Revenue for Industry Leaders Worldwide
-          </p>
+        {/* PHASE 2: Transition lower viewport revealed on scroll */}
+        <div className="min-h-[80vh] w-full flex flex-col justify-start items-center px-4 sm:px-6 pt-16 md:pt-28">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6">
+            <h2
+              className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-[6.75rem] xl:text-[7.75rem] font-normal leading-[0.92] tracking-[-0.04em] text-[#262222] text-center select-none"
+              style={{ fontFamily: "'Exposure', Georgia, serif" }}
+            >
+              and{" "}
+              <em
+                className="font-serif italic font-normal text-[#262222]"
+                style={{ fontFamily: "'Exposure', Georgia, serif", fontStyle: "italic" }}
+              >
+                revenue.
+              </em>
+            </h2>
 
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
-            {CLIENT_LOGOS.map((logo) => (
-              <div key={logo.name} className="relative h-8 w-24 sm:w-28 flex items-center justify-center">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={110}
-                  height={32}
-                  className="object-contain max-h-8 w-auto filter contrast-125"
-                />
+            <p className="text-lg sm:text-xl md:text-2xl text-[#262222]/85 max-w-2xl font-medium leading-relaxed tracking-tight text-center">
+              Between the audience you&apos;ve built and what you should be earning.
+            </p>
+
+            <div className="pt-4 pointer-events-auto flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#step-through"
+                className="bg-[#262222] text-[#f2e4d8] hover:bg-[#ffb200] hover:text-[#262222] px-8 py-4 rounded-full font-bold text-sm tracking-tight flex items-center gap-2 shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <span>Step through</span>
+                <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+              </a>
+            </div>
+
+            {/* Social Proof Marquee / Partner Badges */}
+            <div className="mt-16 w-full max-w-3xl pointer-events-auto">
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#262222]/60 mb-6">
+                Powering Travel Revenue for Industry Leaders Worldwide
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 opacity-80 hover:opacity-100 transition-opacity">
+                {CLIENT_LOGOS.map((logo) => (
+                  <div key={logo.name} className="relative h-8 w-24 sm:w-28 flex items-center justify-center">
+                    <Image
+                      src={logo.src}
+                      alt={logo.name}
+                      width={110}
+                      height={32}
+                      className="object-contain max-h-8 w-auto filter contrast-125"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
