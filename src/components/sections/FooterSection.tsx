@@ -1,133 +1,177 @@
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
-import { RootsightLogo } from "@/components/RootsightLogo";
-import { SITE_CONFIG } from "@/data/content";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, Mail, Sparkles, Heart } from "lucide-react";
 
 export function FooterSection() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [amsterdamTime, setAmsterdamTime] = useState("");
+
+  // Live Amsterdam time
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString("en-GB", {
+        timeZone: "Europe/Amsterdam",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      setAmsterdamTime(timeStr);
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
   return (
-    <footer className="relative bg-[#fcfbf6] text-[#171717] pt-20 pb-16 overflow-hidden">
-      {/* Decorative ambient subtle blobs in footer */}
-      <div className="pointer-events-none absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-[#ecaf30]/15 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 -left-20 h-72 w-72 rounded-full bg-[#dcd0ff]/20 blur-3xl" />
+    <footer className="relative bg-[#fcfbf6] text-[#171717] pt-24 pb-12 overflow-hidden border-t border-[#ecebe4]">
+      {/* Floating Decorative Organic Blobs */}
+      <div className="pointer-events-none absolute -top-12 -left-12 w-48 h-48 opacity-60 animate-blob-1">
+        <Image src="/ttm/blob-1.png" alt="Decorative Blob" fill className="object-contain" />
+      </div>
+      <div className="pointer-events-none absolute top-1/4 -right-12 w-56 h-56 opacity-50 animate-blob-2">
+        <Image src="/ttm/blob-2.png" alt="Decorative Blob" fill className="object-contain" />
+      </div>
+      <div className="pointer-events-none absolute -bottom-16 left-1/3 w-64 h-64 opacity-40 animate-blob-1">
+        <Image src="/ttm/blob-5.png" alt="Decorative Blob" fill className="object-contain" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-12 pb-16 border-b border-[#e2e1da]">
-          {/* Left Column: Newsletter / Briefing */}
-          <div className="lg:col-span-6 space-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#86867f]">
-              Intelligence Briefing
+        {/* Top Newsletter & Big Banner */}
+        <div className="grid gap-12 lg:grid-cols-12 items-start pb-16 border-b border-[#e5e4dc]">
+          {/* Left: Monumental Headline */}
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#171717]/60 bg-[#eeeade] px-3.5 py-1 rounded-full">
+              Stay in motion
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#171717]">
-              Subscribe to Rootsight Intel
+            <h2 className="text-4xl sm:text-6xl font-black text-[#171717] tracking-tight leading-[1.02]">
+              Subscribe to the TTM newsletter.
             </h2>
-            <p className="text-sm text-[#666660] max-w-md leading-relaxed">
-              New forensic automation modules, malware analysis advisories, and threat research. Once a month, never spam.
+            <p className="text-base text-[#666660] max-w-lg leading-relaxed">
+              Fresh 3D motion templates, shader techniques, and creative typography experiments delivered straight to your inbox every Thursday.
             </p>
-
-            <form
-              action="#contact"
-              className="mt-6 flex max-w-md items-center rounded-full bg-white border border-[#deddd6] p-1.5 shadow-sm"
-            >
-              <input
-                type="email"
-                placeholder="Enter your official email..."
-                required
-                className="w-full bg-transparent px-4 py-2 text-xs text-[#171717] placeholder:text-[#999990] focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="ttm-pill bg-[#171717] hover:bg-black text-[#f3f3ed] px-5 py-2.5 text-xs font-bold shrink-0"
-              >
-                <span>Subscribe</span>
-                <ArrowUpRight size={13} className="ml-1" />
-              </button>
-            </form>
           </div>
 
-          {/* Right Column: Navigation & Pastel Tags */}
-          <div className="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#86867f] block mb-4">
-                Directory
-              </span>
-              <ul className="space-y-2.5 text-xs font-medium text-[#444440]">
-                <li>
-                  <a href="#about" className="hover:text-[#171717] transition-colors">
-                    Who We Are
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="hover:text-[#171717] transition-colors">
-                    What We Do
-                  </a>
-                </li>
-                <li>
-                  <a href="#how-it-works" className="hover:text-[#171717] transition-colors">
-                    How It Works
-                  </a>
-                </li>
-                <li>
-                  <a href="#team" className="hover:text-[#171717] transition-colors">
-                    Founding Team
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="hover:text-[#171717] transition-colors">
-                    Inquiries
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#86867f] block mb-4">
-                Core Focus
-              </span>
-              <div className="flex flex-col gap-2">
-                <span className="ttm-pill inline-block self-start bg-[#dcd0ff] text-[#171717] px-3 py-1 text-[11px] font-bold">
-                  Evidence Vault
-                </span>
-                <span className="ttm-pill inline-block self-start bg-[#ecaf30] text-[#171717] px-3 py-1 text-[11px] font-bold">
-                  Red Teaming
-                </span>
-                <span className="ttm-pill inline-block self-start bg-[#9cd696] text-[#171717] px-3 py-1 text-[11px] font-bold">
-                  Malware Lab
-                </span>
-                <span className="ttm-pill inline-block self-start bg-[#ff8a7a] text-[#171717] px-3 py-1 text-[11px] font-bold">
-                  OSINT Radar
-                </span>
+          {/* Right: Newsletter Input Form */}
+          <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-[#e5e4dc] shadow-sm">
+            {subscribed ? (
+              <div className="p-4 rounded-2xl bg-[#9cd696]/20 border border-[#9cd696]/40 text-[#171717] text-sm font-bold flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-[#22721b]" />
+                <span>You're in! Check your inbox for our curated drops.</span>
               </div>
-            </div>
-
-            <div className="col-span-2 sm:col-span-1">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#86867f] block mb-4">
-                HQ &amp; Authority
-              </span>
-              <p className="text-xs text-[#666660] leading-relaxed">
-                {SITE_CONFIG.location}<br />
-                <a href={`mailto:${SITE_CONFIG.email}`} className="font-semibold text-[#171717] hover:underline">
-                  {SITE_CONFIG.email}
-                </a>
-              </p>
-              <div className="mt-4 inline-block rounded-full bg-[#171717] text-white px-3 py-1 text-[10px] font-bold">
-                Startup India (DPIIT)
-              </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="space-y-3">
+                <label className="text-xs font-extrabold uppercase tracking-wider text-[#171717]">
+                  Your Email Address
+                </label>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="creative@studio.com"
+                    className="flex-1 bg-[#fcfbf6] border border-[#d8d7cf] rounded-full px-4 py-2.5 text-xs text-[#171717] placeholder:text-[#999990] focus:outline-none focus:border-[#ecaf30]"
+                  />
+                  <button
+                    type="submit"
+                    className="px-6 py-2.5 rounded-full bg-[#ecaf30] hover:bg-[#d99e24] text-[#171717] text-xs font-black uppercase tracking-wider transition-all shadow hover:scale-105 active:scale-95 shrink-0"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+                <div className="text-[11px] text-[#888880]">
+                  Zero spam. Unsubscribe anytime with a single click.
+                </div>
+              </form>
+            )}
           </div>
         </div>
 
-        {/* Bottom Colophon Bar */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#777770]">
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#171717] text-[#f3f3ed]">
-              <RootsightLogo size={12} color="#f3f3ed" accentEye={false} />
+        {/* Middle Navigation & Info Columns */}
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 py-12 border-b border-[#e5e4dc] text-xs">
+          {/* Col 1: Brand Info */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <span className="font-black text-xl text-[#171717]">TTM</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#171717]/50 bg-[#e7e5dc] px-2 py-0.5 rounded">
+                SUPPLY
+              </span>
             </div>
-            <span className="font-bold text-[#171717]">
-              ROOTSIGHT CYBER TECHNOLOGIES
-            </span>
+            <p className="text-[#666660] leading-relaxed">
+              Templates That Move. A browser-native motion studio engineered for creators and forward-thinking studios.
+            </p>
+            <div className="inline-flex items-center gap-2 text-[11px] font-mono text-[#444440] bg-[#eeeade] px-3 py-1 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-[#9cd696] animate-pulse" />
+              <span>Amsterdam {amsterdamTime || "12:00:00"}</span>
+            </div>
           </div>
 
-          <span>© {new Date().getFullYear()} ROOTSIGHT. Built for sovereign digital defense.</span>
+          {/* Col 2: Templates Categories */}
+          <div className="space-y-2.5">
+            <h4 className="font-bold text-[#171717] uppercase tracking-wider text-[11px]">
+              Templates
+            </h4>
+            <ul className="space-y-1.5 text-[#666660]">
+              <li><Link href="/studio?template=kinetic-torus" className="hover:text-[#171717] transition-colors">3D Objects & WebGL</Link></li>
+              <li><Link href="/studio?template=cascade-carousel" className="hover:text-[#171717] transition-colors">Parallax Carousels</Link></li>
+              <li><Link href="/studio?template=fly-through-type" className="hover:text-[#171717] transition-colors">Fly-Through Typography</Link></li>
+              <li><Link href="/studio?template=cybernetic-grid" className="hover:text-[#171717] transition-colors">Cybernetic Grids</Link></li>
+              <li><Link href="/studio?template=elastic-stacks" className="hover:text-[#171717] transition-colors">Elastic Stacks</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 3: Studio & Tech */}
+          <div className="space-y-2.5">
+            <h4 className="font-bold text-[#171717] uppercase tracking-wider text-[11px]">
+              Studio Engine
+            </h4>
+            <ul className="space-y-1.5 text-[#666660]">
+              <li><Link href="/studio" className="hover:text-[#171717] transition-colors">Open TTM Studio</Link></li>
+              <li><a href="#how-it-works" className="hover:text-[#171717] transition-colors">WebCodecs MP4 Export</a></li>
+              <li><a href="#how-it-works" className="hover:text-[#171717] transition-colors">Three.js WebGL Core</a></li>
+              <li><a href="#how-it-works" className="hover:text-[#171717] transition-colors">GSAP Timeline Scrubber</a></li>
+              <li><a href="#pricing" className="hover:text-[#171717] transition-colors">Commercial Licensing</a></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Community & Creators */}
+          <div className="space-y-2.5">
+            <h4 className="font-bold text-[#171717] uppercase tracking-wider text-[11px]">
+              Community
+            </h4>
+            <ul className="space-y-1.5 text-[#666660]">
+              <li><a href="https://twitter.com/meesverberne" target="_blank" rel="noreferrer" className="hover:text-[#171717] transition-colors">Mees Verberne</a></li>
+              <li><a href="https://twitter.com/ronalddegroot" target="_blank" rel="noreferrer" className="hover:text-[#171717] transition-colors">Ronald de Groot</a></li>
+              <li><a href="#about" className="hover:text-[#171717] transition-colors">Join 12,000+ Creators</a></li>
+              <li><a href="#pricing" className="hover:text-[#171717] transition-colors">Pricing & Plans</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Copyright & Legal Links */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888880]">
+          <div>
+            © {new Date().getFullYear()} TTM — Templates That Move. All rights reserved.
+          </div>
+
+          <div className="flex items-center gap-4">
+            <a href="#terms" className="hover:text-[#171717] transition-colors">Terms</a>
+            <a href="#privacy" className="hover:text-[#171717] transition-colors">Privacy</a>
+            <a href="#licensing" className="hover:text-[#171717] transition-colors">Licensing</a>
+            <a href="#cookies" className="hover:text-[#171717] transition-colors">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { SITE_CONFIG } from "@/data/content";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,38 +22,31 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_CONFIG.url),
-  title: {
-    default: "ROOTSIGHT — Security that protects. Root cause identified.",
-    template: "%s | ROOTSIGHT",
-  },
+  title: "TTM — Templates That Move | Real-time WebGL Studio",
   description:
-    "Registered Indian cyber security & automation startup (Startup India). Law enforcement investigation automation, offensive red teaming, OSINT, and malware research.",
+    "A growing library of customizable video and motion templates you can edit, timeline-scrub, and export as MP4 directly in your browser. Powered by Three.js WebGL and GSAP.",
   keywords: [
-    "ROOTSIGHT",
-    "Cyber Security India",
-    "Startup India",
-    "Law Enforcement Automation",
-    "OSINT",
-    "Threat Intelligence",
-    "Penetration Testing",
-    "Red Teaming",
-    "Malware Analysis",
+    "TTM",
+    "Templates that move",
+    "WebGL Studio",
+    "Motion Templates",
+    "Browser Video Export",
+    "Three.js",
+    "GSAP Timeline",
+    "WebCodecs MP4",
   ],
   openGraph: {
-    title: "ROOTSIGHT — Security that protects. Root cause identified.",
+    title: "TTM — Templates That Move",
     description:
-      "Law enforcement investigation automation, offensive cyber security, and threat intelligence engineered in India.",
-    url: SITE_CONFIG.url,
-    siteName: "ROOTSIGHT",
-    locale: "en_IN",
+      "A growing library of customizable 3D and motion templates you can edit and export in your browser.",
+    siteName: "TTM Supply",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ROOTSIGHT — Security that protects. Root cause identified.",
-    description:
-      "Cyber security & investigation automation startup registered under Startup India.",
+    title: "TTM — Templates That Move",
+    description: "Real-time WebGL motion templates and browser MP4 studio.",
   },
   robots: {
     index: true,

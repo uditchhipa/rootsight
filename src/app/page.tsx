@@ -2,9 +2,9 @@ import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { TeamSection } from "@/components/sections/TeamSection";
-import { ContactSection } from "@/components/sections/ContactSection";
+import { ShowcaseSection } from "@/components/sections/ShowcaseSection";
+import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { FooterSection } from "@/components/sections/FooterSection";
 
 export default function HomePage() {
@@ -14,9 +14,9 @@ export default function HomePage() {
       <main className="relative bg-[#171717] text-[#f3f3ed]">
         <HeroSection />
         <AboutSection />
-        <ServicesSection />
-        <TeamSection />
-        <ContactSection />
+        <ShowcaseSection />
+        <HowItWorksSection />
+        <PricingSection />
       </main>
       <FooterSection />
     </>
