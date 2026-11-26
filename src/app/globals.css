@@ -72,7 +72,7 @@ body {
   background-color: #2b1842;
   color: #2a2626;
   font-family: 'Ease Semi Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
