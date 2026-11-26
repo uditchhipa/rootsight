@@ -7,21 +7,25 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Stay22 | Affiliate monetization for creators & platforms",
+  title: "ROOTSIGHT | Intelligent Cyber Security & Investigation Automation",
   description:
-    "The best monetization platforms disappear into your site. Stay22 helps creators and publishers monetize travel intent with seamless, high-converting integrations.",
+    "Rootsight builds sovereign cyber investigation automation, adversarial penetration testing, and real-time threat intelligence pipelines for law enforcement and critical infrastructure. Startup India (DPIIT) Registered.",
   keywords: [
-    "Stay22",
-    "Affiliate monetization",
-    "Travel tech",
-    "Creator monetization",
-    "Awwwards Nominee",
-    "Rive Animation",
+    "Rootsight",
+    "Rootsight Cyber Technologies",
+    "Cyber Security Automation",
+    "Investigation Automation",
+    "CDR IPDR Analysis",
+    "Law Enforcement Tech",
+    "Adversarial Red Team",
+    "Threat Intelligence",
+    "Startup India",
   ],
   openGraph: {
-    title: "Stay22 | Affiliate monetization for creators & platforms",
-    description: "The best monetization platforms disappear into your site.",
-    siteName: "Stay22",
+    title: "ROOTSIGHT | Intelligent Cyber Security & Investigation Automation",
+    description:
+      "Sovereign cyber tooling, telecom correlation, and automated digital forensics for law enforcement agencies and enterprise defense.",
+    siteName: "ROOTSIGHT",
     locale: "en_US",
     type: "website",
   },

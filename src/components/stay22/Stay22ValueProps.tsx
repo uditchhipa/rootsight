@@ -6,29 +6,28 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { RiveAnimation } from "./RiveAnimation";
 import { Fit, Alignment } from "@rive-app/react-canvas";
 
-const CREATOR_TICKER_ITEMS = [
-  "IrelandBeforeYouDie",
-  "The Local",
-  "Practical Wanderlust",
-  "The Savvy Backpacker",
-  "Travel Lemming",
-  "Oneika the Traveller",
-  "A Broken Backpack",
-  "The Planet D",
-  "Earth Trekkers",
-  "Nomadic Boys",
+const LEA_TICKER_ITEMS = [
+  "Tower Dump Analysis",
+  "Geo-Temporal Mapping",
+  "IPDR Correlation",
+  "CDR Ingestion",
+  "Multi-Carrier Normalization",
+  "Suspect Geo-Profiling",
+  "Chain of Custody Reports",
+  "Cyber Crime Cells",
+  "Digital Forensics Lab",
 ];
 
-const PLATFORM_TICKER_ITEMS = [
-  "HEARST",
-  "TicketOne",
-  "Bookaway",
-  "ItaliaRail",
-  "Sundial",
-  "WeGo",
-  "Omio",
-  "FlixBus",
-  "Trainline",
+const ENTERPRISE_TICKER_ITEMS = [
+  "Zero Day Research",
+  "Adversarial Red Team",
+  "Sovereign Telemetry",
+  "Kernel Sandboxing",
+  "Kernel Exploit Defense",
+  "Threat Attribution",
+  "Air-Gapped Deployment",
+  "SOC Automation",
+  "BFSI Compliance",
 ];
 
 export function Stay22ValueProps() {
@@ -122,18 +121,18 @@ export function Stay22ValueProps() {
 
           <nav className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://hub.stay22.com/en/auth/signup"
+              href="#products"
               className="stay22-btn-yellow flex items-center gap-2 group shadow-lg hover:scale-105 transition-all"
             >
-              <span>Start Monetizing</span>
+              <span>Deploy Investigation Tech</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
-              href="https://www.stay22.com/book-a-demo"
+              href="#contact"
               className="stay22-btn-primary flex items-center gap-2 group shadow-lg hover:scale-105 transition-all"
             >
-              <span>Talk to our team</span>
+              <span>Request Briefing</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
           </nav>
@@ -141,7 +140,7 @@ export function Stay22ValueProps() {
       </section>
 
       {/* ========================================================
-          SECTION 2: The monetization partner. & STACKED CARDS
+          SECTION 2: The sovereign partner. & STACKED CARDS
           ======================================================== */}
       <section id="solutions" className="py-16 md:py-24 px-4 sm:px-8 lg:px-12 border-t border-[#262222]/10 relative z-10">
         <div className="max-w-5xl mx-auto text-center mb-16 md:mb-20">
@@ -154,12 +153,12 @@ export function Stay22ValueProps() {
               className="font-serif italic font-normal text-[#262222]"
               style={{ fontFamily: "'Exposure', Georgia, serif", fontStyle: "italic" }}
             >
-              monetization
+              sovereign
             </em>{" "}
             partner.
           </h2>
           <p className="mt-5 text-lg sm:text-2xl text-[#262222]/80 max-w-2xl mx-auto font-medium">
-            Giving time back and moving revenue forward.
+            Giving time back to investigators and moving defense forward.
           </p>
         </div>
 
@@ -172,7 +171,7 @@ export function Stay22ValueProps() {
             gridTemplateRows: `repeat(2, auto)`,
           }}
         >
-          {/* CARD 1 (Creators): Spans Row 1 to Row 2, Sticking at top: 96px */}
+          {/* CARD 1 (Law Enforcement & Forensics): Spans Row 1 to Row 2, Sticking at top: 96px */}
           <article
             ref={card1Ref}
             id="creators"
@@ -190,32 +189,44 @@ export function Stay22ValueProps() {
             <div className="lg:col-span-6 space-y-6 flex flex-col justify-between h-full">
               <div className="space-y-4">
                 <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-black/10 px-3.5 py-1.5 rounded-full">
-                  Creators &amp; Publishers
+                  Law Enforcement &amp; Forensics
                 </span>
                 <h3
                   className="font-heading text-3xl sm:text-5xl md:text-5xl font-normal leading-[1.05]"
                   style={{ fontFamily: "'Exposure', Georgia, serif" }}
                 >
-                  For ambitious <br />
-                  <em className="font-serif italic">creators</em>
+                  For elite investigators who want to <br />
+                  <em className="font-serif italic">close cases faster</em>
                 </h3>
                 <p className="text-base sm:text-lg text-[#2a2626]/85 leading-relaxed font-medium">
-                  <strong>You didn&apos;t start creating to become a link manager. </strong>
-                  Your content is already inspiring trips, purchases and plans. Stay22 turns more of those actions into income, giving you more freedom to create, travel and choose what comes next.
+                  <strong>You didn&apos;t enter intelligence work to manually parse endless spreadsheets. </strong>
+                  Rootsight turns fragmented telecom logs, CDRs, and IPDR traces into conclusive evidentiary timelines with zero manual overhead.
                 </p>
               </div>
 
               {/* Tag pill */}
               <div className="flex flex-col gap-2 pt-1">
                 <span className="text-xs uppercase tracking-wider font-bold opacity-75">
-                  Learn more about your business type :
+                  Explore by operational scope :
                 </span>
                 <div className="flex flex-wrap gap-2">
                   <a
-                    href="https://www.stay22.com/business-type/travel-bloggers"
+                    href="#contact"
                     className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#2a2626]/40 text-xs font-extrabold uppercase tracking-wide hover:bg-[#2a2626] hover:text-[#ffb200] transition-colors"
                   >
-                    Travel Bloggers
+                    Cyber Crime Cells
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#2a2626]/40 text-xs font-extrabold uppercase tracking-wide hover:bg-[#2a2626] hover:text-[#ffb200] transition-colors"
+                  >
+                    State Police CID
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center px-4 py-1.5 rounded-full border border-[#2a2626]/40 text-xs font-extrabold uppercase tracking-wide hover:bg-[#2a2626] hover:text-[#ffb200] transition-colors"
+                  >
+                    Digital Forensics
                   </a>
                 </div>
               </div>
@@ -223,7 +234,7 @@ export function Stay22ValueProps() {
               {/* Running Horizontal Marquee Ticker 1 */}
               <div className="w-full overflow-hidden py-3 border-y border-black/10 my-3">
                 <div className="animate-ticker flex items-center gap-8 whitespace-nowrap">
-                  {[...CREATOR_TICKER_ITEMS, ...CREATOR_TICKER_ITEMS].map((name, i) => (
+                  {[...LEA_TICKER_ITEMS, ...LEA_TICKER_ITEMS].map((name, i) => (
                     <span
                       key={i}
                       className="text-sm md:text-base font-bold text-[#2a2626]/80 flex items-center gap-4"
@@ -237,10 +248,10 @@ export function Stay22ValueProps() {
 
               <div className="pt-2">
                 <a
-                  href="https://another.stay22.com/sign-up"
+                  href="#contact"
                   className="inline-flex items-center gap-2 bg-[#2a2626] text-[#f2e4d8] hover:bg-black px-7 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all shadow-md hover:scale-105"
                 >
-                  <span>Explore for Creators</span>
+                  <span>Explore Investigation Tech</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
               </div>
@@ -251,7 +262,7 @@ export function Stay22ValueProps() {
               <div className="relative w-full aspect-[4/3] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl group border-2 border-black/5 bg-[#ffb200]">
                 <Image
                   src="/stay22/images/bike-women.jpg"
-                  alt="Creators riding bicycles"
+                  alt="Investigation field specialists"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -287,7 +298,7 @@ export function Stay22ValueProps() {
             aria-hidden="true"
           />
 
-          {/* CARD 2 (Platforms): Placed in Row 2, Sticking at top: 104px and sliding OVER Card 1 */}
+          {/* CARD 2 (Enterprises & Critical Infrastructure): Placed in Row 2, Sticking at top: 104px and sliding OVER Card 1 */}
           <article
             ref={card2Ref}
             id="platforms"
@@ -305,31 +316,31 @@ export function Stay22ValueProps() {
             <div className="lg:col-span-6 space-y-6 flex flex-col justify-between h-full order-2 lg:order-1">
               <div className="space-y-4">
                 <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-white/10 text-[#ffb200] px-3.5 py-1.5 rounded-full">
-                  Platforms &amp; Transit
+                  Enterprises &amp; Critical Infra
                 </span>
                 <h3
                   className="font-heading text-3xl sm:text-5xl md:text-5xl font-normal leading-[1.05] text-white"
                   style={{ fontFamily: "'Exposure', Georgia, serif" }}
                 >
-                  For intent‑rich <em className="font-serif italic text-[#ffb200]">platforms</em>
+                  For security leaders looking to <em className="font-serif italic text-[#ffb200]">eliminate blindspots</em>
                 </h3>
                 <p className="text-base sm:text-lg text-white/80 leading-relaxed font-medium">
-                  <strong>Your users are booking. Just not through you. </strong><br />
-                  They&apos;re checking the weather, buying tickets, planning routes and deciding where to stay. Stay22 lets you earn from more of those next steps, without adding work or friction for your users.
+                  <strong>Your systems are probed daily. Just not on your schedule. </strong><br />
+                  Rootsight deploys continuous offensive adversarial emulation and deep kernel telemetry, finding vulnerabilities before attackers weaponize them.
                 </p>
               </div>
 
               {/* Tags row */}
               <div className="flex flex-col gap-2 pt-1">
                 <span className="text-xs uppercase tracking-wider font-bold opacity-75 text-white/70">
-                  Learn more about your business type :
+                  Explore by organization type :
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    { label: "Publishers", href: "https://www.stay22.com/business-type/publishers" },
-                    { label: "Weather", href: "https://www.stay22.com/business-type/weather" },
-                    { label: "Events & Ticketing", href: "https://www.stay22.com/business-type/events-and-ticketing" },
-                    { label: "Transportation", href: "https://www.stay22.com/business-type/transportation" },
+                    { label: "Banking & BFSI", href: "#contact" },
+                    { label: "Telecom Operators", href: "#contact" },
+                    { label: "Defense & Gov", href: "#contact" },
+                    { label: "Cloud Providers", href: "#contact" },
                   ].map((item, idx) => (
                     <a
                       key={idx}
@@ -345,7 +356,7 @@ export function Stay22ValueProps() {
               {/* Running Horizontal Marquee Ticker 2 */}
               <div className="w-full overflow-hidden py-3 border-y border-white/10 my-3">
                 <div className="animate-ticker flex items-center gap-8 whitespace-nowrap">
-                  {[...PLATFORM_TICKER_ITEMS, ...PLATFORM_TICKER_ITEMS].map((name, i) => (
+                  {[...ENTERPRISE_TICKER_ITEMS, ...ENTERPRISE_TICKER_ITEMS].map((name, i) => (
                     <span
                       key={i}
                       className="text-sm md:text-base font-bold text-white/80 flex items-center gap-4"
@@ -359,12 +370,10 @@ export function Stay22ValueProps() {
 
               <div className="pt-2">
                 <a
-                  href="https://another.stay22.com"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#contact"
                   className="inline-flex items-center gap-2 bg-[#ffb200] text-[#2a2626] hover:bg-[#ffa000] px-7 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all shadow-md hover:scale-105"
                 >
-                  <span>Explore Platform</span>
+                  <span>Explore Enterprise Defense</span>
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
               </div>
@@ -375,7 +384,7 @@ export function Stay22ValueProps() {
               <div className="relative w-full aspect-[4/3] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl group border-2 border-white/10 bg-[#2a2626]">
                 <Image
                   src="/stay22/images/Platform_cie.jpg"
-                  alt="Platform intelligence"
+                  alt="Security operations center intelligence"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -414,7 +423,7 @@ export function Stay22ValueProps() {
       </section>
 
       {/* ========================================================
-          SECTION 3: One reason to join (Interactive onereason.riv)
+          SECTION 3: One reason to partner (Interactive onereason.riv)
           ======================================================== */}
       <section
         ref={oneReasonRef}
@@ -425,23 +434,23 @@ export function Stay22ValueProps() {
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
           >
-            One reason to join
+            One reason to partner
           </h2>
           <p className="mt-4 text-lg sm:text-xl md:text-2xl text-[#262222]/80 max-w-2xl mx-auto font-medium leading-relaxed">
-            Connect and the whole supplier network opens up. We pick the right one for your audience in real time. From intent to bookings to revenue.
+            Connect to our sovereign pipeline and your entire intelligence horizon clarifies in real time. From raw digital signals to attribution, containment, and defense.
           </p>
 
           <nav className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://hub.stay22.com/en/auth/signup"
+              href="#products"
               className="stay22-btn-yellow flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
             >
-              <span>Start monetizing</span>
+              <span>Explore Products</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
-              href="https://www.stay22.com/book-a-demo"
+              href="#contact"
               className="stay22-btn-primary flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
             >
               <span>Talk to our team</span>
@@ -464,7 +473,7 @@ export function Stay22ValueProps() {
       </section>
 
       {/* ========================================================
-          SECTION 4: Three reasons to stay (human.riv, lucrative.riv, effortless.riv)
+          SECTION 4: Three pillars of Rootsight (human.riv, lucrative.riv, effortless.riv)
           ======================================================== */}
       <section
         ref={columnsRef}
@@ -476,13 +485,13 @@ export function Stay22ValueProps() {
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
           >
-            Three reasons to stay
+            Three pillars of Rootsight
           </h2>
         </div>
 
         {/* 3 Column Feature Cards matching Stay22 official layout */}
         <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-3">
-          {/* Column 1: Personal (human.riv) */}
+          {/* Column 1: Precision (human.riv) */}
           <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
             <div>
               <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
@@ -500,23 +509,23 @@ export function Stay22ValueProps() {
                 className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
                 style={{ fontFamily: "'Exposure', Georgia, serif" }}
               >
-                Personal
+                Precision
               </h3>
               <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
-                Real people, real response times, and the kind of support that makes you wonder why you ever waited.
+                Human-in-the-loop analysis and dedicated cyber intelligence specialists who understand threat actors and adversarial tactics.
               </p>
             </div>
 
             <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
-              <span>Human Support</span>
+              <span>Expert Support</span>
               <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
-                Interactive Character
+                Threat Researchers
               </span>
             </div>
           </div>
 
-          {/* Column 2: Lucrative (lucrative.riv) */}
+          {/* Column 2: Sovereign (lucrative.riv) */}
           <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
             <div>
               <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
@@ -534,23 +543,23 @@ export function Stay22ValueProps() {
                 className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
                 style={{ fontFamily: "'Exposure', Georgia, serif" }}
               >
-                Lucrative
+                Sovereign
               </h3>
               <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
-                Real money. Even on a slow Tuesday. More ways to turn your traffic into revenue.
+                Zero foreign cloud dependencies, 100% in-country data residency, and full auditability compliant with DPIIT &amp; CERT-In mandates.
               </p>
             </div>
 
             <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
-              <span>High RPMs</span>
+              <span>National Security</span>
               <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
-                Spinning Coins
+                Air-Gapped Ready
               </span>
             </div>
           </div>
 
-          {/* Column 3: Effortless (effortless.riv) */}
+          {/* Column 3: Autonomous (effortless.riv) */}
           <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
             <div>
               <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
@@ -568,18 +577,18 @@ export function Stay22ValueProps() {
                 className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
                 style={{ fontFamily: "'Exposure', Georgia, serif" }}
               >
-                Effortless
+                Autonomous
               </h3>
               <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
-                Set it up once. It keeps working, so you can get back to what you do best.
+                Instant correlation and zero-touch evidence pipelines that do the heavy data crunching in seconds, leaving zero blindspots.
               </p>
             </div>
 
             <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
-              <span>Zero Maintenance</span>
+              <span>Real-Time Engine</span>
               <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
-                Live Motion
+                Automated Pipelines
               </span>
             </div>
           </div>

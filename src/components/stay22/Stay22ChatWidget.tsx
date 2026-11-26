@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Stay22Emblem } from "./Stay22Emblem";
-import { X, MessageSquare } from "lucide-react";
+import { RootsightLogo } from "@/components/RootsightLogo";
+import { X } from "lucide-react";
 
 export function Stay22ChatWidget() {
   const [bubbleOpen, setBubbleOpen] = useState(true);
@@ -13,12 +13,12 @@ export function Stay22ChatWidget() {
       aria-label="Support and Chat"
       className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto select-none"
     >
-      {/* Speech Bubble Tooltip matching Stay22 screenshot 2 */}
+      {/* Speech Bubble Tooltip matching Stay22 style */}
       {bubbleOpen && (
         <div className="relative bg-white text-[#262222] rounded-2xl px-5 py-3.5 shadow-2xl border border-black/5 max-w-[280px] animate-in fade-in slide-in-from-bottom-2 duration-300">
-          {/* Top Protruding Stay22 Emblem Badge */}
-          <div className="absolute -top-3.5 right-6 w-8 h-8 rounded-full bg-[#ffb200] shadow-md flex items-center justify-center">
-            <Stay22Emblem className="w-5 h-5 text-[#262222]" />
+          {/* Top Protruding Rootsight Emblem Badge */}
+          <div className="absolute -top-3.5 right-6 w-8 h-8 rounded-full bg-[#ffb200] shadow-md flex items-center justify-center p-1.5">
+            <RootsightLogo size={18} color="#262222" accentColor="#00A86B" />
           </div>
 
           <div className="flex items-start justify-between gap-3 pr-4 pt-1">
@@ -71,12 +71,12 @@ export function Stay22ChatWidget() {
         <div className="fixed bottom-24 right-6 w-[360px] bg-white rounded-2xl shadow-2xl border border-black/10 overflow-hidden flex flex-col z-50">
           <div className="bg-[#ffb200] p-4 flex items-center justify-between text-[#262222]">
             <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-full bg-[#262222] text-[#ffb200] flex items-center justify-center">
-                <Stay22Emblem className="w-4 h-4 text-[#ffb200]" />
+              <div className="w-8 h-8 rounded-full bg-[#262222] text-[#ffb200] flex items-center justify-center p-1.5">
+                <RootsightLogo size={18} color="#ffb200" accentColor="#10b981" />
               </div>
               <div>
-                <h4 className="font-bold text-sm leading-tight">Stay22 Support</h4>
-                <p className="text-[11px] opacity-80">Typically replies in minutes</p>
+                <h4 className="font-bold text-sm leading-tight">Rootsight Cyber Desk</h4>
+                <p className="text-[11px] opacity-80">Confidential response in minutes</p>
               </div>
             </div>
             <button
@@ -89,10 +89,10 @@ export function Stay22ChatWidget() {
 
           <div className="p-4 space-y-3 bg-[#faf7f4] h-64 overflow-y-auto text-xs">
             <div className="bg-white p-3 rounded-xl shadow-sm border border-black/5 max-w-[85%]">
-              Hey there! 👋 Welcome to Stay22. How can we help boost your travel revenue today?
+              Greetings! 👋 Welcome to Rootsight Cyber Technologies. How can our team assist your agency or enterprise today?
             </div>
             <div className="bg-[#ffb200]/20 p-2.5 rounded-lg border border-[#ffb200]/40 text-[11px]">
-              Tip: You can book a demo directly or explore our products (Nova, Spark, Lift).
+              Tip: You can request a confidential demonstration of the Nexus CDR Engine or schedule an adversarial red team assessment.
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export function Stay22ChatWidget() {
               placeholder="Write a message..."
               className="flex-1 bg-black/5 rounded-full px-4 py-2 text-xs outline-none focus:ring-1 focus:ring-[#ffb200]"
             />
-            <button className="bg-[#ffb200] text-[#262222] font-bold text-xs px-3.5 py-2 rounded-full hover:bg-[#ffa000]">
+            <button className="bg-[#ffb200] text-[#262222] font-bold text-xs px-3.5 py-2 rounded-full hover:bg-[#ffa000] cursor-pointer">
               Send
             </button>
           </div>

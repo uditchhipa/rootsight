@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Stay22Emblem } from "./Stay22Emblem";
-import { RiveAnimation } from "./RiveAnimation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { RootsightLogo } from "@/components/RootsightLogo";
+import { Menu, X, ChevronDown, ShieldCheck } from "lucide-react";
 
 export function Stay22Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,16 +22,26 @@ export function Stay22Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 pt-4 md:pt-5 px-4 md:px-10">
       <div className="w-full flex items-center justify-between">
-        {/* Left spacing for centering balance on desktop / Mobile Logo */}
-        <div className="flex items-center gap-3 pointer-events-auto md:w-48">
+        {/* Left spacing for centering balance on desktop / Startup India Badge / Mobile Logo */}
+        <div className="flex items-center gap-3 pointer-events-auto md:w-56">
+          {/* Mobile Logo */}
           <div className="md:hidden flex items-center">
             <Link
               href="/"
-              className="flex items-center gap-2 bg-[#ffb200] text-[#262222] px-3.5 py-2 rounded-xl font-bold shadow-md"
+              className="flex items-center gap-2.5 bg-[#ffb200] text-[#262222] px-3.5 py-2 rounded-xl font-bold shadow-md"
             >
-              <Stay22Emblem className="w-5 h-5 text-[#262222]" />
-              <span className="text-sm tracking-tight font-extrabold">stay22</span>
+              <RootsightLogo size={20} color="#262222" accentColor="#00A86B" />
+              <span className="text-sm tracking-tight font-extrabold uppercase">Rootsight</span>
             </Link>
+          </div>
+
+          {/* Desktop DPIIT / Startup India Pill */}
+          <div className="hidden md:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/25 backdrop-blur-md border border-white/15 text-xs text-white/90 shadow-sm mix-blend-difference">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]" />
+            </span>
+            <span className="font-semibold tracking-tight text-[11px] uppercase">Startup India Registered</span>
           </div>
         </div>
 
@@ -42,15 +51,26 @@ export function Stay22Navbar() {
           style={{ backgroundColor: "#ffb200" }}
           aria-label="Main Navigation"
         >
-          {/* Logo Mark inside Yellow Capsule */}
+          {/* Rootsight Logo Mark inside Yellow Capsule */}
           <Link
             href="/"
-            className="flex items-center mr-8 group relative overflow-visible"
-            aria-label="Stay22 Home"
+            className="flex items-center gap-2.5 mr-8 group relative overflow-visible"
+            aria-label="Rootsight Home"
           >
             <div className="w-7 h-7 relative flex items-center justify-center">
-              <Stay22Emblem className="w-7 h-7 text-[#262222] transition-transform duration-300 group-hover:rotate-12" />
+              <RootsightLogo
+                size={26}
+                color="#262222"
+                accentColor="#00A86B"
+                className="transition-transform duration-300 group-hover:rotate-6"
+              />
             </div>
+            <span
+              className="font-heading font-extrabold text-base tracking-tight text-[#262222] uppercase"
+              style={{ fontFamily: "'Exposure', Georgia, serif" }}
+            >
+              Rootsight
+            </span>
           </Link>
 
           {/* Links */}
@@ -76,25 +96,25 @@ export function Stay22Navbar() {
                       href="#solutions"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      For Travel Bloggers
+                      Investigation Automation
                     </a>
                     <a
                       href="#solutions"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      For Digital Publishers
+                      Adversarial Red Teaming
                     </a>
                     <a
                       href="#solutions"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      For Ticketing &amp; Events
+                      OSINT &amp; Threat Intelligence
                     </a>
                     <a
                       href="#solutions"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      For Transportation
+                      Sovereign Forensics Cloud
                     </a>
                   </div>
                 </div>
@@ -136,21 +156,19 @@ export function Stay22Navbar() {
                       href="#why-stay22"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      Why Stay22
+                      Why Rootsight
                     </a>
                     <a
                       href="#faq"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      FAQ
+                      FAQ &amp; Compliance
                     </a>
                     <a
-                      href="https://another.stay22.com"
-                      target="_blank"
-                      rel="noreferrer"
+                      href="#contact"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
-                      Developer Docs
+                      Security Dossier
                     </a>
                   </div>
                 </div>
@@ -159,8 +177,8 @@ export function Stay22Navbar() {
           </div>
         </nav>
 
-        {/* Right Actions: Search, Account, Language, Sign up */}
-        <div className="pointer-events-auto flex items-center gap-4 md:w-72 justify-end">
+        {/* Right Actions: Search, Account, Language, Request Briefing */}
+        <div className="pointer-events-auto flex items-center gap-4 md:w-56 justify-end">
           {/* Search Icon */}
           <button
             type="button"
@@ -188,13 +206,11 @@ export function Stay22Navbar() {
             </svg>
           </button>
 
-          {/* User/Account Icon */}
+          {/* User/Account Portal Icon */}
           <a
-            href="https://hub.stay22.com"
-            target="_blank"
-            rel="noreferrer"
+            href="#contact"
             className="p-2 text-white/90 hover:text-white transition-colors cursor-pointer mix-blend-difference"
-            aria-label="Account Login"
+            aria-label="Client Portal"
           >
             <svg
               width="16"
@@ -211,23 +227,12 @@ export function Stay22Navbar() {
             </svg>
           </a>
 
-          {/* Language Selector: Fr */}
+          {/* Request Briefing Button (Yellow Capsule) */}
           <a
-            href="https://www.stay22.com/fr/"
-            className="px-2.5 py-1 rounded-full border border-white/50 text-xs font-semibold text-white hover:border-white hover:bg-white/10 transition-colors mix-blend-difference"
-            aria-label="Français"
+            href="#contact"
+            className="bg-[#ffb200] text-[#262222] font-bold text-sm px-5 py-2.5 rounded-full hover:bg-[#ffa000] hover:scale-105 transition-all shadow-md whitespace-nowrap"
           >
-            Fr
-          </a>
-
-          {/* Sign Up Button (Yellow Pill) */}
-          <a
-            href="https://another.stay22.com/sign-up"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-[#ffb200] text-[#262222] font-bold text-sm px-6 py-2.5 rounded-full hover:bg-[#ffa000] hover:scale-105 transition-all shadow-md"
-          >
-            Sign up
+            Request Briefing
           </a>
 
           {/* Mobile Menu Toggle Button */}
@@ -272,7 +277,7 @@ export function Stay22Navbar() {
               onClick={() => setMobileOpen(false)}
               className="py-1 hover:text-black/70"
             >
-              Why Stay22
+              Why Rootsight
             </a>
             <a
               href="#faq"
@@ -283,12 +288,11 @@ export function Stay22Navbar() {
             </a>
             <div className="pt-3 border-t border-black/15 flex gap-3">
               <a
-                href="https://another.stay22.com/sign-up"
-                target="_blank"
-                rel="noreferrer"
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
                 className="w-full text-center bg-[#262222] text-[#f2e4d8] py-2.5 rounded-full font-bold text-sm"
               >
-                Sign up
+                Request Briefing
               </a>
             </div>
           </div>

@@ -6,52 +6,52 @@ import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 const PRODUCTS = [
   {
-    id: "nova",
-    name: "Nova",
-    tagline: "Turn reader intent into more bookings",
+    id: "nexus",
+    name: "Nexus",
+    tagline: "Automated CDR & IPDR correlation engine",
     icon: "/stay22/images/icon_Nova.svg",
-    desc: "Instantly transforms static hotel and destination mentions into dynamic, multi-provider booking links. Zero manual tag configuration.",
-    metrics: "Average 42% click-through increase across editorial travel blogs.",
+    desc: "Ingests raw, unstructured multi-carrier telecom records, IPDR sessions, and tower dumps. Automatically isolates co-traveling entities, burns burners, and outputs courtroom-grade evidentiary timelines.",
+    metrics: "Parses 10,000,000+ call records in under 8 seconds with zero data loss.",
   },
   {
-    id: "spark",
-    name: "Spark",
-    tagline: "High-converting contextual recommendations",
+    id: "sentinel",
+    name: "Sentinel",
+    tagline: "Darknet & deepweb threat intelligence",
     icon: "/stay22/images/icon_Spark.svg",
-    desc: "Interactive travel embeds that surface live rates, reviews, and availability directly within your articles and city guides.",
-    metrics: "3.2x higher conversion compared to standard banner ads.",
+    desc: "Autonomous cyber reconnaissance tracking ransomware leak sites, illicit forums, and credential brokers. Delivers verified threat actor attribution and early warning alerts.",
+    metrics: "Monitors 400+ active ransomware groups and illicit marketplaces 24/7.",
   },
   {
-    id: "lift",
-    name: "Lift",
-    tagline: "Dynamic CTAs that boost conversions",
+    id: "vanguard",
+    name: "Vanguard",
+    tagline: "Continuous adversarial red team suite",
     icon: "/stay22/images/icon_Lift.svg",
-    desc: "Machine learning routing that selects the best-paying OTA inventory in real-time based on user geography and check-in date.",
-    metrics: "Generates $140+ CPMs on high-intent destination posts.",
+    desc: "Simulates advanced nation-state threat actors against banking, telecom, and government infrastructure. Discovers exploitable attack paths before adversaries do.",
+    metrics: "Identifies 99.8% of high-severity external attack vectors pre-breach.",
   },
   {
-    id: "map",
-    name: "Map",
-    tagline: "Interactive booking maps for destinations",
+    id: "kernel",
+    name: "Kernel",
+    tagline: "Reverse sandbox & binary dissection",
     icon: "/stay22/images/icon_Map.svg",
-    desc: "Beautiful, responsive maps populated with hotels and vacation rentals centered around key landmarks, venues, and festival locations.",
-    metrics: "Over 85% mobile engagement across event platforms.",
+    desc: "Deep kernel-level malware detonation sandbox that strips anti-analysis evasion, deobfuscates encrypted payloads, and maps MITRE ATT&CK techniques automatically.",
+    metrics: "Sub-second unpacking of polymorphic and zero-day malicious binaries.",
   },
   {
-    id: "loop",
-    name: "Loop",
-    tagline: "Automatic re-engagement loops",
+    id: "trace",
+    name: "Trace",
+    tagline: "Geo-temporal suspect mapping & routes",
     icon: "/stay22/images/icon_Loop.svg",
-    desc: "Recovers abandoned travel bookings through polite, non-intrusive notification bubbles when visitors show high search intent.",
-    metrics: "Recovers up to 18% of previously lost booking commissions.",
+    desc: "Visualizes suspect movements, rendezvous patterns, and cell tower handoffs on high-resolution GIS maps with millimeter precision and timeline playback.",
+    metrics: "Interactive multi-target timeline analysis across nationwide cellular grids.",
   },
   {
-    id: "allez",
-    name: "Allez",
-    tagline: "Next-gen direct booking checkout",
+    id: "sovereign",
+    name: "Sovereign",
+    tagline: "Air-gapped in-country cloud & vault",
     icon: "/stay22/images/icon_Allez.svg",
-    desc: "Branded short URLs designed for Instagram bio links, YouTube video descriptions, and TikTok profiles with full analytics.",
-    metrics: "Sub-second redirection to localized app stores and OTAs.",
+    desc: "Certified air-gapped on-premises appliance or dedicated sovereign cloud vault. Cryptographically enforces complete chain of custody and 100% in-country data residency.",
+    metrics: "Meets strict DPIIT, CERT-In, and defense-grade air-gap security benchmarks.",
   },
 ];
 
@@ -59,18 +59,18 @@ export function Stay22Products() {
   const [activeTab, setActiveTab] = useState(PRODUCTS[0]);
 
   return (
-    <section id="products" className="py-24 md:py-32 bg-[#f2e4d8] border-b border-[#262222]/10">
+    <section id="products" className="py-24 md:py-32 bg-[#f2e4d8] border-b border-[#262222]/10 relative z-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-4">
           <p className="text-xs font-bold uppercase tracking-widest text-[#262222]/60">
-            Works in the background. So you don&apos;t have to.
+            Engineered for real-world operations. Built to never fail.
           </p>
           <h2
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
           >
-            A product for every kind of intent
+            A product for every cyber mission
           </h2>
         </div>
 
@@ -102,55 +102,79 @@ export function Stay22Products() {
           })}
         </div>
 
-        {/* Highlight Banner featuring the Active Product */}
-        <div className="rounded-[32px] bg-[#262222] text-[#f2e4d8] p-8 sm:p-12 lg:p-16 border border-[#262222] shadow-2xl grid gap-8 lg:grid-cols-12 items-center">
-          <div className="lg:col-span-8 space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#ffb200]/20 border border-[#ffb200]/40 px-3.5 py-1 text-xs font-bold text-[#ffb200]">
-              <Image src={activeTab.icon} alt={activeTab.name} width={16} height={16} className="w-4 h-4" />
-              <span>Product Spec: {activeTab.name}</span>
+        {/* Selected Product Interactive Showcase Card */}
+        <div className="rounded-[32px] md:rounded-[40px] bg-[#FAF4EC] border border-[#262222]/10 p-8 sm:p-12 lg:p-16 shadow-xl grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffb200]/20 text-[#262222] font-extrabold text-xs uppercase tracking-wider">
+              <span>Proprietary Tech</span>
+              <span>•</span>
+              <span>{activeTab.name}</span>
             </div>
 
             <h3
-              className="font-heading text-3xl sm:text-5xl font-normal text-white tracking-tight"
+              className="font-heading text-3xl sm:text-5xl font-normal text-[#262222] tracking-tight leading-[1.05]"
               style={{ fontFamily: "'Exposure', Georgia, serif" }}
             >
-              {activeTab.name} —{" "}
-              <span className="font-serif italic font-normal text-[#ffb200]">
-                {activeTab.tagline}
-              </span>
+              {activeTab.tagline}
             </h3>
 
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-xl font-medium">
+            <p className="text-base sm:text-lg text-[#262222]/80 leading-relaxed font-medium">
               {activeTab.desc}
             </p>
 
-            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm text-white/90 font-medium flex items-center gap-3">
-              <CheckCircle2 className="w-5 h-5 text-[#ffb200] shrink-0" />
-              <span>{activeTab.metrics}</span>
+            <div className="p-4 rounded-2xl bg-white border border-[#262222]/10 flex items-start gap-3 shadow-xs">
+              <CheckCircle2 className="w-5 h-5 text-[#ffb200] shrink-0 mt-0.5" />
+              <p className="text-sm font-bold text-[#262222]">
+                {activeTab.metrics}
+              </p>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap gap-4 items-center">
               <a
-                href="https://another.stay22.com"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-[#ffb200] hover:bg-[#ffa000] text-[#262222] px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:scale-105"
+                href="#contact"
+                className="stay22-btn-yellow inline-flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
               >
-                <span>Deploy {activeTab.name}</span>
+                <span>Request Technical Dossier</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+              </a>
+              <a
+                href="#contact"
+                className="stay22-btn-primary inline-flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
+              >
+                <span>Schedule Confidential Demo</span>
               </a>
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex justify-center items-center">
-            <div className="w-36 h-36 rounded-full bg-[#ffb200]/10 border border-[#ffb200]/30 p-6 flex items-center justify-center">
-              <Image
-                src={activeTab.icon}
-                alt={activeTab.name}
-                width={80}
-                height={80}
-                className="w-20 h-20 object-contain filter drop-shadow-lg"
-              />
+          {/* Right Product Graphic Mockup */}
+          <div className="lg:col-span-5 relative flex justify-center items-center">
+            <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#262222] text-[#f2e4d8] p-8 flex flex-col justify-between shadow-2xl border border-black/10 overflow-hidden">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2 font-mono text-xs text-[#ffb200]">
+                  <span className="w-2 h-2 rounded-full bg-[#ffb200] animate-pulse" />
+                  <span>ROOTSIGHT // {activeTab.name.toUpperCase()}</span>
+                </div>
+                <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono text-white/70">
+                  SECURE DEPLOYMENT
+                </div>
+              </div>
+
+              <div className="my-auto space-y-3">
+                <div className="text-xs uppercase font-mono text-white/50 tracking-wider">
+                  Operational Capability
+                </div>
+                <div className="text-xl sm:text-2xl font-bold font-mono text-white">
+                  {activeTab.name} Engine
+                </div>
+                <p className="text-xs text-white/70 leading-relaxed">
+                  {activeTab.tagline}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 flex justify-between text-[11px] font-mono text-white/60">
+                <span>STATUS: OPERATIONAL</span>
+                <span>LATENCY: &lt;12ms</span>
+              </div>
             </div>
           </div>
         </div>
