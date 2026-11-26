@@ -3,6 +3,7 @@ import { Stay22Navbar } from "@/components/stay22/Stay22Navbar";
 import { Stay22Hero } from "@/components/stay22/Stay22Hero";
 import { Stay22ValueProps } from "@/components/stay22/Stay22ValueProps";
 import { Stay22Products } from "@/components/stay22/Stay22Products";
+import { RootsightFounders } from "@/components/stay22/RootsightFounders";
 import { Stay22CaseStudies } from "@/components/stay22/Stay22CaseStudies";
 import { Stay22Faq } from "@/components/stay22/Stay22Faq";
 import { Stay22Footer } from "@/components/stay22/Stay22Footer";
@@ -16,6 +17,7 @@ export default function HomePage() {
         <Stay22Hero />
         <Stay22ValueProps />
         <Stay22Products />
+        <RootsightFounders />
         <Stay22CaseStudies />
         <Stay22Faq />
       </main>

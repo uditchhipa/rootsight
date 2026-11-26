@@ -129,6 +129,14 @@ export function Stay22Navbar() {
               Platform
             </a>
 
+            {/* Leadership Link */}
+            <a
+              href="#team"
+              className="hover:text-black/70 transition-colors py-2"
+            >
+              Leadership
+            </a>
+
             {/* Resources Dropdown */}
             <div
               className="relative"
