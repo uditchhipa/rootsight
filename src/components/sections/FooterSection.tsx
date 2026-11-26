@@ -35,16 +35,16 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="relative bg-[#fcfbf6] text-[#171717] pt-24 pb-12 overflow-hidden border-t border-[#ecebe4]">
-      {/* Floating Decorative Organic Blobs */}
-      <div className="pointer-events-none absolute -top-12 -left-12 w-48 h-48 opacity-60 animate-blob-1">
-        <Image src="/ttm/blob-1.png" alt="Decorative Blob" fill className="object-contain" />
+    <footer className="relative bg-[#fcfbf6] text-[#171717] pt-24 pb-12 overflow-hidden border-t border-[#ecebe4] z-10">
+      {/* Floating Decorative Organic Blobs (strictly size-constrained & background only) */}
+      <div className="pointer-events-none absolute -top-6 -left-6 w-28 h-28 opacity-40 select-none z-0">
+        <Image src="/ttm/blob-1.png" alt="Decorative Blob" width={112} height={112} className="w-full h-full object-contain" />
       </div>
-      <div className="pointer-events-none absolute top-1/4 -right-12 w-56 h-56 opacity-50 animate-blob-2">
-        <Image src="/ttm/blob-2.png" alt="Decorative Blob" fill className="object-contain" />
+      <div className="pointer-events-none absolute top-1/4 -right-6 w-32 h-32 opacity-35 select-none z-0">
+        <Image src="/ttm/blob-2.png" alt="Decorative Blob" width={128} height={128} className="w-full h-full object-contain" />
       </div>
-      <div className="pointer-events-none absolute -bottom-16 left-1/3 w-64 h-64 opacity-40 animate-blob-1">
-        <Image src="/ttm/blob-5.png" alt="Decorative Blob" fill className="object-contain" />
+      <div className="pointer-events-none absolute -bottom-8 right-1/3 w-32 h-32 opacity-30 select-none z-0">
+        <Image src="/ttm/blob-5.png" alt="Decorative Blob" width={128} height={128} className="w-full h-full object-contain" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">

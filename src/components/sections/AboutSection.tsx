@@ -42,8 +42,9 @@ export function AboutSection() {
                   <Image
                     src="/ttm/mees-verberne.jpg"
                     alt="Mees Verberne"
-                    fill
-                    className="object-cover"
+                    width={28}
+                    height={28}
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <span>Mees Verberne</span>
@@ -63,8 +64,9 @@ export function AboutSection() {
                   <Image
                     src="/ttm/ronald-de-groot.jpg"
                     alt="Ronald de Groot"
-                    fill
-                    className="object-cover"
+                    width={28}
+                    height={28}
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <span>Ronald de Groot</span>
@@ -101,8 +103,9 @@ export function AboutSection() {
                     <Image
                       src={f.avatar}
                       alt={f.name}
-                      fill
-                      className="object-cover"
+                      width={64}
+                      height={64}
+                      className="object-cover w-full h-full"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -145,8 +148,9 @@ export function AboutSection() {
                   <Image
                     src={c.avatar}
                     alt={c.name}
-                    fill
-                    className="object-cover"
+                    width={28}
+                    height={28}
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="text-left">
