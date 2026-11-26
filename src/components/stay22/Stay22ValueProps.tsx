@@ -460,7 +460,7 @@ export function Stay22ValueProps() {
         </div>
 
         {/* Wide Interactive Rive Container: onereason.riv */}
-        <div className="max-w-6xl mx-auto relative rounded-[32px] md:rounded-[40px] overflow-hidden shadow-2xl bg-[#ffb200]/10 border border-black/5 aspect-[1333/760]">
+        <div className="max-w-6xl mx-auto relative rounded-[32px] md:rounded-[40px] overflow-hidden shadow-2xl bg-[#ffb200]/10 border border-black/5 aspect-[1333/760] select-none">
           <RiveAnimation
             src="/stay22/onereason.riv"
             stateMachines="State Machine 1"
@@ -469,6 +469,63 @@ export function Stay22ValueProps() {
             autoplay={true}
             className="w-full h-full"
           />
+
+          {/* Seamless Pixel-Perfect RootSight Brand Overlay across the 3 website pills */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            {/* Pill 1 (Top Lavender Badge) */}
+            <div
+              className="absolute flex items-center justify-center gap-[4%] font-sans font-medium text-[#262222] bg-[#b6adfd] border-[1.5px] border-[#262222] rounded-full shadow-xs tracking-tight"
+              style={{
+                left: "7.4%",
+                top: "66.5%",
+                width: "8.2%",
+                height: "3.7%",
+                fontSize: "clamp(8px, 0.72vw, 12px)",
+              }}
+            >
+              <svg className="w-[18%] h-[55%] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+              <span>RootSight</span>
+            </div>
+
+            {/* Pill 2 (Bottom-Left Light Lavender Badge) */}
+            <div
+              className="absolute flex items-center justify-center gap-[4%] font-sans font-medium text-[#262222] bg-[#f5f3ff] border-[1.5px] border-[#262222] rounded-full shadow-xs tracking-tight"
+              style={{
+                left: "11.8%",
+                top: "71.6%",
+                width: "8.2%",
+                height: "3.7%",
+                fontSize: "clamp(8px, 0.72vw, 12px)",
+              }}
+            >
+              <svg className="w-[18%] h-[55%] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+              <span>RootSight</span>
+            </div>
+
+            {/* Pill 3 (Bottom-Right Lavender Badge) */}
+            <div
+              className="absolute flex items-center justify-center gap-[4%] font-sans font-medium text-[#262222] bg-[#b6adfd] border-[1.5px] border-[#262222] rounded-full shadow-xs tracking-tight"
+              style={{
+                left: "24.9%",
+                top: "71.6%",
+                width: "8.2%",
+                height: "3.7%",
+                fontSize: "clamp(8px, 0.72vw, 12px)",
+              }}
+            >
+              <svg className="w-[18%] h-[55%] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+              </svg>
+              <span>RootSight</span>
+            </div>
+          </div>
         </div>
       </section>
 
