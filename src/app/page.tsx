@@ -1,24 +1,24 @@
 import React from "react";
-import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { ShowcaseSection } from "@/components/sections/ShowcaseSection";
-import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
-import { PricingSection } from "@/components/sections/PricingSection";
-import { FooterSection } from "@/components/sections/FooterSection";
+import { Stay22Navbar } from "@/components/stay22/Stay22Navbar";
+import { Stay22Hero } from "@/components/stay22/Stay22Hero";
+import { Stay22ValueProps } from "@/components/stay22/Stay22ValueProps";
+import { Stay22Products } from "@/components/stay22/Stay22Products";
+import { Stay22CaseStudies } from "@/components/stay22/Stay22CaseStudies";
+import { Stay22Faq } from "@/components/stay22/Stay22Faq";
+import { Stay22Footer } from "@/components/stay22/Stay22Footer";
 
 export default function HomePage() {
   return (
     <>
-      <Navbar />
-      <main className="relative bg-[#171717] text-[#f3f3ed]">
-        <HeroSection />
-        <AboutSection />
-        <ShowcaseSection />
-        <HowItWorksSection />
-        <PricingSection />
+      <Stay22Navbar />
+      <main className="relative min-h-screen bg-[#f2e4d8] text-[#2a2626]">
+        <Stay22Hero />
+        <Stay22ValueProps />
+        <Stay22Products />
+        <Stay22CaseStudies />
+        <Stay22Faq />
       </main>
-      <FooterSection />
+      <Stay22Footer />
     </>
   );
 }

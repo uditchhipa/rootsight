@@ -1,56 +1,44 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-jetbrains-mono",
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-serif",
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#171717",
-  colorScheme: "dark",
+  themeColor: "#f2e4d8",
+  colorScheme: "light",
 };
 
 export const metadata: Metadata = {
-  title: "TTM — Templates That Move | Real-time WebGL Studio",
+  title: "Stay22 | Affiliate monetization for creators & platforms",
   description:
-    "A growing library of customizable video and motion templates you can edit, timeline-scrub, and export as MP4 directly in your browser. Powered by Three.js WebGL and GSAP.",
+    "The best monetization platforms disappear into your site. Stay22 helps creators and publishers monetize travel intent with seamless, high-converting integrations.",
   keywords: [
-    "TTM",
-    "Templates that move",
-    "WebGL Studio",
-    "Motion Templates",
-    "Browser Video Export",
-    "Three.js",
-    "GSAP Timeline",
-    "WebCodecs MP4",
+    "Stay22",
+    "Affiliate monetization",
+    "Travel tech",
+    "Creator monetization",
+    "Awwwards Nominee",
+    "Rive Animation",
   ],
   openGraph: {
-    title: "TTM — Templates That Move",
-    description:
-      "A growing library of customizable 3D and motion templates you can edit and export in your browser.",
-    siteName: "TTM Supply",
+    title: "Stay22 | Affiliate monetization for creators & platforms",
+    description: "The best monetization platforms disappear into your site.",
+    siteName: "Stay22",
     locale: "en_US",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TTM — Templates That Move",
-    description: "Real-time WebGL motion templates and browser MP4 studio.",
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
@@ -62,13 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${jetbrainsMono.variable}`}
-      suppressHydrationWarning
+      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} scroll-smooth`}
     >
-      <body
-        className="bg-[#171717] text-[#f3f3ed] antialiased selection:bg-[#ecaf30] selection:text-[#171717] font-sans"
-        suppressHydrationWarning
-      >
+      <body className="bg-[#f2e4d8] text-[#2a2626] antialiased selection:bg-[#786ddc] selection:text-white font-sans">
         {children}
       </body>
     </html>
