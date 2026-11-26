@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles, Filter, Play } from "lucide-react";
-import { TTM_TEMPLATES, TTMTemplate } from "@/data/ttmContent";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { TTM_TEMPLATES } from "@/data/ttmContent";
 
 const CATEGORIES = [
   { id: "all", label: "All Templates" },
@@ -15,6 +15,18 @@ const CATEGORIES = [
   { id: "typography", label: "Typography" },
   { id: "mockups", label: "Mockups" },
 ];
+
+// Map template IDs to specific downloaded motion video loops
+const TEMPLATE_VIDEO_MAP: Record<string, string> = {
+  "kinetic-torus": "/ttm/videos/hero_9_16_1.mp4",
+  "cascade-carousel": "/ttm/videos/hero_4_5_1.mp4",
+  "fly-through-type": "/ttm/videos/hero_16_9_1.mp4",
+  "cybernetic-grid": "/ttm/videos/hero_1_1_1.mp4",
+  "elastic-stacks": "/ttm/videos/hero_9_16_2.mp4",
+  "icosa-geometric": "/ttm/videos/hero_1_1_2.mp4",
+  "monumental-type": "/ttm/videos/hero_9_16_3.mp4",
+  "glassmorphism-deck": "/ttm/videos/hero_4_3_1.mp4",
+};
 
 export function ShowcaseSection() {
   const [selectedCat, setSelectedCat] = useState("all");
@@ -70,71 +82,74 @@ export function ShowcaseSection() {
           ))}
         </div>
 
-        {/* Templates Grid */}
+        {/* Templates Grid with Motion Video Previews */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {filteredTemplates.map((template) => (
-            <div
-              key={template.id}
-              className="group relative rounded-3xl bg-[#1e1e1e] border border-white/5 hover:border-white/20 p-5 transition-all duration-300 hover:shadow-2xl flex flex-col justify-between"
-            >
-              {/* Card Preview Graphic */}
+          {filteredTemplates.map((template) => {
+            const videoSrc = TEMPLATE_VIDEO_MAP[template.id] || "/ttm/videos/hero_9_16_1.mp4";
+
+            return (
               <div
-                className="relative aspect-square w-full rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-white/5 group-hover:scale-[1.02] transition-transform duration-300"
-                style={{ backgroundColor: "#141414" }}
+                key={template.id}
+                className="group relative rounded-3xl bg-[#1e1e1e] border border-white/5 hover:border-white/20 p-5 transition-all duration-300 hover:shadow-2xl flex flex-col justify-between"
               >
-                {/* Visual Representation of 3D / Motion */}
-                <div
-                  className="w-24 h-24 rounded-2xl flex items-center justify-center font-black text-2xl transition-transform group-hover:rotate-12 duration-500 shadow-xl"
-                  style={{
-                    backgroundColor: template.accentColor,
-                    color: "#171717",
-                  }}
+                {/* Card Preview Video */}
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden mb-4 border border-white/5 group-hover:scale-[1.02] transition-transform duration-300 bg-[#121212]">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    src={videoSrc}
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* Scrim */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+
+                  {/* Top Badges */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow"
+                      style={{
+                        backgroundColor: template.accentColor,
+                        color: "#171717",
+                      }}
+                    >
+                      {template.categoryLabel}
+                    </span>
+                    <span className="text-[10px] font-mono text-white/90 bg-black/60 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/10">
+                      {template.aspectRatio}
+                    </span>
+                  </div>
+
+                  {/* Duration Tag */}
+                  <div className="absolute bottom-3 right-3 text-[10px] font-mono text-white/80 bg-black/70 px-2 py-0.5 rounded-md z-10">
+                    {template.duration}s
+                  </div>
+                </div>
+
+                {/* Title & Description */}
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-[#f3f3ed] group-hover:text-[#ecaf30] transition-colors">
+                    {template.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-[#86867f] line-clamp-2 leading-relaxed">
+                    {template.description}
+                  </p>
+                </div>
+
+                {/* Action Button: Open in Studio */}
+                <Link
+                  href={`/studio?template=${template.id}`}
+                  className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-[#262626] group-hover:bg-[#ecaf30] text-white group-hover:text-[#171717] text-xs font-bold uppercase tracking-wider transition-all shadow-md group-hover:scale-[1.02]"
                 >
-                  <Sparkles className="w-10 h-10 stroke-[2]" />
-                </div>
-
-                {/* Top Badges */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
-                    style={{
-                      backgroundColor: template.accentColor,
-                      color: "#171717",
-                    }}
-                  >
-                    {template.categoryLabel}
-                  </span>
-                  <span className="text-[10px] font-mono text-white/70 bg-black/50 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/10">
-                    {template.aspectRatio}
-                  </span>
-                </div>
-
-                {/* Duration Tag */}
-                <div className="absolute bottom-3 right-3 text-[10px] font-mono text-white/50 bg-black/60 px-2 py-0.5 rounded-md">
-                  {template.duration}s
-                </div>
+                  <span>Open in Studio</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                </Link>
               </div>
-
-              {/* Title & Description */}
-              <div className="flex-1">
-                <h3 className="text-base font-bold text-[#f3f3ed] group-hover:text-[#ecaf30] transition-colors">
-                  {template.title}
-                </h3>
-                <p className="mt-1 text-xs text-[#86867f] line-clamp-2 leading-relaxed">
-                  {template.description}
-                </p>
-              </div>
-
-              {/* Action Button: Open in Studio */}
-              <Link
-                href={`/studio?template=${template.id}`}
-                className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-[#262626] group-hover:bg-[#ecaf30] text-white group-hover:text-[#171717] text-xs font-bold uppercase tracking-wider transition-all shadow-md group-hover:scale-[1.02]"
-              >
-                <span>Open in Studio</span>
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-              </Link>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

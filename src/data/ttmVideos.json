@@ -1,0 +1,32 @@
+{
+  "9:16": [
+    "/ttm/videos/hero_9_16_1.mp4",
+    "/ttm/videos/hero_9_16_2.mp4",
+    "/ttm/videos/hero_9_16_3.mp4"
+  ],
+  "3:4": [
+    "/ttm/videos/hero_3_4_1.mp4",
+    "/ttm/videos/hero_3_4_2.mp4",
+    "/ttm/videos/hero_3_4_3.mp4"
+  ],
+  "4:5": [
+    "/ttm/videos/hero_4_5_1.mp4",
+    "/ttm/videos/hero_4_5_2.mp4",
+    "/ttm/videos/hero_4_5_3.mp4"
+  ],
+  "1:1": [
+    "/ttm/videos/hero_1_1_1.mp4",
+    "/ttm/videos/hero_1_1_2.mp4",
+    "/ttm/videos/hero_1_1_3.mp4"
+  ],
+  "4:3": [
+    "/ttm/videos/hero_4_3_1.mp4",
+    "/ttm/videos/hero_4_3_2.mp4",
+    "/ttm/videos/hero_4_3_3.mp4"
+  ],
+  "16:9": [
+    "/ttm/videos/hero_16_9_1.mp4",
+    "/ttm/videos/hero_16_9_2.mp4",
+    "/ttm/videos/hero_16_9_3.mp4"
+  ]
+}
