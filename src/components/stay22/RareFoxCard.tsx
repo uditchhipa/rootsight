@@ -8,28 +8,32 @@ MIT License, Copyright (c) mihocsaszilard (Mihocsa Szilard)
 import React from "react";
 import "./rare-fox-card.css";
 
-interface RareFoxCardProps {
+export interface RareFoxCardProps {
   title?: string;
   ultraText?: string;
-  masterText?: string;
+  engineTag?: string;
   cardNumber?: string;
   cardHolder?: string;
   validThru?: string;
   engineSpecs?: string;
+  airgapBadge?: string;
+  masterText?: string;
 }
 
 export function RareFoxCard({
   title = "Nexus",
   ultraText = "NEXUS // ULTRA",
-  masterText = "mastercard",
+  engineTag = "CDR & IPDR CORRELATION",
   cardNumber = "9024  8810  2408  5192",
-  cardHolder = "ROOTSIGHT // CDR-IPDR CORE",
+  cardHolder = "ROOTSIGHT // TELECOM CORE",
   validThru = "11/30",
   engineSpecs = "10M+ RECS/S • <12MS",
+  airgapBadge = "AIR-GAPPED",
+  masterText = "mastercard",
 }: RareFoxCardProps) {
   return (
     <div className="rf-card-wrapper">
-      <div className="rf-main-container" title="Nexus Ultra Titanium Architecture">
+      <div className="rf-main-container" title={`${title} Ultra Titanium Architecture`}>
         <div className="rf-border">
           <div className="rf-card">
             <div className="rf-shadow">
@@ -38,7 +42,7 @@ export function RareFoxCard({
                 <p className="rf-rev">{title}</p>
                 <div className="rf-top-badges">
                   <span className="rf-ultra-text">{ultraText}</span>
-                  <span className="rf-airgap-badge">AIR-GAPPED</span>
+                  <span className="rf-airgap-badge">{airgapBadge}</span>
                 </div>
 
                 {/* EMV Chip and Contactless Waves */}
@@ -109,7 +113,7 @@ export function RareFoxCard({
 
                 {/* Subtitle / Engine Tag */}
                 <div className="rf-engine-tag">
-                  CDR &amp; IPDR CORRELATION
+                  {engineTag}
                 </div>
 
                 {/* Embossed Card Security Number */}

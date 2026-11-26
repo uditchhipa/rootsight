@@ -5,7 +5,25 @@ import Image from "next/image";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { RareFoxCard } from "./RareFoxCard";
 
-const PRODUCTS = [
+interface ProductItem {
+  id: string;
+  name: string;
+  tagline: string;
+  icon: string;
+  desc: string;
+  metrics: string;
+  cardDetails: {
+    ultraText: string;
+    engineTag: string;
+    cardNumber: string;
+    cardHolder: string;
+    validThru: string;
+    engineSpecs: string;
+    airgapBadge: string;
+  };
+}
+
+const PRODUCTS: ProductItem[] = [
   {
     id: "nexus",
     name: "Nexus",
@@ -13,6 +31,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Nova.svg",
     desc: "Ingests raw, unstructured multi-carrier telecom records, IPDR sessions, and tower dumps. Automatically isolates co-traveling entities, burns burners, and outputs courtroom-grade evidentiary timelines.",
     metrics: "Parses 10,000,000+ call records in under 8 seconds with zero data loss.",
+    cardDetails: {
+      ultraText: "NEXUS // ULTRA",
+      engineTag: "CDR & IPDR CORRELATION",
+      cardNumber: "9024  8810  2408  5192",
+      cardHolder: "ROOTSIGHT // TELECOM CORE",
+      validThru: "11/30",
+      engineSpecs: "10M+ RECS/S • <12MS",
+      airgapBadge: "AIR-GAPPED",
+    },
   },
   {
     id: "sentinel",
@@ -21,6 +48,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Spark.svg",
     desc: "Autonomous cyber reconnaissance tracking ransomware leak sites, illicit forums, and credential brokers. Delivers verified threat actor attribution and early warning alerts.",
     metrics: "Monitors 400+ active ransomware groups and illicit marketplaces 24/7.",
+    cardDetails: {
+      ultraText: "SENTINEL // INTEL",
+      engineTag: "DARKNET THREAT ATTRIBUTION",
+      cardNumber: "4418  9021  7732  1084",
+      cardHolder: "ROOTSIGHT // CYBER RECON",
+      validThru: "08/30",
+      engineSpecs: "400+ GRP • 24/7 LIVE",
+      airgapBadge: "ZERO-TRUST",
+    },
   },
   {
     id: "vanguard",
@@ -29,6 +65,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Lift.svg",
     desc: "Simulates advanced nation-state threat actors against banking, telecom, and government infrastructure. Discovers exploitable attack paths before adversaries do.",
     metrics: "Identifies 99.8% of high-severity external attack vectors pre-breach.",
+    cardDetails: {
+      ultraText: "VANGUARD // RED TEAM",
+      engineTag: "ADVERSARIAL SIMULATION",
+      cardNumber: "7720  4419  3382  9910",
+      cardHolder: "ROOTSIGHT // ATTACK PATH",
+      validThru: "05/30",
+      engineSpecs: "99.8% PRE-BREACH DEFENSE",
+      airgapBadge: "OFFENSIVE",
+    },
   },
   {
     id: "kernel",
@@ -37,6 +82,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Map.svg",
     desc: "Deep kernel-level malware detonation sandbox that strips anti-analysis evasion, deobfuscates encrypted payloads, and maps MITRE ATT&CK techniques automatically.",
     metrics: "Sub-second unpacking of polymorphic and zero-day malicious binaries.",
+    cardDetails: {
+      ultraText: "KERNEL // DETONATION",
+      engineTag: "REVERSE SANDBOX LAB",
+      cardNumber: "1024  5120  2048  4096",
+      cardHolder: "ROOTSIGHT // BINARY DISSECT",
+      validThru: "12/30",
+      engineSpecs: "SUB-SECOND 0-DAY UNPACK",
+      airgapBadge: "ISOLATED",
+    },
   },
   {
     id: "trace",
@@ -45,6 +99,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Loop.svg",
     desc: "Visualizes suspect movements, rendezvous patterns, and cell tower handoffs on high-resolution GIS maps with millimeter precision and timeline playback.",
     metrics: "Interactive multi-target timeline analysis across nationwide cellular grids.",
+    cardDetails: {
+      ultraText: "TRACE // GEO-SPATIAL",
+      engineTag: "TEMPORAL SUSPECT MAPPING",
+      cardNumber: "6601  9924  5180  7741",
+      cardHolder: "ROOTSIGHT // TOWER HANDOFF",
+      validThru: "09/30",
+      engineSpecs: "MILLIMETER GIS PRECISION",
+      airgapBadge: "TELEMETRY",
+    },
   },
   {
     id: "sovereign",
@@ -53,6 +116,15 @@ const PRODUCTS = [
     icon: "/stay22/images/icon_Allez.svg",
     desc: "Certified air-gapped on-premises appliance or dedicated sovereign cloud vault. Cryptographically enforces complete chain of custody and 100% in-country data residency.",
     metrics: "Meets strict DPIIT, CERT-In, and defense-grade air-gap security benchmarks.",
+    cardDetails: {
+      ultraText: "SOVEREIGN // VAULT",
+      engineTag: "AIR-GAPPED CLOUD & VAULT",
+      cardNumber: "0001  1337  8800  9999",
+      cardHolder: "ROOTSIGHT // DPIIT CERTIFIED",
+      validThru: "01/32",
+      engineSpecs: "100% IN-COUNTRY DATA",
+      airgapBadge: "SOVEREIGN",
+    },
   },
 ];
 
@@ -147,44 +219,19 @@ export function Stay22Products() {
             </div>
           </div>
 
-          {/* Right Product Graphic Mockup */}
+          {/* Right Product Graphic Mockup - Dynamic Titanium Card */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            {activeTab.id === "nexus" ? (
-              <RareFoxCard
-                title="Nexus"
-                ultraText="NEXUS // ULTRA"
-                masterText="mastercard"
-              />
-            ) : (
-              <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#262222] text-[#f2e4d8] p-8 flex flex-col justify-between shadow-2xl border border-black/10 overflow-hidden">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2 font-mono text-xs text-[#ffb200]">
-                    <span className="w-2 h-2 rounded-full bg-[#ffb200] animate-pulse" />
-                    <span>ROOTSIGHT // {activeTab.name.toUpperCase()}</span>
-                  </div>
-                  <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono text-white/70">
-                    SECURE DEPLOYMENT
-                  </div>
-                </div>
-
-                <div className="my-auto space-y-3">
-                  <div className="text-xs uppercase font-mono text-white/50 tracking-wider">
-                    Operational Capability
-                  </div>
-                  <div className="text-xl sm:text-2xl font-bold font-mono text-white">
-                    {activeTab.name} Engine
-                  </div>
-                  <p className="text-xs text-white/70 leading-relaxed">
-                    {activeTab.tagline}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-white/10 flex justify-between text-[11px] font-mono text-white/60">
-                  <span>STATUS: OPERATIONAL</span>
-                  <span>LATENCY: &lt;12ms</span>
-                </div>
-              </div>
-            )}
+            <RareFoxCard
+              key={activeTab.id}
+              title={activeTab.name}
+              ultraText={activeTab.cardDetails.ultraText}
+              engineTag={activeTab.cardDetails.engineTag}
+              cardNumber={activeTab.cardDetails.cardNumber}
+              cardHolder={activeTab.cardDetails.cardHolder}
+              validThru={activeTab.cardDetails.validThru}
+              engineSpecs={activeTab.cardDetails.engineSpecs}
+              airgapBadge={activeTab.cardDetails.airgapBadge}
+            />
           </div>
         </div>
       </div>
