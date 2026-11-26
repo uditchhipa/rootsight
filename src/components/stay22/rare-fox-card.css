@@ -1,0 +1,202 @@
+/*
+From Uiverse.io by mihocsaszilard - https://uiverse.io/mihocsaszilard/rare-fox-73
+MIT License, Copyright (c) mihocsaszilard (Mihocsa Szilard)
+*/
+
+.rf-card-wrapper {
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.rf-main-container {
+  font-family: "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  position: relative;
+  height: 220px;
+  aspect-ratio: 1.579;
+  border-radius: 1em;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease-in;
+  cursor: pointer;
+  user-select: none;
+}
+
+.rf-main-container:hover {
+  transform: rotateZ(1deg) rotateY(10deg) scale(1.08);
+  box-shadow: 0 4em 2.5em -1em rgba(0, 0, 0, 0.45);
+}
+
+.rf-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  background: linear-gradient(
+    115deg,
+    rgba(0, 0, 0, 0.33) 12%,
+    rgba(255, 255, 255, 0.33) 27%,
+    rgba(255, 255, 255, 0.33) 31%,
+    rgba(0, 0, 0, 0.33) 52%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.rf-border:hover::after {
+  position: absolute;
+  content: " ";
+  height: 50em;
+  aspect-ratio: 1.58;
+  border-radius: 1em;
+  background: linear-gradient(
+    115deg,
+    rgba(0, 0, 0, 1) 42%,
+    rgba(255, 255, 255, 1) 47%,
+    rgba(255, 255, 255, 1) 51%,
+    rgba(0, 0, 0, 1) 52%
+  );
+  animation: rf-rotate 4s linear infinite;
+  z-index: 1;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.rf-card {
+  height: 13.5em;
+  aspect-ratio: 1.586;
+  border-radius: 1em;
+  background-color: #2b2727;
+  opacity: 0.95;
+  background-image: linear-gradient(to right, #1f1c1c, #1f1c1c 2px, #363131 2px, #363131);
+  background-size: 4px 100%;
+  position: relative;
+}
+
+.rf-shadow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.85em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background:
+    radial-gradient(
+        circle at 100% 100%,
+        #ffffff 0,
+        #ffffff 8px,
+        transparent 8px
+      )
+      0% 0%/13px 13px no-repeat,
+    radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 8px, transparent 8px)
+      100% 0%/13px 13px no-repeat,
+    radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 8px, transparent 8px)
+      0% 100%/13px 13px no-repeat,
+    radial-gradient(circle at 0 0, #ffffff 0, #ffffff 8px, transparent 8px) 100%
+      100%/13px 13px no-repeat,
+    linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 10px)
+      calc(100% - 26px) no-repeat,
+    linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 26px)
+      calc(100% - 10px) no-repeat,
+    linear-gradient(
+      135deg,
+      rgba(3, 3, 3, 0.6) 0%,
+      transparent 22%,
+      transparent 47%,
+      transparent 73%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  box-sizing: border-box;
+}
+
+.rf-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 0.6em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: -1px -1px 0 rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  height: 13em;
+  aspect-ratio: 1.604;
+  background-image: linear-gradient(to right, #242020, #181515 2px, #3a3434 2px, #3a3434);
+  background-size: 4px 100%;
+}
+
+.rf-rev {
+  top: 0.65em;
+  left: 0.9em;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.25em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.rf-master {
+  position: absolute;
+  bottom: 1.25em;
+  right: 0.5em;
+  background: linear-gradient(
+    90deg,
+    rgba(75, 75, 75, 0.35) 0%,
+    rgba(160, 160, 160, 0.9) 100%
+  );
+  color: #fff;
+  height: 2.5em;
+  width: 2.5em;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.rf-master.one {
+  right: 2em;
+}
+
+.rf-master-text {
+  bottom: 0.25em;
+  right: 0.8em;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.rf-ultra-text {
+  top: 0.35em;
+  right: 1.2em;
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffb200;
+}
+
+.rf-ultra-text,
+.rf-master-text,
+.rf-rev {
+  position: absolute;
+  text-shadow: -1px -1px #000;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.rf-chip {
+  position: absolute;
+  top: 27.5%;
+  left: 8.25%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes rf-rotate {
+  0% {
+    transform: translate(-25em, -15em);
+  }
+  20% {
+    transform: translate(25em, 15em);
+  }
+  100% {
+    transform: translate(25em, 15em);
+  }
+}

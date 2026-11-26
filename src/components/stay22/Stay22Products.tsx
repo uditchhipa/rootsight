@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { RareFoxCard } from "./RareFoxCard";
 
 const PRODUCTS = [
   {
@@ -148,34 +149,42 @@ export function Stay22Products() {
 
           {/* Right Product Graphic Mockup */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#262222] text-[#f2e4d8] p-8 flex flex-col justify-between shadow-2xl border border-black/10 overflow-hidden">
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2 font-mono text-xs text-[#ffb200]">
-                  <span className="w-2 h-2 rounded-full bg-[#ffb200] animate-pulse" />
-                  <span>ROOTSIGHT // {activeTab.name.toUpperCase()}</span>
+            {activeTab.id === "nexus" ? (
+              <RareFoxCard
+                title="Nexus"
+                ultraText="NEXUS // ULTRA"
+                masterText="mastercard"
+              />
+            ) : (
+              <div className="relative w-full aspect-[4/3] rounded-3xl bg-[#262222] text-[#f2e4d8] p-8 flex flex-col justify-between shadow-2xl border border-black/10 overflow-hidden">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2 font-mono text-xs text-[#ffb200]">
+                    <span className="w-2 h-2 rounded-full bg-[#ffb200] animate-pulse" />
+                    <span>ROOTSIGHT // {activeTab.name.toUpperCase()}</span>
+                  </div>
+                  <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono text-white/70">
+                    SECURE DEPLOYMENT
+                  </div>
                 </div>
-                <div className="px-2.5 py-1 rounded bg-white/10 text-[10px] font-mono text-white/70">
-                  SECURE DEPLOYMENT
-                </div>
-              </div>
 
-              <div className="my-auto space-y-3">
-                <div className="text-xs uppercase font-mono text-white/50 tracking-wider">
-                  Operational Capability
+                <div className="my-auto space-y-3">
+                  <div className="text-xs uppercase font-mono text-white/50 tracking-wider">
+                    Operational Capability
+                  </div>
+                  <div className="text-xl sm:text-2xl font-bold font-mono text-white">
+                    {activeTab.name} Engine
+                  </div>
+                  <p className="text-xs text-white/70 leading-relaxed">
+                    {activeTab.tagline}
+                  </p>
                 </div>
-                <div className="text-xl sm:text-2xl font-bold font-mono text-white">
-                  {activeTab.name} Engine
-                </div>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  {activeTab.tagline}
-                </p>
-              </div>
 
-              <div className="pt-4 border-t border-white/10 flex justify-between text-[11px] font-mono text-white/60">
-                <span>STATUS: OPERATIONAL</span>
-                <span>LATENCY: &lt;12ms</span>
+                <div className="pt-4 border-t border-white/10 flex justify-between text-[11px] font-mono text-white/60">
+                  <span>STATUS: OPERATIONAL</span>
+                  <span>LATENCY: &lt;12ms</span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
