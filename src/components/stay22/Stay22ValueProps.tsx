@@ -477,7 +477,7 @@ export function Stay22ValueProps() {
           ======================================================== */}
       <section
         ref={columnsRef}
-        id="why-stay22"
+        id="why-rootsight"
         className="py-20 md:py-32 px-4 sm:px-8 lg:px-12 border-t border-[#262222]/10 relative z-30 bg-[#f2e4d8]"
       >
         <div className="max-w-5xl mx-auto text-center mb-16 md:mb-20">

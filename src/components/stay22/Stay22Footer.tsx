@@ -54,7 +54,7 @@ export function Stay22Footer() {
                       </a>
                     </li>
                     <li>
-                      <a href="#why-stay22" className="hover:text-[#ffb200] transition-colors">
+                      <a href="#why-rootsight" className="hover:text-[#ffb200] transition-colors">
                         Why Rootsight
                       </a>
                     </li>

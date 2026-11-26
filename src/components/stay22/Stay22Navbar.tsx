@@ -161,7 +161,7 @@ export function Stay22Navbar() {
                       Case Studies
                     </a>
                     <a
-                      href="#why-stay22"
+                      href="#why-rootsight"
                       className="px-3 py-2 rounded-lg hover:bg-black/10 transition-colors"
                     >
                       Why Rootsight
@@ -281,7 +281,7 @@ export function Stay22Navbar() {
               Case Studies
             </a>
             <a
-              href="#why-stay22"
+              href="#why-rootsight"
               onClick={() => setMobileOpen(false)}
               className="py-1 hover:text-black/70"
             >
