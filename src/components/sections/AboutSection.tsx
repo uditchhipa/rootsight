@@ -1,111 +1,86 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ShieldCheck, CheckCircle } from "lucide-react";
-import { SITE_CONFIG } from "@/data/content";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
+import { ShieldCheck, CheckCircle2 } from "lucide-react";
+import { SITE_CONFIG, VALUES } from "@/data/content";
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const reducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    if (reducedMotion) return;
-    const ctx = gsap.context(() => {
-      gsap.from(".about-reveal", {
-        y: 16,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 78%",
-          once: true,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [reducedMotion]);
-
   return (
     <section
       id="about"
-      ref={sectionRef}
-      className="bg-[#ffffff] py-28 md:py-36 border-b border-[#ededed]"
+      className="bg-[#fafafa] py-20 md:py-28 border-b border-[#ededed]"
     >
-      <div className="mx-auto max-w-[1520px] px-6 lg:px-10">
-        <div className="mb-14 flex flex-wrap items-center justify-between gap-4 border-b border-[#ededed] pb-6">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#7a7a7a]">
-            01 — Company // Background
-          </span>
-
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#dedede] bg-[#f8f8f8] px-4 py-1.5 shadow-xs">
-            <ShieldCheck size={15} className="text-[#00c875]" />
-            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-[#222222]">
-              Startup India Registered · {SITE_CONFIG.startupIndiaId}
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-[#e4e4e7]">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#71717a]">
+              Who We Are
             </span>
+            <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#09090b]">
+              Engineering sovereign cyber tools for real-world impact.
+            </h2>
+          </div>
+
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#e4e4e7] bg-white px-4 py-2 text-xs font-semibold text-[#18181b] shadow-2xs shrink-0">
+            <ShieldCheck size={16} className="text-[#10b981]" />
+            <span>Startup India Registered</span>
           </div>
         </div>
 
-        <div className="grid gap-16 lg:grid-cols-12">
-          <div className="about-reveal lg:col-span-7">
-            <h2 className="font-extrabold uppercase leading-[1.05] tracking-[-0.035em] text-[#222222] text-4xl sm:text-6xl">
-              ROOT ACCESS. TOTAL SIGHT.
-            </h2>
-            <p className="mt-8 text-lg leading-relaxed text-[#555555]">
-              ROOTSIGHT is an Indian cyber security and automation startup
-              recognized by Startup India (DPIIT), engineering sovereign,
-              high-velocity intelligence platforms and offensive security frameworks.
+        {/* Narrative & Mission */}
+        <div className="mt-12 grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-7 space-y-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#09090b]">
+              Built by researchers and engineers to solve digital investigation backlogs.
+            </h3>
+            <p className="text-base text-[#52525b] leading-relaxed">
+              <strong>Rootsight Cyber Technologies</strong> is an Indian cyber security and investigation automation startup recognized by <strong>Startup India (DPIIT)</strong>. Founded by offensive security specialists, malware researchers, and systems architects, we build dedicated tools that transform how complex digital cases are handled.
             </p>
-            <p className="mt-5 text-base leading-relaxed text-[#7a7a7a]">
-              Our name fuses <strong className="text-[#222222] font-semibold">ROOT</strong>{" "}
-              (root-level system access, mathematical rigor, and root-cause diagnostics) with{" "}
-              <strong className="text-[#222222] font-semibold">SIGHT</strong>{" "}
-              (continuous threat intelligence and surveillance). We equip law
-              enforcement agencies and high-security enterprises to operate with speed and precision.
+            <p className="text-base text-[#52525b] leading-relaxed">
+              The name <strong>ROOTSIGHT</strong> reflects our core methodology:
             </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 rounded-full bg-[#f8f8f8] border border-[#ededed] px-4 py-2 text-xs font-medium text-[#222222]">
-                <CheckCircle size={14} className="text-[#00c875]" />
-                <span>On-Premise &amp; Air-Gapped Capable</span>
+            <div className="grid sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-white border border-[#e4e4e7] shadow-2xs">
+                <span className="font-mono text-xs font-bold uppercase text-[#10b981]">01 // ROOT</span>
+                <h4 className="mt-1 text-sm font-bold text-[#09090b]">Root-Cause Diagnostics</h4>
+                <p className="mt-1 text-xs text-[#71717a] leading-relaxed">
+                  Deep kernel-level system visibility, binary reverse engineering, and finding the true origin of every cyber threat.
+                </p>
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-[#f8f8f8] border border-[#ededed] px-4 py-2 text-xs font-medium text-[#222222]">
-                <CheckCircle size={14} className="text-[#00c875]" />
-                <span>Court-Admissible Evidence Standards</span>
+
+              <div className="p-4 rounded-xl bg-white border border-[#e4e4e7] shadow-2xs">
+                <span className="font-mono text-xs font-bold uppercase text-[#2563eb]">02 // SIGHT</span>
+                <h4 className="mt-1 text-sm font-bold text-[#09090b]">Actionable Intelligence</h4>
+                <p className="mt-1 text-xs text-[#71717a] leading-relaxed">
+                  Total situational awareness through multi-source OSINT, live darknet telemetry, and automated correlation.
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="about-reveal grid gap-6 lg:col-span-5">
-            <div className="rounded-[20px] border border-[#ededed] bg-[#f8f8f8] p-8 shadow-xs">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#7a7a7a]">
-                Pillar 01 · Law Enforcement Automation
-              </span>
-              <h3 className="mt-3 font-bold uppercase tracking-[-0.02em] text-[#222222] text-xl">
-                Investigation Engines
-              </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#555555]">
-                Automating phone record (CDR/IPDR) correlation, OSINT ingestion, and evidence intake pipelines so officers focus on decisions, not manual data entry.
-              </p>
+          {/* Core Values Card */}
+          <div className="lg:col-span-5 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-white border border-[#e4e4e7] shadow-xs">
+            <div>
+              <h4 className="text-base font-bold text-[#09090b] uppercase tracking-wider mb-6">
+                Our Core Principles
+              </h4>
+              <div className="space-y-5">
+                {VALUES.map((val) => (
+                  <div key={val.number} className="flex gap-3">
+                    <CheckCircle2 size={18} className="text-[#10b981] shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-sm font-bold text-[#09090b]">{val.title}</h5>
+                      <p className="mt-0.5 text-xs text-[#71717a] leading-relaxed">{val.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="rounded-[20px] border border-[#ededed] bg-[#f8f8f8] p-8 shadow-xs">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#7a7a7a]">
-                Pillar 02 · Offensive Cyber Security
-              </span>
-              <h3 className="mt-3 font-bold uppercase tracking-[-0.02em] text-[#222222] text-xl">
-                Adversary Simulation
-              </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#555555]">
-                Full-scope penetration testing, red teaming, and malware reverse engineering to pinpoint critical zero-day vulnerabilities before threat actors exploit them.
-              </p>
+            <div className="mt-8 pt-6 border-t border-[#f4f4f5] flex items-center justify-between text-xs text-[#71717a]">
+              <span>Headquarters: New Delhi, India</span>
+              <span className="font-mono font-medium text-[#09090b]">ROOTSIGHT // 2026</span>
             </div>
           </div>
         </div>
