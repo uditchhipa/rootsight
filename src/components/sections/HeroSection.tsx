@@ -1,95 +1,99 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, Shield, Terminal, Cpu, FileCheck } from "lucide-react";
+import { ArrowUpRight, ArrowDown } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative bg-[#ffffff] pt-32 pb-20 md:pt-40 md:pb-28 border-b border-[#ededed]"
+      className="relative pt-28 pb-16 md:pt-36 md:pb-24 hairline-b bg-[#F9F9F7]"
     >
-      {/* Subtle blueprint grid with radial fade */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]" />
-
-      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          {/* Official Startup India Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#e4e4e7] bg-[#fafafa] px-3.5 py-1 text-xs font-medium text-[#27272a] shadow-xs mb-8">
-            <span className="flex h-2 w-2 rounded-full bg-[#10b981]" />
-            <span className="font-semibold">Startup India Registered</span>
-            <span className="text-[#d4d4d8]">|</span>
-            <span className="text-[#71717a]">Cyber Security &amp; Automation</span>
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        {/* Top Operational Telemetry Meta Line */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-8 hairline-b mono-tag text-[11px] text-[#6E7073]">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-[#111213]" />
+            <span className="font-semibold text-[#111213]">ROOTSIGHT CYBER TECHNOLOGIES</span>
+            <span className="text-[#D4D4D0]">/</span>
+            <span>NEW DELHI, INDIA</span>
           </div>
 
-          {/* Clean Monumental Headline */}
-          <h1 className="max-w-4xl text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#09090b] leading-[1.08]">
-            Intelligent Cyber Security &amp; Investigation Automation.
-          </h1>
+          <div className="flex items-center gap-4 text-[#6E7073]">
+            <span>RECOGNITION: STARTUP INDIA (DPIIT)</span>
+            <span className="hidden sm:inline text-[#D4D4D0]">/</span>
+            <span className="hidden sm:inline">DISCIPLINE: FORENSIC &amp; OFFENSIVE TECH</span>
+          </div>
+        </div>
 
-          {/* Subheadline explaining Who We Are & What We Do */}
-          <p className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-[#71717a] leading-relaxed">
-            Rootsight builds purpose-built automation tooling for law enforcement agencies, executes adversarial penetration testing, and engineers sovereign threat intelligence pipelines.
-          </p>
+        {/* Hero Editorial Core (Left-Aligned, Asymmetric Human Typography) */}
+        <div className="pt-12 md:pt-16 pb-12">
+          <div className="max-w-5xl">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-extrabold tracking-[-0.04em] text-[#111213] leading-[0.98]">
+              Deterministic Cyber Defense &amp; Investigation Automation.
+            </h1>
 
-          {/* Clean Action Buttons */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#services"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#09090b] px-6 py-3 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#27272a]"
-            >
-              <span>What We Do</span>
-              <ArrowUpRight size={16} />
-            </a>
+            <p className="mt-8 max-w-2xl text-base sm:text-lg md:text-xl text-[#525457] leading-relaxed font-normal">
+              Rootsight engineers specialized software for national law enforcement agencies, executes offensive adversary red-teaming, and disassembles modern malware. Built in India for critical digital resilience.
+            </p>
 
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 rounded-lg border border-[#e4e4e7] bg-white px-6 py-3 text-sm font-semibold text-[#09090b] shadow-2xs transition-colors hover:bg-[#fafafa] hover:border-[#d4d4d8]"
-            >
-              <span>Who We Are</span>
-            </a>
+            {/* Action Bar */}
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href="#services"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#111213] px-6 py-3 text-xs font-semibold text-[#F9F9F7] transition-all hover:bg-black"
+              >
+                <span>Explore Capabilities</span>
+                <ArrowDown size={13} className="transition-transform group-hover:translate-y-0.5" />
+              </a>
 
-            <a
-              href="#team"
-              className="inline-flex items-center gap-2 rounded-lg border border-[#e4e4e7] bg-white px-6 py-3 text-sm font-semibold text-[#09090b] shadow-2xs transition-colors hover:bg-[#fafafa] hover:border-[#d4d4d8]"
-            >
-              <span>Meet the Team</span>
-            </a>
+              <a
+                href="#about"
+                className="inline-flex items-center gap-2 rounded-full border border-[#D4D4D0] bg-white px-6 py-3 text-xs font-semibold text-[#111213] transition-all hover:border-[#111213]"
+              >
+                <span>The Firm</span>
+              </a>
+
+              <a
+                href="#team"
+                className="inline-flex items-center gap-2 rounded-full border border-[#D4D4D0] bg-white px-6 py-3 text-xs font-semibold text-[#111213] transition-all hover:border-[#111213]"
+              >
+                <span>Founding Team</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Operational Scope Ledger (Asymmetric 3-Part Split Table) */}
+        <div className="mt-8 hairline-t pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-2">
+            <span className="mono-tag text-[#A3A39E]">PRACTICE // 01</span>
+            <h3 className="text-sm font-bold uppercase tracking-tight text-[#111213]">
+              Investigation Automation
+            </h3>
+            <p className="text-xs text-[#6E7073] leading-relaxed">
+              Automated CDR / IPDR correlation, tamper-evident digital evidence intake, and court-admissible forensic timeline generation.
+            </p>
           </div>
 
-          {/* 4 Core Pillars Strip (Simple, Clean, High-Trust) */}
-          <div className="mt-16 sm:mt-20 w-full grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 border-t border-[#f4f4f5]">
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-xl bg-[#fafafa]/80 border border-[#f4f4f5]">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#e4e4e7] text-[#09090b] mb-3">
-                <FileCheck size={18} />
-              </div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#09090b]">Investigation Tech</h3>
-              <p className="mt-1 text-xs text-[#71717a]">CDR / IPDR correlation &amp; automated case workflows</p>
-            </div>
+          <div className="space-y-2">
+            <span className="mono-tag text-[#A3A39E]">PRACTICE // 02</span>
+            <h3 className="text-sm font-bold uppercase tracking-tight text-[#111213]">
+              Offensive Red Teaming
+            </h3>
+            <p className="text-xs text-[#6E7073] leading-relaxed">
+              Full-scope adversary emulation, cloud hardening, and network vulnerability research conducted by experienced penetration testers.
+            </p>
+          </div>
 
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-xl bg-[#fafafa]/80 border border-[#f4f4f5]">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#e4e4e7] text-[#09090b] mb-3">
-                <Shield size={18} />
-              </div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#09090b]">Offensive Security</h3>
-              <p className="mt-1 text-xs text-[#71717a]">Penetration testing &amp; adversarial red teaming</p>
-            </div>
-
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-xl bg-[#fafafa]/80 border border-[#f4f4f5]">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#e4e4e7] text-[#09090b] mb-3">
-                <Terminal size={18} />
-              </div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#09090b]">Malware Analysis</h3>
-              <p className="mt-1 text-xs text-[#71717a]">Payload detonation, reverse engineering &amp; memory analysis</p>
-            </div>
-
-            <div className="flex flex-col items-center md:items-start text-center md:text-left p-4 rounded-xl bg-[#fafafa]/80 border border-[#f4f4f5]">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white border border-[#e4e4e7] text-[#09090b] mb-3">
-                <Cpu size={18} />
-              </div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#09090b]">Threat Intel &amp; OSINT</h3>
-              <p className="mt-1 text-xs text-[#71717a]">Darknet monitoring &amp; autonomous entity profiling</p>
-            </div>
+          <div className="space-y-2">
+            <span className="mono-tag text-[#A3A39E]">PRACTICE // 03</span>
+            <h3 className="text-sm font-bold uppercase tracking-tight text-[#111213]">
+              Malware &amp; Exploit Labs
+            </h3>
+            <p className="text-xs text-[#6E7073] leading-relaxed">
+              Isolated detonation environments, automated YARA extraction, and memory dump inspection to counter advanced threat actors.
+            </p>
           </div>
         </div>
       </div>

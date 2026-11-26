@@ -1,78 +1,77 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SERVICES } from "@/data/content";
 
 export function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-[#ffffff] py-20 md:py-28 border-b border-[#ededed]"
+      className="py-20 md:py-28 hairline-b bg-white"
     >
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#71717a]">
-            What We Do
-          </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#09090b]">
-            Specialized capabilities engineered for mission success.
-          </h2>
-          <p className="mt-4 text-base text-[#71717a] leading-relaxed">
-            From assisting law enforcement agencies with evidence automation to uncovering zero-day vulnerabilities in enterprise infrastructure, here is how Rootsight protects and empowers our clients.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 hairline-b">
+          <div className="max-w-2xl">
+            <span className="mono-tag text-[#A3A39E]">02 // CAPABILITIES</span>
+            <h2 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[-0.035em] text-[#111213]">
+              What We Do
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#6E7073] leading-relaxed">
+              Four specialized engineering practices designed to eliminate operational friction for law enforcement agencies and protect critical enterprise infrastructure.
+            </p>
+          </div>
+
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#111213] hover:text-[#6E7073] transition-colors shrink-0"
+          >
+            <span>Request Operational Briefing</span>
+            <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </div>
 
-        {/* 4 Core Services Grid */}
-        <div className="grid gap-8 md:grid-cols-2">
+        {/* Editorial Capability Ledger */}
+        <div className="divide-y divide-[#E5E5E2]">
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="flex flex-col justify-between p-8 rounded-2xl bg-[#fafafa] border border-[#e4e4e7] transition-all hover:border-[#d4d4d8] hover:shadow-xs"
+              className="py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start group"
             >
-              <div>
-                <div className="flex items-center justify-between pb-6 border-b border-[#e4e4e7]">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#10b981] bg-[#10b981]/10 px-2.5 py-1 rounded-md">
-                    PRACTICE // {service.code}
-                  </span>
-                  <span className="text-xs font-medium text-[#71717a]">
-                    {service.subtitle}
-                  </span>
-                </div>
-
-                <h3 className="mt-6 text-xl sm:text-2xl font-bold text-[#09090b] tracking-tight">
-                  {service.title}
-                </h3>
-
-                <p className="mt-3 text-sm text-[#52525b] leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Capabilities Checklist */}
-                <div className="mt-6 pt-6 border-t border-[#e4e4e7] space-y-2.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#71717a] block mb-3">
-                    Key Deliverables:
-                  </span>
-                  {service.capabilities.map((cap) => (
-                    <div key={cap} className="flex items-start gap-2.5 text-xs text-[#27272a]">
-                      <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#10b981]/15 text-[#10b981] shrink-0 mt-0.5">
-                        <Check size={11} strokeWidth={3} />
-                      </div>
-                      <span>{cap}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Col 1: Index & Code */}
+              <div className="lg:col-span-2">
+                <span className="mono-tag text-xs font-bold text-[#111213]">
+                  PRACTICE // {service.code}
+                </span>
+                <span className="block mt-1 text-xs text-[#A3A39E]">
+                  {service.subtitle}
+                </span>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#e4e4e7] flex items-center justify-between">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#09090b] hover:text-[#2563eb] transition-colors"
-                >
-                  <span>Request Technical Briefing</span>
-                  <ArrowUpRight size={14} />
-                </a>
+              {/* Col 2: Title & Core Description */}
+              <div className="lg:col-span-6 space-y-4">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111213] group-hover:text-black transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-[#525457] leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+
+              {/* Col 3: Deliverables List */}
+              <div className="lg:col-span-4 lg:pl-6 space-y-2">
+                <span className="mono-tag text-[10px] text-[#A3A39E] block mb-2">
+                  TECHNICAL DELIVERABLES
+                </span>
+                <ul className="space-y-2 text-xs text-[#2A2B2D]">
+                  {service.capabilities.map((cap) => (
+                    <li key={cap} className="flex items-start gap-2">
+                      <span className="text-[#A3A39E] font-mono select-none">—</span>
+                      <span>{cap}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

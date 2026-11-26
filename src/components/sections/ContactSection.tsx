@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Mail, MapPin, Shield } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Mail, MapPin } from "lucide-react";
 import { SERVICES, SITE_CONFIG } from "@/data/content";
 
 export function ContactSection() {
@@ -11,9 +11,7 @@ export function ContactSection() {
     service: SERVICES[0].title,
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +28,7 @@ export function ContactSection() {
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Failed to send message.");
+        throw new Error(data.error || "Failed to submit inquiry.");
       }
 
       setStatus("sent");
@@ -49,95 +47,93 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="bg-[#ffffff] py-20 md:py-28 border-b border-[#ededed]"
+      className="py-20 md:py-28 hairline-b bg-white"
     >
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12">
-          {/* Left: Contact Info & Institutional Details */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#71717a]">
-                Contact
-              </span>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#09090b]">
-                Connect directly with our founding team.
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-12 items-start">
+          {/* Left Column: Context & Direct Details */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-1">
+              <span className="mono-tag text-[#A3A39E]">04 // ENGAGEMENT</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.035em] text-[#111213]">
+                Initiate Contact
               </h2>
-              <p className="mt-4 text-base text-[#71717a] leading-relaxed">
-                Whether you represent a law enforcement agency seeking evidence automation, an enterprise needing a penetration test, or an academic collaborator—we welcome your inquiry.
-              </p>
+            </div>
 
-              <div className="mt-8 space-y-4 pt-6 border-t border-[#f4f4f5]">
-                <div className="flex items-center gap-3 text-sm text-[#27272a]">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#fafafa] border border-[#e4e4e7] text-[#09090b] shrink-0">
-                    <Mail size={16} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#71717a] block">Direct Email</span>
-                    <a
-                      href={`mailto:${SITE_CONFIG.email}`}
-                      className="font-semibold text-[#09090b] hover:underline"
-                    >
-                      {SITE_CONFIG.email}
-                    </a>
-                  </div>
+            <p className="text-sm text-[#525457] leading-relaxed">
+              We work with national law enforcement agencies, cyber cells, enterprise defenders, and academic partners. All technical inquiries and vulnerability disclosures are handled with strict operational discretion.
+            </p>
+
+            <div className="space-y-3 pt-6 hairline-t text-xs">
+              <div className="flex items-center gap-3 text-[#2A2B2D]">
+                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F9F9F7] border border-[#E5E5E2] text-[#111213]">
+                  <Mail size={14} />
                 </div>
+                <div>
+                  <span className="text-[10px] mono-tag text-[#A3A39E] block">OFFICIAL INQUIRY</span>
+                  <a
+                    href={`mailto:${SITE_CONFIG.email}`}
+                    className="font-medium text-[#111213] hover:underline"
+                  >
+                    {SITE_CONFIG.email}
+                  </a>
+                </div>
+              </div>
 
-                <div className="flex items-center gap-3 text-sm text-[#27272a]">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#fafafa] border border-[#e4e4e7] text-[#09090b] shrink-0">
-                    <MapPin size={16} />
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#71717a] block">Headquarters</span>
-                    <span className="font-semibold text-[#09090b]">{SITE_CONFIG.location}</span>
-                  </div>
+              <div className="flex items-center gap-3 text-[#2A2B2D]">
+                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F9F9F7] border border-[#E5E5E2] text-[#111213]">
+                  <MapPin size={14} />
+                </div>
+                <div>
+                  <span className="text-[10px] mono-tag text-[#A3A39E] block">HEADQUARTERS</span>
+                  <span className="font-medium text-[#111213]">{SITE_CONFIG.location}</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 p-5 rounded-xl bg-[#fafafa] border border-[#e4e4e7]">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#09090b]">
-                <Shield size={14} className="text-[#10b981]" />
-                <span>Confidentiality &amp; Discretion</span>
-              </div>
-              <p className="mt-1 text-xs text-[#71717a] leading-relaxed">
-                All communications and vulnerability disclosures are handled under strict confidentiality.
+            <div className="p-4 bg-[#F9F9F7] border border-[#E5E5E2] rounded-lg">
+              <span className="mono-tag text-[10px] text-[#111213] font-bold block mb-1">
+                DISCRETION &amp; CHAIN OF CUSTODY
+              </span>
+              <p className="text-[11px] text-[#6E7073] leading-relaxed">
+                Rootsight operates under rigorous chain-of-custody protocols for all evidence-related consultations and sensitive adversarial simulations.
               </p>
             </div>
           </div>
 
-          {/* Right: Clean Inquiry Form */}
+          {/* Right Column: Clean Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-[#fafafa] border border-[#e4e4e7] shadow-xs">
-              <h3 className="text-lg font-bold text-[#09090b]">
-                Send an Inquiry
+            <div className="p-8 sm:p-10 bg-[#F9F9F7] border border-[#E5E5E2] rounded-xl">
+              <h3 className="text-lg font-bold text-[#111213] tracking-tight">
+                Submit an Operational Inquiry
               </h3>
-              <p className="mt-1 text-xs text-[#71717a]">
-                Fill out the form below. We typically respond within 24 business hours.
+              <p className="mt-1 text-xs text-[#6E7073]">
+                Direct intake forwarded to our four founding partners.
               </p>
 
               {status === "sent" ? (
-                <div className="mt-8 rounded-xl border border-[#10b981]/30 bg-[#10b981]/10 p-6 text-center">
-                  <CheckCircle2 size={32} className="mx-auto text-[#10b981]" />
-                  <h4 className="mt-3 text-base font-bold text-[#09090b]">
-                    Inquiry Received
+                <div className="mt-8 rounded-lg border border-[#111213]/20 bg-white p-6 text-center space-y-3">
+                  <CheckCircle2 size={32} className="mx-auto text-[#111213]" />
+                  <h4 className="text-base font-bold text-[#111213]">
+                    Inquiry Forwarded
                   </h4>
-                  <p className="mt-1 text-xs text-[#52525b]">
-                    Thank you. A member of the Rootsight founding team will reach out to your email shortly.
+                  <p className="text-xs text-[#6E7073] max-w-sm mx-auto">
+                    Thank you. Your message has been routed to our founding partners. A member of our team will reach out directly.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-4 rounded-lg bg-[#09090b] px-4 py-2 text-xs font-semibold text-white hover:bg-[#27272a] transition-colors"
+                    className="mt-3 rounded-full bg-[#111213] px-4 py-2 text-xs font-medium text-[#F9F9F7]"
                   >
-                    Send Another Message
+                    Submit Another Inquiry
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-[#27272a] mb-1.5">
-                        Your Name *
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="block text-[11px] mono-tag text-[#2A2B2D]">
+                        Full Name *
                       </label>
                       <input
                         id="name"
@@ -145,14 +141,14 @@ export function ContactSection() {
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="John Doe"
-                        className="w-full rounded-lg border border-[#e4e4e7] bg-white px-3.5 py-2.5 text-xs text-[#09090b] placeholder:text-[#a1a1aa] focus:border-[#09090b] focus:outline-none"
+                        placeholder="Officer / Director Name"
+                        className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-[#27272a] mb-1.5">
-                        Email Address *
+                    <div className="space-y-1">
+                      <label htmlFor="email" className="block text-[11px] mono-tag text-[#2A2B2D]">
+                        Official Email *
                       </label>
                       <input
                         id="email"
@@ -160,34 +156,34 @@ export function ContactSection() {
                         required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="john@organization.gov"
-                        className="w-full rounded-lg border border-[#e4e4e7] bg-white px-3.5 py-2.5 text-xs text-[#09090b] placeholder:text-[#a1a1aa] focus:border-[#09090b] focus:outline-none"
+                        placeholder="name@agency.gov.in"
+                        className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="service" className="block text-xs font-semibold text-[#27272a] mb-1.5">
-                      Practice / Area of Interest
+                  <div className="space-y-1">
+                    <label htmlFor="service" className="block text-[11px] mono-tag text-[#2A2B2D]">
+                      Subject Matter / Practice Focus
                     </label>
                     <select
                       id="service"
                       value={form.service}
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className="w-full rounded-lg border border-[#e4e4e7] bg-white px-3.5 py-2.5 text-xs text-[#09090b] focus:border-[#09090b] focus:outline-none"
+                      className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] focus:border-[#111213] focus:outline-none"
                     >
                       {SERVICES.map((s) => (
                         <option key={s.id} value={s.title}>
                           {s.title}
                         </option>
                       ))}
-                      <option value="General Consultation">General Discussion</option>
+                      <option value="General Strategic Partnership">General Strategic Partnership</option>
                     </select>
                   </div>
 
-                  <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-[#27272a] mb-1.5">
-                      Message / Objective *
+                  <div className="space-y-1">
+                    <label htmlFor="message" className="block text-[11px] mono-tag text-[#2A2B2D]">
+                      Project Scope / Operational Challenge *
                     </label>
                     <textarea
                       id="message"
@@ -195,22 +191,22 @@ export function ContactSection() {
                       rows={4}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Please describe your requirements, challenge, or project scope..."
-                      className="w-full rounded-lg border border-[#e4e4e7] bg-white px-3.5 py-2.5 text-xs text-[#09090b] placeholder:text-[#a1a1aa] focus:border-[#09090b] focus:outline-none"
+                      placeholder="Please outline the nature of your investigation, assessment scope, or inquiry..."
+                      className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
                     />
                   </div>
 
                   {status === "error" && (
-                    <p className="text-xs font-medium text-red-600">{errorMsg}</p>
+                    <p className="text-xs font-mono text-[#D8281E]">{errorMsg}</p>
                   )}
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#09090b] px-6 py-3 text-xs font-semibold text-white shadow-xs hover:bg-[#27272a] transition-colors disabled:opacity-50"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#111213] px-6 py-3 text-xs font-semibold text-[#F9F9F7] hover:bg-black transition-colors disabled:opacity-50"
                   >
-                    <span>{status === "sending" ? "Submitting..." : "Send Message"}</span>
-                    <ArrowUpRight size={14} />
+                    <span>{status === "sending" ? "Transmitting..." : "Send Operational Inquiry"}</span>
+                    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </button>
                 </form>
               )}

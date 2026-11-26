@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="relative bg-white text-[#09090b]">
+      <main className="relative bg-[#F9F9F7] text-[#111213]">
         <HeroSection />
         <AboutSection />
         <ServicesSection />
