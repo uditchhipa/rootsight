@@ -164,7 +164,7 @@ export function Stay22Navbar() {
           {/* Search Icon */}
           <button
             type="button"
-            className="p-2 text-white/90 hover:text-white transition-colors cursor-pointer"
+            className="p-2 text-white/90 hover:text-white transition-colors cursor-pointer mix-blend-difference"
             aria-label="Search"
           >
             <svg
@@ -193,7 +193,7 @@ export function Stay22Navbar() {
             href="https://hub.stay22.com"
             target="_blank"
             rel="noreferrer"
-            className="p-2 text-white/90 hover:text-white transition-colors cursor-pointer"
+            className="p-2 text-white/90 hover:text-white transition-colors cursor-pointer mix-blend-difference"
             aria-label="Account Login"
           >
             <svg
@@ -214,7 +214,7 @@ export function Stay22Navbar() {
           {/* Language Selector: Fr */}
           <a
             href="https://www.stay22.com/fr/"
-            className="px-2.5 py-1 rounded-full border border-white/50 text-xs font-semibold text-white hover:border-white hover:bg-white/10 transition-colors"
+            className="px-2.5 py-1 rounded-full border border-white/50 text-xs font-semibold text-white hover:border-white hover:bg-white/10 transition-colors mix-blend-difference"
             aria-label="Français"
           >
             Fr
