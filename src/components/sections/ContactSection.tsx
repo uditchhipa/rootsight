@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Mail, MapPin, Shield } from "lucide-react";
 import { SERVICES, SITE_CONFIG } from "@/data/content";
 
 export function ContactSection() {
@@ -47,93 +47,103 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 md:py-28 hairline-b bg-white"
+      className="py-24 md:py-32 bg-[#171717] border-b border-[#262626]"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12 items-start">
-          {/* Left Column: Context & Direct Details */}
+          {/* Left Column: Direct Inquiries */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-1">
-              <span className="mono-tag text-[#A3A39E]">04 // ENGAGEMENT</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.035em] text-[#111213]">
-                Initiate Contact
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#ecaf30]">
+                Contact &amp; Clearance
+              </span>
+              <h2 className="mt-2 text-3xl sm:text-5xl font-black text-[#f3f3ed] tracking-tight">
+                Let’s talk security.
               </h2>
+              <p className="mt-4 text-sm text-[#86867f] leading-relaxed">
+                Whether you represent a law enforcement agency seeking automated evidence correlation, an enterprise defense team, or a technical partner—reach out directly.
+              </p>
             </div>
 
-            <p className="text-sm text-[#525457] leading-relaxed">
-              We work with national law enforcement agencies, cyber cells, enterprise defenders, and academic partners. All technical inquiries and vulnerability disclosures are handled with strict operational discretion.
-            </p>
-
-            <div className="space-y-3 pt-6 hairline-t text-xs">
-              <div className="flex items-center gap-3 text-[#2A2B2D]">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F9F9F7] border border-[#E5E5E2] text-[#111213]">
-                  <Mail size={14} />
+            <div className="space-y-4 pt-6 border-t border-[#262626]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#242424] border border-[#2d2d2d] text-[#ecaf30] shrink-0">
+                  <Mail size={18} />
                 </div>
                 <div>
-                  <span className="text-[10px] mono-tag text-[#A3A39E] block">OFFICIAL INQUIRY</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#86867f] block">
+                    Direct Email
+                  </span>
                   <a
                     href={`mailto:${SITE_CONFIG.email}`}
-                    className="font-medium text-[#111213] hover:underline"
+                    className="text-sm font-bold text-[#f3f3ed] hover:text-[#ecaf30] transition-colors"
                   >
                     {SITE_CONFIG.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-[#2A2B2D]">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F9F9F7] border border-[#E5E5E2] text-[#111213]">
-                  <MapPin size={14} />
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#242424] border border-[#2d2d2d] text-[#9cd696] shrink-0">
+                  <MapPin size={18} />
                 </div>
                 <div>
-                  <span className="text-[10px] mono-tag text-[#A3A39E] block">HEADQUARTERS</span>
-                  <span className="font-medium text-[#111213]">{SITE_CONFIG.location}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#86867f] block">
+                    Headquarters
+                  </span>
+                  <span className="text-sm font-bold text-[#f3f3ed]">
+                    {SITE_CONFIG.location}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 bg-[#F9F9F7] border border-[#E5E5E2] rounded-lg">
-              <span className="mono-tag text-[10px] text-[#111213] font-bold block mb-1">
-                DISCRETION &amp; CHAIN OF CUSTODY
-              </span>
-              <p className="text-[11px] text-[#6E7073] leading-relaxed">
-                Rootsight operates under rigorous chain-of-custody protocols for all evidence-related consultations and sensitive adversarial simulations.
+            <div className="p-5 rounded-2xl bg-[#1c1c1c] border border-[#262626] space-y-2">
+              <div className="flex items-center gap-2">
+                <Shield size={16} className="text-[#9cd696]" />
+                <span className="text-xs font-bold text-[#f3f3ed]">
+                  Strict Operational Discretion
+                </span>
+              </div>
+              <p className="text-xs text-[#86867f] leading-relaxed">
+                All communications and vulnerability disclosures are handled with chain-of-custody protocols and under strict confidentiality.
               </p>
             </div>
           </div>
 
-          {/* Right Column: Clean Form */}
+          {/* Right Column: Clean Dark Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 bg-[#F9F9F7] border border-[#E5E5E2] rounded-xl">
-              <h3 className="text-lg font-bold text-[#111213] tracking-tight">
-                Submit an Operational Inquiry
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#1f1f1f] border border-[#2d2d2d] shadow-2xl">
+              <h3 className="text-xl font-bold text-[#f3f3ed]">
+                Send an Operational Inquiry
               </h3>
-              <p className="mt-1 text-xs text-[#6E7073]">
-                Direct intake forwarded to our four founding partners.
+              <p className="mt-1 text-xs text-[#86867f]">
+                Submissions are routed directly to our 4 founding partners.
               </p>
 
               {status === "sent" ? (
-                <div className="mt-8 rounded-lg border border-[#111213]/20 bg-white p-6 text-center space-y-3">
-                  <CheckCircle2 size={32} className="mx-auto text-[#111213]" />
-                  <h4 className="text-base font-bold text-[#111213]">
-                    Inquiry Forwarded
+                <div className="mt-8 rounded-2xl border border-[#9cd696]/30 bg-[#9cd696]/10 p-8 text-center space-y-3">
+                  <CheckCircle2 size={36} className="mx-auto text-[#9cd696]" />
+                  <h4 className="text-lg font-bold text-[#f3f3ed]">
+                    Inquiry Transmitted
                   </h4>
-                  <p className="text-xs text-[#6E7073] max-w-sm mx-auto">
-                    Thank you. Your message has been routed to our founding partners. A member of our team will reach out directly.
+                  <p className="text-xs text-[#86867f] max-w-sm mx-auto">
+                    Thank you. Your message has been received by our founders. We will respond within 24 business hours.
                   </p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-3 rounded-full bg-[#111213] px-4 py-2 text-xs font-medium text-[#F9F9F7]"
+                    className="mt-3 ttm-pill bg-[#f3f3ed] text-[#171717] px-5 py-2 text-xs font-bold"
                   >
-                    Submit Another Inquiry
+                    Send Another Message
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="space-y-1">
-                      <label htmlFor="name" className="block text-[11px] mono-tag text-[#2A2B2D]">
-                        Full Name *
+                    <div>
+                      <label htmlFor="name" className="block text-xs font-semibold text-[#d4d4d0] mb-1.5">
+                        Your Name *
                       </label>
                       <input
                         id="name"
@@ -141,13 +151,13 @@ export function ContactSection() {
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="Officer / Director Name"
-                        className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
+                        placeholder="John Doe"
+                        className="w-full rounded-xl border border-[#333333] bg-[#171717] px-4 py-3 text-xs text-[#f3f3ed] placeholder:text-[#666666] focus:border-[#ecaf30] focus:outline-none"
                       />
                     </div>
 
-                    <div className="space-y-1">
-                      <label htmlFor="email" className="block text-[11px] mono-tag text-[#2A2B2D]">
+                    <div>
+                      <label htmlFor="email" className="block text-xs font-semibold text-[#d4d4d0] mb-1.5">
                         Official Email *
                       </label>
                       <input
@@ -157,33 +167,33 @@ export function ContactSection() {
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="name@agency.gov.in"
-                        className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
+                        className="w-full rounded-xl border border-[#333333] bg-[#171717] px-4 py-3 text-xs text-[#f3f3ed] placeholder:text-[#666666] focus:border-[#ecaf30] focus:outline-none"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-1">
-                    <label htmlFor="service" className="block text-[11px] mono-tag text-[#2A2B2D]">
-                      Subject Matter / Practice Focus
+                  <div>
+                    <label htmlFor="service" className="block text-xs font-semibold text-[#d4d4d0] mb-1.5">
+                      Practice / Area of Focus
                     </label>
                     <select
                       id="service"
                       value={form.service}
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] focus:border-[#111213] focus:outline-none"
+                      className="w-full rounded-xl border border-[#333333] bg-[#171717] px-4 py-3 text-xs text-[#f3f3ed] focus:border-[#ecaf30] focus:outline-none"
                     >
                       {SERVICES.map((s) => (
                         <option key={s.id} value={s.title}>
                           {s.title}
                         </option>
                       ))}
-                      <option value="General Strategic Partnership">General Strategic Partnership</option>
+                      <option value="General Strategic Partnership">General Strategic Discussion</option>
                     </select>
                   </div>
 
-                  <div className="space-y-1">
-                    <label htmlFor="message" className="block text-[11px] mono-tag text-[#2A2B2D]">
-                      Project Scope / Operational Challenge *
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-semibold text-[#d4d4d0] mb-1.5">
+                      Project Objective / Scope *
                     </label>
                     <textarea
                       id="message"
@@ -191,22 +201,22 @@ export function ContactSection() {
                       rows={4}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Please outline the nature of your investigation, assessment scope, or inquiry..."
-                      className="w-full rounded border border-[#E5E5E2] bg-white px-3.5 py-2.5 text-xs text-[#111213] placeholder:text-[#A3A39E] focus:border-[#111213] focus:outline-none"
+                      placeholder="Please describe your investigation requirement, penetration testing scope, or challenge..."
+                      className="w-full rounded-xl border border-[#333333] bg-[#171717] px-4 py-3 text-xs text-[#f3f3ed] placeholder:text-[#666666] focus:border-[#ecaf30] focus:outline-none"
                     />
                   </div>
 
                   {status === "error" && (
-                    <p className="text-xs font-mono text-[#D8281E]">{errorMsg}</p>
+                    <p className="text-xs font-semibold text-[#ff8a7a]">{errorMsg}</p>
                   )}
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#111213] px-6 py-3 text-xs font-semibold text-[#F9F9F7] hover:bg-black transition-colors disabled:opacity-50"
+                    className="ttm-pill w-full bg-[#ecaf30] py-3.5 text-xs font-bold text-[#171717] hover:bg-[#ffd13b] disabled:opacity-50"
                   >
                     <span>{status === "sending" ? "Transmitting..." : "Send Operational Inquiry"}</span>
-                    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight size={14} className="ml-1" />
                   </button>
                 </form>
               )}

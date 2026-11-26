@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Poppins, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { SITE_CONFIG } from "@/data/content";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -19,18 +18,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#f8f8f8",
-  colorScheme: "light",
+  themeColor: "#171717",
+  colorScheme: "dark",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: "ROOTSIGHT — See the root of every threat.",
+    default: "ROOTSIGHT — Security that protects. Root cause identified.",
     template: "%s | ROOTSIGHT",
   },
   description:
-    "Registered Indian cyber security & automation startup (Startup India). Law enforcement investigation automation, red teaming, OSINT, malware analysis, and custom security engineering.",
+    "Registered Indian cyber security & automation startup (Startup India). Law enforcement investigation automation, offensive red teaming, OSINT, and malware research.",
   keywords: [
     "ROOTSIGHT",
     "Cyber Security India",
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
     "Malware Analysis",
   ],
   openGraph: {
-    title: "ROOTSIGHT — See the root of every threat.",
+    title: "ROOTSIGHT — Security that protects. Root cause identified.",
     description:
       "Law enforcement investigation automation, offensive cyber security, and threat intelligence engineered in India.",
     url: SITE_CONFIG.url,
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ROOTSIGHT — See the root of every threat.",
+    title: "ROOTSIGHT — Security that protects. Root cause identified.",
     description:
       "Cyber security & investigation automation startup registered under Startup India.",
   },
@@ -65,20 +64,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
+      className={`${poppins.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body
+        className="bg-[#171717] text-[#f3f3ed] antialiased selection:bg-[#ecaf30] selection:text-[#171717] font-sans"
         suppressHydrationWarning
-        className="bg-[#f8f8f8] text-[#222222] antialiased selection:bg-[#222222] selection:text-white font-sans"
       >
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        {children}
       </body>
     </html>
   );
