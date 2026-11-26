@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
-import { useRive, useStateMachineInput, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 
 interface RiveAnimationProps {
   src: string;
@@ -27,10 +27,31 @@ export function RiveAnimation({
   scrollTargetRef,
 }: RiveAnimationProps) {
   const [mounted, setMounted] = useState(false);
+  const inputRef = useRef<any>(null);
+  const rafIdRef = useRef<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const calculateProgress = useCallback(() => {
+    let progress = 0;
+    const target = scrollTargetRef?.current;
+    if (target) {
+      const rect = target.getBoundingClientRect();
+      const scrollableDistance = target.offsetHeight - window.innerHeight;
+      if (scrollableDistance > 0) {
+        const scrolled = -rect.top;
+        progress = Math.max(0, Math.min(100, (scrolled / scrollableDistance) * 100));
+      }
+    } else {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll > 0) {
+        progress = Math.max(0, Math.min(100, (window.scrollY / maxScroll) * 100));
+      }
+    }
+    return progress;
+  }, [scrollTargetRef]);
 
   const { rive, RiveComponent } = useRive({
     src,
@@ -43,43 +64,73 @@ export function RiveAnimation({
     }),
   });
 
-  const scrollProgressInput = useStateMachineInput(
-    rive,
-    stateMachines || "State Machine 1",
-    "ScrollProgress"
-  );
+  const getScrollInput = useCallback(() => {
+    if (inputRef.current) return inputRef.current;
+    if (!rive) return null;
+    try {
+      const smName = stateMachines || "State Machine 1";
+      const inputs = rive.stateMachineInputs(smName);
+      if (inputs && inputs.length > 0) {
+        const found = inputs.find((i: any) => i.name === "ScrollProgress");
+        if (found) {
+          inputRef.current = found;
+          return found;
+        }
+      }
+    } catch {
+      // Wasm might still be parsing
+    }
+    return null;
+  }, [rive, stateMachines]);
+
+  const updateScrub = useCallback(() => {
+    if (!scrollScrub) return;
+    const input = getScrollInput();
+    if (input) {
+      const progress = calculateProgress();
+      input.value = progress;
+      if (rive && !rive.isPlaying) {
+        rive.play();
+      }
+    }
+  }, [scrollScrub, getScrollInput, calculateProgress, rive]);
 
   useEffect(() => {
-    if (!scrollScrub || !scrollProgressInput) return;
+    if (!rive || !scrollScrub) return;
 
-    const handleScroll = () => {
-      const target = scrollTargetRef?.current;
-      if (target) {
-        const rect = target.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        // Calculate progress from when target enters to when it leaves
-        const totalDistance = rect.height;
-        const scrolled = -rect.top;
-        const progress = Math.max(0, Math.min(100, (scrolled / totalDistance) * 100));
-        scrollProgressInput.value = progress;
-      } else {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const maxScroll = window.innerHeight;
-        const progress = Math.max(0, Math.min(100, (scrollTop / maxScroll) * 100));
-        scrollProgressInput.value = progress;
-      }
+    const onScrollOrWheel = () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = requestAnimationFrame(() => {
+        updateScrub();
+      });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener("scroll", onScrollOrWheel, { passive: true });
+    window.addEventListener("resize", onScrollOrWheel, { passive: true });
+    window.addEventListener("wheel", onScrollOrWheel, { passive: true });
+    window.addEventListener("touchmove", onScrollOrWheel, { passive: true });
+
+    // Poll a few times initially to catch when Rive state machine is ready
+    const timer = setInterval(() => {
+      const input = getScrollInput();
+      if (input) {
+        updateScrub();
+        clearInterval(timer);
+      }
+    }, 100);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScrollOrWheel);
+      window.removeEventListener("resize", onScrollOrWheel);
+      window.removeEventListener("wheel", onScrollOrWheel);
+      window.removeEventListener("touchmove", onScrollOrWheel);
+      clearInterval(timer);
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
-  }, [scrollScrub, scrollProgressInput, scrollTargetRef]);
+  }, [rive, scrollScrub, updateScrub, getScrollInput]);
 
   if (!mounted) {
-    return <div className={`bg-[#2b1842] ${className}`} />;
+    return <div className={`bg-[#24133b] ${className}`} />;
   }
 
   return <RiveComponent className={className} />;

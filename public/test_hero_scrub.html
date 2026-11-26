@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; background: #24133b; overflow: hidden; }
+    canvas { width: 1440px; height: 900px; display: block; }
+  </style>
+  <script src="https://unpkg.com/@rive-app/canvas@2.24.0"></script>
+</head>
+<body>
+  <canvas id="c" width="1440" height="900"></canvas>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const p = parseFloat(urlParams.get('p') || '50');
+    
+    const r = new rive.Rive({
+      src: "/stay22/hero.riv",
+      canvas: document.getElementById("c"),
+      autoplay: true,
+      stateMachines: "State Machine 1",
+      layout: new rive.Layout({
+        fit: rive.Fit.Cover,
+        alignment: rive.Alignment.TopCenter
+      }),
+      onLoad: () => {
+        const inputs = r.stateMachineInputs("State Machine 1");
+        console.log("Rive inputs:", inputs);
+        const scrollInput = inputs.find(i => i.name === "ScrollProgress");
+        if (scrollInput) {
+          scrollInput.value = p;
+          console.log("Set scroll input value to:", p);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
