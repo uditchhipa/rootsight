@@ -1,38 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { RiveAnimation } from "./RiveAnimation";
-import { Fit } from "@rive-app/react-canvas";
+import { Fit, Alignment } from "@rive-app/react-canvas";
+
+const CREATOR_TICKER_ITEMS = [
+  "IrelandBeforeYouDie",
+  "The Local",
+  "Practical Wanderlust",
+  "The Savvy Backpacker",
+  "Travel Lemming",
+  "Oneika the Traveller",
+  "A Broken Backpack",
+  "The Planet D",
+  "Earth Trekkers",
+  "Nomadic Boys",
+];
+
+const PLATFORM_TICKER_ITEMS = [
+  "Hearst",
+  "TicketOne",
+  "Bookaway",
+  "ItaliaRail",
+  "Sundial",
+  "WeGo",
+  "Omio",
+  "FlixBus",
+  "Trainline",
+];
 
 export function Stay22ValueProps() {
-  const [activeTab, setActiveTab] = useState<"creators" | "platforms">("creators");
-
-  const cards = [
-    {
-      title: "Personal",
-      tagline: "Designed for Trust",
-      desc: "Built for genuine audience trust. Zero invasive redirects, intrusive popups, or disruptive banners. Disappears seamlessly into your editorial content.",
-      riveSrc: "/stay22/human.riv",
-    },
-    {
-      title: "Lucrative",
-      tagline: "Up to 4x Higher RPMs",
-      desc: "Multi-inventory optimization across Booking.com, Expedia, VRBO, and direct hotels ensures your users find the best rates while maximizing payout.",
-      riveSrc: "/stay22/lucrative.riv",
-    },
-    {
-      title: "Effortless",
-      tagline: "Drop-in Simplicity",
-      desc: "One line of code. Automatic broken link healing, instant mobile optimization, and real-time commission tracking without ongoing developer maintenance.",
-      riveSrc: "/stay22/effortless.riv",
-    },
-  ];
+  const oneReasonRef = useRef<HTMLElement>(null);
+  const columnsRef = useRef<HTMLElement>(null);
 
   return (
-    <div className="bg-[#f2e4d8] text-[#262222]">
-      {/* SECTION: Step through. */}
+    <div className="bg-[#f2e4d8] text-[#262222] relative w-full overflow-hidden">
+      {/* ========================================================
+          SECTION 1: Step through.
+          ======================================================== */}
       <section id="step-through" className="py-20 md:py-28 text-center px-6">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <h2
@@ -42,29 +49,31 @@ export function Stay22ValueProps() {
             Step through.
           </h2>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <nav className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="#creators"
-              className="bg-[#ffb200] text-[#262222] font-bold text-sm px-7 py-3.5 rounded-full hover:bg-[#ffa000] hover:scale-105 transition-all shadow-md flex items-center gap-2"
+              href="https://hub.stay22.com/en/auth/signup"
+              className="stay22-btn-yellow flex items-center gap-2 group shadow-lg hover:scale-105 transition-all"
             >
-              <span>For Creators</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Start Monetizing</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
-              href="#platforms"
-              className="bg-[#262222] text-[#f2e4d8] font-bold text-sm px-7 py-3.5 rounded-full hover:bg-black hover:scale-105 transition-all shadow-md flex items-center gap-2"
+              href="https://www.stay22.com/book-a-demo"
+              className="stay22-btn-primary flex items-center gap-2 group shadow-lg hover:scale-105 transition-all"
             >
-              <span>For Platforms</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Talk to our team</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
-          </div>
+          </nav>
         </div>
       </section>
 
-      {/* SECTION: The monetization partner. */}
-      <section id="solutions" className="py-16 md:py-24 px-6 md:px-12 border-t border-[#262222]/10">
-        <div className="max-w-5xl mx-auto text-center mb-16">
+      {/* ========================================================
+          SECTION 2: The monetization partner. & STACKED CARDS
+          ======================================================== */}
+      <section id="solutions" className="py-16 md:py-24 px-4 sm:px-8 lg:px-12 border-t border-[#262222]/10">
+        <div className="max-w-5xl mx-auto text-center mb-16 md:mb-20">
           <h2
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
@@ -78,150 +87,200 @@ export function Stay22ValueProps() {
             </em>{" "}
             partner.
           </h2>
-          <p className="mt-6 text-xl sm:text-2xl text-[#262222]/80 max-w-2xl mx-auto font-medium">
+          <p className="mt-5 text-lg sm:text-2xl text-[#262222]/80 max-w-2xl mx-auto font-medium">
             Giving time back and moving revenue forward.
           </p>
         </div>
 
-        {/* STACKED CONTENT: Creators & Platforms */}
-        <div className="max-w-6xl mx-auto space-y-12">
-          {/* Card 1: For ambitious creators */}
+        {/* STACKED CONTENT CARDS with Sticky Scroll and Running Tickers */}
+        <div className="max-w-7xl mx-auto flex flex-col gap-12 relative">
+          {/* Card 1: For ambitious creators (Yellow Card) */}
           <article
             id="creators"
-            className="rounded-[32px] bg-[#ffb200] text-[#262222] p-8 md:p-14 overflow-hidden shadow-xl grid md:grid-cols-12 gap-8 items-center"
+            className="sticky top-24 rounded-[32px] md:rounded-[40px] bg-[#ffb200] text-[#2a2626] p-6 sm:p-10 md:p-14 shadow-2xl overflow-hidden grid lg:grid-cols-12 gap-8 items-center z-10"
+            style={{ backgroundColor: "#ffb200" }}
           >
-            <div className="md:col-span-6 space-y-6">
-              <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-black/10 px-3.5 py-1.5 rounded-full">
-                Creators &amp; Publishers
-              </span>
-              <h3
-                className="font-heading text-3xl sm:text-5xl font-normal leading-tight"
-                style={{ fontFamily: "'Exposure', Georgia, serif" }}
-              >
-                For ambitious creators
-              </h3>
-              <p className="text-base sm:text-lg text-[#262222]/85 leading-relaxed">
-                Whether you run an award-winning travel blog, destination guides, or social newsletters, Stay22 turns your existing links into top-performing affiliate revenue with zero manual upkeep.
-              </p>
+            <div className="lg:col-span-6 space-y-6 flex flex-col justify-between h-full">
+              <div className="space-y-4">
+                <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-black/10 px-3.5 py-1.5 rounded-full">
+                  Creators &amp; Publishers
+                </span>
+                <h3
+                  className="font-heading text-3xl sm:text-5xl md:text-5xl font-normal leading-[1.05]"
+                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
+                >
+                  For ambitious creators who want to keep creating
+                </h3>
+                <p className="text-base sm:text-lg text-[#2a2626]/85 leading-relaxed font-medium">
+                  Whether you run an award-winning travel blog, destination guides, or social newsletters, Stay22 turns your existing links into top-performing affiliate revenue with zero manual upkeep.
+                </p>
+              </div>
 
-              <ul className="space-y-3 font-semibold text-sm">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> Instant link monetization without rewriting articles
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> Auto-replaces dead links with active high-paying inventory
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> Complete control over brand styling and behavior
-                </li>
-              </ul>
+              {/* Running Horizontal Marquee Ticker 1 */}
+              <div className="w-full overflow-hidden py-3 border-y border-black/10 my-4">
+                <div className="animate-ticker flex items-center gap-8 whitespace-nowrap">
+                  {[...CREATOR_TICKER_ITEMS, ...CREATOR_TICKER_ITEMS].map((name, i) => (
+                    <span
+                      key={i}
+                      className="text-sm md:text-base font-bold text-[#2a2626]/80 flex items-center gap-4"
+                    >
+                      <span>{name}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-black/30" />
+                    </span>
+                  ))}
+                </div>
+              </div>
 
               <div className="pt-2">
                 <a
                   href="https://another.stay22.com/sign-up"
-                  className="bg-[#262222] text-[#f2e4d8] px-6 py-3 rounded-full font-bold text-sm inline-flex items-center gap-2 hover:bg-black transition-colors"
+                  className="inline-flex items-center gap-2 bg-[#2a2626] text-[#f2e4d8] hover:bg-black px-7 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all shadow-md hover:scale-105"
                 >
-                  <span>Learn more</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span>Explore for Creators</span>
+                  <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
               </div>
             </div>
 
-            <div className="md:col-span-6 flex justify-center">
-              <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-black/5">
+            {/* Right Media: bike-women.jpg */}
+            <div className="lg:col-span-6 relative flex justify-center items-center">
+              <div className="relative w-full aspect-[4/3] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl group border-2 border-black/5">
                 <Image
-                  src="/stay22/images/Balloon_02.png"
-                  alt="Ambitious creators hot air balloon"
+                  src="/stay22/images/bike-women.jpg"
+                  alt="Creators riding bicycles"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </div>
           </article>
 
-          {/* Card 2: For intent-rich platforms */}
+          {/* Card 2: For ambitious platforms (Dark/Violet Stacking Card) */}
           <article
             id="platforms"
-            className="rounded-[32px] bg-[#e4d4c5] text-[#262222] p-8 md:p-14 overflow-hidden shadow-xl grid md:grid-cols-12 gap-8 items-center"
+            className="sticky top-28 rounded-[32px] md:rounded-[40px] bg-[#2a2626] text-[#f2e4d8] p-6 sm:p-10 md:p-14 shadow-2xl overflow-hidden grid lg:grid-cols-12 gap-8 items-center z-20"
+            style={{ backgroundColor: "#2a2626", color: "#f2e4d8" }}
           >
-            <div className="md:col-span-6 order-2 md:order-1 flex justify-center">
-              <div className="relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-black/5">
-                <Image
-                  src="/stay22/images/bike-women.jpg"
-                  alt="Intent-rich travel platforms"
-                  fill
-                  className="object-cover"
-                />
+            <div className="lg:col-span-6 space-y-6 flex flex-col justify-between h-full order-2 lg:order-1">
+              <div className="space-y-4">
+                <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-white/10 text-[#ffb200] px-3.5 py-1.5 rounded-full">
+                  Platforms &amp; Transit
+                </span>
+                <h3
+                  className="font-heading text-3xl sm:text-5xl md:text-5xl font-normal leading-[1.05] text-white"
+                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
+                >
+                  For travel platforms looking to optimize revenue
+                </h3>
+                <p className="text-base sm:text-lg text-white/80 leading-relaxed font-medium">
+                  Connect accommodation booking options straight into your transit checkouts, event tickets, or flight itineraries. Drive double-digit incremental revenues without taking attention away from your core product.
+                </p>
               </div>
-            </div>
 
-            <div className="md:col-span-6 order-1 md:order-2 space-y-6">
-              <span className="inline-block text-xs font-extrabold uppercase tracking-widest bg-black/10 px-3.5 py-1.5 rounded-full">
-                Ticketing &amp; Transit Platforms
-              </span>
-              <h3
-                className="font-heading text-3xl sm:text-5xl font-normal leading-tight"
-                style={{ fontFamily: "'Exposure', Georgia, serif" }}
-              >
-                For intent‑rich platforms
-              </h3>
-              <p className="text-base sm:text-lg text-[#262222]/85 leading-relaxed">
-                Connect accommodation booking options straight into your transit checkouts, event tickets, or flight itineraries. Drive double-digit incremental revenues without taking attention away from your core product.
-              </p>
-
-              <ul className="space-y-3 font-semibold text-sm">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> High conversion native integrations (Map, Spark, Allez)
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> Multi-currency, multi-language international coverage
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 stroke-[3]" /> Reliable enterprise API uptime and white-label options
-                </li>
-              </ul>
+              {/* Running Horizontal Marquee Ticker 2 */}
+              <div className="w-full overflow-hidden py-3 border-y border-white/10 my-4">
+                <div className="animate-ticker flex items-center gap-8 whitespace-nowrap">
+                  {[...PLATFORM_TICKER_ITEMS, ...PLATFORM_TICKER_ITEMS].map((name, i) => (
+                    <span
+                      key={i}
+                      className="text-sm md:text-base font-bold text-white/80 flex items-center gap-4"
+                    >
+                      <span className="text-[#ffb200]">{name}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                    </span>
+                  ))}
+                </div>
+              </div>
 
               <div className="pt-2">
                 <a
-                  href="#case-studies"
-                  className="bg-[#262222] text-[#f2e4d8] px-6 py-3 rounded-full font-bold text-sm inline-flex items-center gap-2 hover:bg-black transition-colors"
+                  href="https://another.stay22.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#ffb200] text-[#2a2626] hover:bg-[#ffa000] px-7 py-3.5 rounded-full font-bold text-sm tracking-tight transition-all shadow-md hover:scale-105"
                 >
                   <span>Explore Platform</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
+              </div>
+            </div>
+
+            {/* Right Media: Platform_cie.jpg */}
+            <div className="lg:col-span-6 order-1 lg:order-2 relative flex justify-center items-center">
+              <div className="relative w-full aspect-[4/3] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl group border-2 border-white/10">
+                <Image
+                  src="/stay22/images/Platform_cie.jpg"
+                  alt="Platform intelligence"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      {/* SECTION: One reason to join (Interactive Rive Shape) */}
-      <section className="py-20 md:py-32 px-6 md:px-12 border-t border-[#262222]/10 bg-[#eadecc]">
-        <div className="max-w-5xl mx-auto text-center mb-12">
+      {/* ========================================================
+          SECTION 3: One reason to join (Interactive onereason.riv)
+          ======================================================== */}
+      <section
+        ref={oneReasonRef}
+        className="pb-row-text-media-shape py-20 md:py-32 px-4 sm:px-8 lg:px-12 border-t border-[#262222]/10 bg-[#eadecc] relative"
+      >
+        <div className="max-w-5xl mx-auto text-center mb-12 space-y-4">
           <h2
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
           >
             One reason to join
           </h2>
-          <p className="mt-4 text-xl text-[#262222]/80 font-medium">
-            Higher conversion, guaranteed payout, transparent performance.
+          <p className="mt-4 text-lg sm:text-xl md:text-2xl text-[#262222]/80 max-w-2xl mx-auto font-medium leading-relaxed">
+            Connect and the whole supplier network opens up. We pick the right one for your audience in real time. From intent to bookings to revenue.
           </p>
+
+          <nav className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://hub.stay22.com/en/auth/signup"
+              className="stay22-btn-yellow flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
+            >
+              <span>Start monetizing</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <a
+              href="https://www.stay22.com/book-a-demo"
+              className="stay22-btn-primary flex items-center gap-2 group shadow-md hover:scale-105 transition-all"
+            >
+              <span>Talk to our team</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </nav>
         </div>
 
-        <div className="max-w-4xl mx-auto aspect-[16/9] relative rounded-3xl overflow-hidden shadow-2xl bg-[#ffb200]/20 border border-black/5 flex items-center justify-center">
+        {/* Wide Interactive Rive Container: onereason.riv */}
+        <div className="max-w-6xl mx-auto relative rounded-[32px] md:rounded-[40px] overflow-hidden shadow-2xl bg-[#ffb200]/10 border border-black/5 aspect-[1333/760]">
           <RiveAnimation
             src="/stay22/onereason.riv"
             stateMachines="State Machine 1"
             fit={Fit.Contain}
+            alignment={Alignment.Center}
+            autoplay={true}
             className="w-full h-full"
           />
         </div>
       </section>
 
-      {/* SECTION: Three reasons to stay */}
-      <section id="why-stay22" className="py-20 md:py-32 px-6 md:px-12 border-t border-[#262222]/10">
-        <div className="max-w-5xl mx-auto text-center mb-16">
+      {/* ========================================================
+          SECTION 4: Three reasons to stay (human.riv, lucrative.riv, effortless.riv)
+          ======================================================== */}
+      <section
+        ref={columnsRef}
+        id="why-stay22"
+        className="py-20 md:py-32 px-4 sm:px-8 lg:px-12 border-t border-[#262222]/10"
+      >
+        <div className="max-w-5xl mx-auto text-center mb-16 md:mb-20">
           <h2
             className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal leading-[0.95] tracking-tight text-[#262222]"
             style={{ fontFamily: "'Exposure', Georgia, serif" }}
@@ -230,103 +289,107 @@ export function Stay22ValueProps() {
           </h2>
         </div>
 
-        {/* 3 Column Cards with Live Rive Animations */}
-        <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-3">
-          {cards.map((card) => (
-            <div
-              key={card.title}
-              className="group relative rounded-[28px] p-8 bg-[#faf4ec] border border-[#262222]/10 hover:border-[#ffb200] transition-all duration-300 shadow-sm hover:shadow-2xl flex flex-col justify-between"
-            >
-              <div>
-                {/* Rive Animated Character / Icon Canvas */}
-                <div className="relative w-full aspect-square max-h-56 rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/50 border border-[#262222]/5 flex items-center justify-center">
-                  <RiveAnimation
-                    src={card.riveSrc}
-                    stateMachines="State Machine 1"
-                    fit={Fit.Contain}
-                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                <div className="text-xs font-bold uppercase tracking-wider text-[#ffb200] mb-1">
-                  {card.tagline}
-                </div>
-                <h3
-                  className="font-heading text-3xl font-normal text-[#262222] tracking-tight"
-                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
-                >
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-sm text-[#262222]/80 leading-relaxed font-medium">
-                  {card.desc}
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]">
-                <span>Active Protection</span>
-                <span className="text-emerald-600 font-extrabold">● Live Rive Canvas</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION: Unfiltered Opinions (Testimonials) */}
-      <section className="py-20 md:py-28 px-6 md:px-12 bg-[#262222] text-[#f2e4d8]">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#ffb200] mb-4">
-            Unfiltered opinions
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* 3 Column Feature Cards matching Stay22 official layout */}
+        <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-3">
+          {/* Column 1: Personal (human.riv) */}
+          <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
             <div>
-              <blockquote
-                className="font-heading text-2xl sm:text-4xl font-normal leading-snug tracking-tight text-[#f2e4d8]"
+              <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
+                <RiveAnimation
+                  src="/stay22/human.riv"
+                  stateMachines="State Machine 1"
+                  fit={Fit.Contain}
+                  alignment={Alignment.Center}
+                  autoplay={true}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <h3
+                className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
                 style={{ fontFamily: "'Exposure', Georgia, serif" }}
               >
-                “Since joining Stay22 myself, I&apos;ve nearly 10x my affiliate income without having to put any more effort in. Wish I&apos;d joined sooner!”
-              </blockquote>
-              <p className="mt-6 text-sm font-bold text-[#ffb200]">
-                Travel Publisher &amp; Content Creator
+                Personal
+              </h3>
+              <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
+                Real people, real response times, and the kind of support that makes you wonder why you ever waited.
               </p>
             </div>
 
-            <div className="border-l border-white/10 pl-8 space-y-6">
-              <div>
-                <div
-                  className="font-heading text-5xl sm:text-6xl text-[#ffb200] font-normal"
-                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
-                >
-                  $1.5B+
-                </div>
-                <p className="text-sm text-white/70 mt-1 font-semibold">
-                  Gross booking value generated for partners worldwide
-                </p>
+            <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
+              <span>Human Support</span>
+              <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
+                Interactive Character
+              </span>
+            </div>
+          </div>
+
+          {/* Column 2: Lucrative (lucrative.riv) */}
+          <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
+            <div>
+              <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
+                <RiveAnimation
+                  src="/stay22/lucrative.riv"
+                  stateMachines="State Machine 1"
+                  fit={Fit.Contain}
+                  alignment={Alignment.Center}
+                  autoplay={true}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
 
-              <div>
-                <div
-                  className="font-heading text-5xl sm:text-6xl text-[#ffb200] font-normal"
-                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
-                >
-                  10,000+
-                </div>
-                <p className="text-sm text-white/70 mt-1 font-semibold">
-                  Publishers, bloggers, and ticketing platforms actively earning
-                </p>
+              <h3
+                className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
+                style={{ fontFamily: "'Exposure', Georgia, serif" }}
+              >
+                Lucrative
+              </h3>
+              <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
+                Real money. Even on a slow Tuesday. More ways to turn your traffic into revenue.
+              </p>
+            </div>
+
+            <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
+              <span>High RPMs</span>
+              <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
+                Spinning Coins
+              </span>
+            </div>
+          </div>
+
+          {/* Column 3: Effortless (effortless.riv) */}
+          <div className="group rounded-[32px] bg-[#faf4ec] border border-[#262222]/10 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-2xl hover:border-[#ffb200] transition-all duration-300">
+            <div>
+              <div className="w-full aspect-[447/556] rounded-2xl overflow-hidden mb-6 bg-[#f2e4d8]/40 border border-[#262222]/5 flex items-center justify-center p-2 relative">
+                <RiveAnimation
+                  src="/stay22/effortless.riv"
+                  stateMachines="State Machine 1"
+                  fit={Fit.Contain}
+                  alignment={Alignment.Center}
+                  autoplay={true}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
 
-              <div>
-                <div
-                  className="font-heading text-5xl sm:text-6xl text-[#ffb200] font-normal"
-                  style={{ fontFamily: "'Exposure', Georgia, serif" }}
-                >
-                  10 years
-                </div>
-                <p className="text-sm text-white/70 mt-1 font-semibold">
-                  Pioneering travel intent monetization with award-winning UX
-                </p>
-              </div>
+              <h3
+                className="font-heading text-3xl sm:text-4xl font-normal text-[#262222] tracking-tight mb-3"
+                style={{ fontFamily: "'Exposure', Georgia, serif" }}
+              >
+                Effortless
+              </h3>
+              <p className="text-base text-[#262222]/80 leading-relaxed font-medium">
+                Set it up once. It keeps working, so you can get back to what you do best.
+              </p>
+            </div>
+
+            <div className="mt-8 pt-4 border-t border-[#262222]/10 flex items-center justify-between text-xs font-bold text-[#262222]/70">
+              <span>Zero Maintenance</span>
+              <span className="text-[#ffb200] font-extrabold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#ffb200]" />
+                Live Motion
+              </span>
             </div>
           </div>
         </div>

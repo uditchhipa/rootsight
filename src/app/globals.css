@@ -167,3 +167,25 @@ body {
     padding-top: 22.7083333333vw;
   }
 }
+
+/* Stay22 Horizontal Continuous Marquee Ticker */
+@keyframes tickerMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: tickerMarquee 26s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
