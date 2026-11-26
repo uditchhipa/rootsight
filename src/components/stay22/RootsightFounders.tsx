@@ -1,26 +1,33 @@
+/*
+From Uiverse.io by NK2552003 - https://uiverse.io/NK2552003/chatty-eel-90
+MIT License, Copyright (c) Rafa - https://codepen.io/RAFA3L/pen/ZYbabEa, NK2552003 (Nitish)
+*/
+
 "use client";
 
-import React, { useState, useRef, MouseEvent } from "react";
-import { ArrowUpRight, Terminal, UserCheck, Shield, Cpu, Code2, Globe } from "lucide-react";
+import React, { useState, CSSProperties } from "react";
+import { ArrowUpRight, Shield, Sparkles } from "lucide-react";
+import "./luminous-card.css";
 
-interface FounderData {
+interface FounderLuminousData {
   id: string;
   name: string;
   role: string;
   badge: string;
   clearance: string;
   callsign: string;
-  accentColor: string;
-  accentBg: string;
-  accentBorder: string;
-  bio: string;
-  focus: string;
-  skills: string[];
+  monogram: string;
+  glowColor: string;
+  glowAlpha: string;
+  badgeBg: string;
+  badgeBorder: string;
+  description: string;
   linkedin: string;
-  terminalLogs: string[];
+  iconPath: string;
+  gradientStops: [string, string];
 }
 
-const FOUNDERS: FounderData[] = [
+const FOUNDERS: FounderLuminousData[] = [
   {
     id: "sumit",
     name: "Sumit Vishnoi",
@@ -28,19 +35,15 @@ const FOUNDERS: FounderData[] = [
     badge: "CEO & Strategic Command",
     clearance: "LEVEL-01 SOVEREIGN",
     callsign: "ROOT // COMMAND",
-    accentColor: "#ffb200",
-    accentBg: "rgba(255, 178, 0, 0.15)",
-    accentBorder: "rgba(255, 178, 0, 0.4)",
-    bio: "Spearheads Rootsight's strategic mission, national law enforcement agency partnerships, and sovereign cyber intelligence architecture.",
-    focus: "Strategic Vision, LEA Deployments & Public Sector Alliances",
-    skills: ["Executive Strategy", "Forensics Architecture", "LEA Alignments", "DPIIT Mandates"],
+    monogram: "SV",
+    glowColor: "#ffb200",
+    glowAlpha: "rgba(255, 178, 0, 0.75)",
+    badgeBg: "rgba(255, 178, 0, 0.15)",
+    badgeBorder: "rgba(255, 178, 0, 0.4)",
+    description: "Spearheads Rootsight's sovereign mission, law enforcement agency alliances & strategic direction.",
     linkedin: "https://www.linkedin.com/in/sumit-vishnoi-0b1a9132b/",
-    terminalLogs: [
-      ">> DIRECTIVE: SOVEREIGN_INIT [OK]",
-      ">> LEA_PORTAL_ROUTING: ACTIVE",
-      ">> EVIDENCE_VERIFICATION: 99.4%",
-      ">> STATUS: COMMAND_READY",
-    ],
+    gradientStops: ["#ffe082", "#ffb200"],
+    iconPath: "M488.1 414.7V303.4L300.9 428l83.6 55.8zm254.1 137.7v-79.8l-59.8 39.9zM512 64C264.6 64 64 264.6 64 512s200.6 448 448 448s448-200.6 448-448S759.4 64 512 64m278 533c0 1.1-.1 2.1-.2 3.1c0 .4-.1.7-.2 1a14.2 14.2 0 0 1-.8 3.2c-.2.6-.4 1.2-.6 1.7c-.2.4-.4.8-.5 1.2c-.3.5-.5 1.1-.8 1.6c-.2.4-.4.7-.7 1.1c-.3.5-.7 1-1 1.5c-.3.4-.5.7-.8 1c-.4.4-.8.9-1.2 1.3c-.3.3-.6.6-1 .9c-.4.4-.9.8-1.4 1.1c-.4.3-.7.6-1.1.8c-.1.1-.3.2-.4.3L525.2 786c-4 2.7-8.6 4-13.2 4c-4.7 0-9.3-1.4-13.3-4L244.6 616.9c-.1-.1-.3-.2-.4-.3l-1.1-.8c-.5-.4-.9-.7-1.3-1.1c-.3-.3-.6-.6-1-.9c-.4-.4-.8-.8-1.2-1.3a7 7 0 0 1-.8-1c-.4-.5-.7-1-1-1.5c-.2-.4-.5-.7-.7-1.1c-.3-.5-.6-1.1-.8-1.6c-.2-.4-.4-.8-.5-1.2c-.2-.6-.4-1.2-.6-1.7c-.1-.4-.3-.8-.4-1.2c-.2-.7-.3-1.3-.4-2c-.1-.3-.1-.7-.2-1c-.1-1-.2-2.1-.2-3.1V427.9c0-1 .1-2.1.2-3.1c.1-.3.1-.7.2-1a14.2 14.2 0 0 1 .8-3.2c.2-.6.4-1.2.6-1.7c.2-.4.4-.8.5-1.2c.2-.5.5-1.1.8-1.6c.2-.4.4-.7.7-1.1c.6-.9 1.2-1.7 1.8-2.5c.4-.4.8-.9 1.2-1.3c.3-.3.6-.6 1-.9c.4-.4.9-.8 1.3-1.1s.7-.6 1.1-.8c.1-.1.3-.2.4-.3L498.7 239c8-5.3 18.5-5.3 26.5 0l254.1 169.1c.1.1.3.2.4.3l1.1.8l1.4 1.1c.3.3.6.6 1 .9c.4.4.8.8 1.2 1.3c.7.8 1.3 1.6 1.8 2.5c.2.4.5.7.7 1.1c.3.5.6 1 .8 1.6c.2.4.4.8.5 1.2c.2.6.4 1.2.6 1.7c.1.4.3.8.4 1.2c.2.7.3 1.3.4 2c.1.3.1.7.2 1c.1 1 .2 2.1.2 3.1zm-254.1 13.3v111.3L723.1 597l-83.6-55.8zM281.8 472.6v79.8l59.8-39.9zM512 456.1l-84.5 56.4l84.5 56.4l84.5-56.4zM723.1 428L535.9 303.4v111.3l103.6 69.1zM384.5 541.2L300.9 597l187.2 124.6V610.3z",
   },
   {
     id: "vishwash",
@@ -49,19 +52,15 @@ const FOUNDERS: FounderData[] = [
     badge: "Core Systems Architect",
     clearance: "LEVEL-01 PERIMETER",
     callsign: "SIGHT // ARCHITECT",
-    accentColor: "#00e5ff",
-    accentBg: "rgba(0, 229, 255, 0.15)",
-    accentBorder: "rgba(0, 229, 255, 0.4)",
-    bio: "Architects high-throughput distributed system topologies and defensive perimeter meshes, safeguarding operational nodes against adversary penetration.",
-    focus: "Distributed Telecom Ingestion, Fault-Tolerant Topologies & Defensive Meshes",
-    skills: ["System Architecture", "Perimeter Defense", "Telecom Pipeline", "High-Availability"],
+    monogram: "VT",
+    glowColor: "#00e5ff",
+    glowAlpha: "rgba(0, 229, 255, 0.75)",
+    badgeBg: "rgba(0, 229, 255, 0.15)",
+    badgeBorder: "rgba(0, 229, 255, 0.4)",
+    description: "Architects distributed high-throughput pipelines & defensive perimeter security meshes.",
     linkedin: "https://www.linkedin.com/in/vishwash-tank-89308b28b",
-    terminalLogs: [
-      ">> DISTRIBUTED_NODES: 64/64 SYNCED",
-      ">> PERIMETER_SHIELD: LOCKED",
-      ">> AIR_GAP_LATENCY: 2.1ms",
-      ">> INTRUSION_DETECTION: ZERO_VULN",
-    ],
+    gradientStops: ["#a5f3fc", "#00e5ff"],
+    iconPath: "M512 64L160 192v256c0 240 150 464 352 512c202-48 352-272 352-512V192L512 64zm0 128l224 81.5v174.5c0 152.9-95.6 295.6-224 326.1c-128.4-30.5-224-173.2-224-326.1V273.5L512 192zm-64 192h128v128H448V384zm0 192h128v128H448V576z",
   },
   {
     id: "praveen",
@@ -70,19 +69,15 @@ const FOUNDERS: FounderData[] = [
     badge: "Lead Infrastructure Defender",
     clearance: "LEVEL-01 INFRA-OPS",
     callsign: "INFRA // GUARDIAN",
-    accentColor: "#c084fc",
-    accentBg: "rgba(192, 132, 252, 0.15)",
-    accentBorder: "rgba(192, 132, 252, 0.4)",
-    bio: "Orchestrates air-gapped CI/CD deployment pipelines, hardening sovereign Kubernetes clusters and enforcing low-level security guardrails across cloud assets.",
-    focus: "Air-Gapped Cloud Infrastructure, K8s Hardening & CI/CD Security",
-    skills: ["DevOps Automation", "Cluster Hardening", "Offensive Red Team", "Air-Gapped CI/CD"],
+    monogram: "PS",
+    glowColor: "#c084fc",
+    glowAlpha: "rgba(192, 132, 252, 0.75)",
+    badgeBg: "rgba(192, 132, 252, 0.15)",
+    badgeBorder: "rgba(192, 132, 252, 0.4)",
+    description: "Hardens air-gapped CI/CD deployment pipelines & enforces low-level Kubernetes security.",
     linkedin: "https://www.linkedin.com/in/praveen-sharma-762b86314/",
-    terminalLogs: [
-      ">> AIR_GAPPED_PIPELINE: ENCRYPTED",
-      ">> K8S_AUDIT_LOGS: STREAMING",
-      ">> SECCOMP_PROFILES: ENFORCED",
-      ">> CLUSTER_HEALTH: 100% SECURE",
-    ],
+    gradientStops: ["#f3e8ff", "#c084fc"],
+    iconPath: "M512 64L128 288v448l384 224l384-224V288L512 64zm0 128l256 149.3v298.7L512 789.3L256 640V341.3L512 192zm-96 224v192l192-96v-192l-192 96z",
   },
   {
     id: "udit",
@@ -91,31 +86,43 @@ const FOUNDERS: FounderData[] = [
     badge: "Kernel Exploit Specialist",
     clearance: "LEVEL-01 KERNEL LAB",
     callsign: "KERNEL // DETONATION",
-    accentColor: "#10b981",
-    accentBg: "rgba(16, 185, 129, 0.15)",
-    accentBorder: "rgba(16, 185, 129, 0.4)",
-    bio: "Engineers low-level binary detonation sandboxes, reverse-engineering polymorphic exploit chains and building automated parsing algorithms for complex cyber telemetry.",
-    focus: "Binary Deobfuscation, Dynamic Detonation Sandboxes & Payload Analysis",
-    skills: ["Malware Research", "Kernel Disassembly", "Polymorphic Detonation", "Reverse Engineering"],
+    monogram: "UC",
+    glowColor: "#10b981",
+    glowAlpha: "rgba(16, 185, 129, 0.75)",
+    badgeBg: "rgba(16, 185, 129, 0.15)",
+    badgeBorder: "rgba(16, 185, 129, 0.4)",
+    description: "Engineers binary detonation sandboxes, polymorphic exploit tracing & automated telemetry.",
     linkedin: "https://www.linkedin.com/in/udit-chhipa-50a09430b/",
-    terminalLogs: [
-      ">> BINARY_PARSER: ELF64/PE32+ ACTIVE",
-      ">> DISASSEMBLY: xor rax, rax ; syscall",
-      ">> ENTROPY_ANALYSIS: 7.94 [PACKED]",
-      ">> ISOLATED_SANDBOX: DETONATED 0ms",
-    ],
+    gradientStops: ["#a7f3d0", "#10b981"],
+    iconPath: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448s448-200.6 448-448S759.4 64 512 64zm0 128c176.7 0 320 143.3 320 320S688.7 832 512 832S192 688.7 192 512S335.3 192 512 192zm-64 160v128H320v64h128v128h64V544h128v-64H512V352h-64z",
   },
 ];
 
 export function RootsightFounders() {
-  const [activeTelemetry, setActiveTelemetry] = useState<Record<string, boolean>>({});
+  const [activeCards, setActiveCards] = useState<Record<string, boolean>>({
+    sumit: true,
+    vishwash: true,
+    praveen: true,
+    udit: true,
+  });
 
-  const toggleTelemetry = (id: string) => {
-    setActiveTelemetry((prev) => ({
+  const toggleCard = (id: string) => {
+    setActiveCards((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
+
+  const toggleAll = (state: boolean) => {
+    setActiveCards({
+      sumit: state,
+      vishwash: state,
+      praveen: state,
+      udit: state,
+    });
+  };
+
+  const allActive = Object.values(activeCards).every(Boolean);
 
   return (
     <section id="team" className="py-24 md:py-32 bg-[#eadecc] border-b border-[#262222]/10 relative z-20">
@@ -144,20 +151,26 @@ export function RootsightFounders() {
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2a2626] text-[#f2e4d8] text-xs font-mono font-bold shrink-0 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-            <span>DIRECT FOUNDER-LED DEPLOYMENTS</span>
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              type="button"
+              onClick={() => toggleAll(!allActive)}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2a2626] hover:bg-[#1e1b1b] text-[#f2e4d8] text-xs font-mono font-bold shadow-md transition-all hover:scale-105 cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#ffb200]" />
+              <span>{allActive ? "DIM ALL LUMENS" : "ILLUMINATE ALL"}</span>
+            </button>
           </div>
         </div>
 
-        {/* 4 3D Tilt Cyber Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Luminous Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {FOUNDERS.map((founder) => (
-            <FounderCard3D
+            <LuminousFounderCard
               key={founder.id}
               founder={founder}
-              isTelemetry={!!activeTelemetry[founder.id]}
-              onToggleTelemetry={() => toggleTelemetry(founder.id)}
+              isActive={!!activeCards[founder.id]}
+              onToggle={() => toggleCard(founder.id)}
             />
           ))}
         </div>
@@ -191,219 +204,163 @@ export function RootsightFounders() {
   );
 }
 
-function FounderCard3D({
+function LuminousFounderCard({
   founder,
-  isTelemetry,
-  onToggleTelemetry,
+  isActive,
+  onToggle,
 }: {
-  founder: FounderData;
-  isTelemetry: boolean;
-  onToggleTelemetry: () => void;
+  founder: FounderLuminousData;
+  isActive: boolean;
+  onToggle: () => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -12;
-    const rotateY = ((x - centerX) / centerX) * 12;
-
-    setRotate({ x: rotateX, y: rotateY });
-    setGlare({
-      x: (x / rect.width) * 100,
-      y: (y / rect.height) * 100,
-      opacity: 1,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-    setGlare((prev) => ({ ...prev, opacity: 0 }));
+  const customStyles: CSSProperties & Record<string, string> = {
+    "--card-glow": founder.glowColor,
+    "--card-glow-alpha": founder.glowAlpha,
+    "--card-badge-bg": founder.badgeBg,
+    "--card-badge-border": founder.badgeBorder,
   };
 
   return (
-    <div
-      style={{ perspective: "1200px" }}
-      className="w-full"
-    >
+    <div className="rs-luminous-card-container">
       <div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-          transformStyle: "preserve-3d",
-          transition: "transform 0.12s ease-out, box-shadow 0.12s ease-out",
+        className={`rs-luminous-card ${isActive ? "active" : ""}`}
+        style={customStyles}
+        onClick={onToggle}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onToggle();
+          }
         }}
-        className="relative rounded-[28px] bg-[#1e1b1b] text-[#f2e4d8] border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl hover:border-[#ffb200]/60 min-h-[520px] group will-change-transform"
       >
-        {/* Holographic Specular Glare Overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 z-30 transition-opacity duration-300"
-          style={{
-            opacity: glare.opacity,
-            background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.22) 0%, ${founder.accentBg} 35%, transparent 70%)`,
-            mixBlendMode: "screen",
-          }}
-        />
+        {/* Luminous Light Layer with Slit, Volumetric Lumen Rays & Darken Shadows */}
+        <div className="rs-luminous-light-layer">
+          <div className="rs-luminous-slit" />
+          <div className="rs-luminous-lumen">
+            <div className="min" />
+            <div className="mid" />
+            <div className="hi" />
+          </div>
+          <div className="rs-luminous-darken">
+            <div className="sl" />
+            <div className="ll" />
+            <div className="slt" />
+            <div className="srt" />
+          </div>
+        </div>
 
-        {/* Top Header: Monogram Avatar, Radar Scan, Clearance & Mode Toggle */}
-        <div className="relative z-10">
-          <div className="flex items-center justify-between pb-4 border-b border-white/10">
-            {/* Avatar Monogram with Cyber Ring */}
-            <div className="flex items-center gap-3">
-              <div
-                className="w-12 h-12 rounded-2xl flex items-center justify-center font-bold font-mono text-base shadow-lg relative overflow-hidden"
-                style={{
-                  backgroundColor: "#2a2626",
-                  color: founder.accentColor,
-                  border: `2px solid ${founder.accentBorder}`,
-                }}
-              >
-                {/* Subtle Radar Sweep effect */}
+        {/* Content Section */}
+        <div className="rs-luminous-content">
+          {/* Top Bar with Monogram, Clearance & Verified Badge */}
+          <div className="rs-luminous-top">
+            <div className="rs-luminous-header-bar w-full">
+              <div className="flex items-center gap-2">
                 <div
-                  className="absolute inset-0 pointer-events-none opacity-20"
+                  className="w-8 h-8 rounded-xl flex items-center justify-center font-bold font-mono text-xs shadow-md transition-all duration-300"
                   style={{
-                    background: `conic-gradient(from 0deg, transparent 0deg, ${founder.accentColor} 360deg)`,
-                    animation: "spin 4s linear infinite",
+                    backgroundColor: isActive ? founder.glowColor : "rgba(255, 255, 255, 0.08)",
+                    color: isActive ? "#161313" : "#f2e4d8",
                   }}
-                />
-                <span className="relative z-10">
-                  {founder.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </span>
+                >
+                  {founder.monogram}
+                </div>
+                <div className="text-[9px] font-mono leading-tight text-white/60">
+                  <span className="opacity-80">CLR: T-01</span>
+                  <div style={{ color: founder.glowColor }} className="font-bold">
+                    {founder.callsign.split("//")[0].trim()}
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <span className="text-[10px] font-mono tracking-wider text-white/50 block">
-                  {founder.clearance}
-                </span>
+              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-white/70">
                 <span
-                  className="text-xs font-mono font-bold tracking-tight block"
-                  style={{ color: founder.accentColor }}
-                >
-                  {founder.callsign}
-                </span>
+                  className="w-1.5 h-1.5 rounded-full animate-pulse"
+                  style={{ backgroundColor: founder.glowColor }}
+                />
+                <span>VERIFIED</span>
               </div>
             </div>
 
-            {/* Toggle Telemetry Mode Button */}
-            <button
-              type="button"
-              onClick={onToggleTelemetry}
-              className="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white/80 hover:text-white transition-all cursor-pointer shadow-xs"
-              title={isTelemetry ? "View Profile Dossier" : "View Cyber Telemetry"}
-              aria-label="Toggle Telemetry"
-            >
-              {isTelemetry ? (
-                <UserCheck className="w-4 h-4 text-[#ffb200]" />
-              ) : (
-                <Terminal className="w-4 h-4 text-[#ffb200]" />
-              )}
-            </button>
+            {/* Central 3D Luminous Icon sitting above the light slit */}
+            <div className="rs-luminous-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="3.4rem"
+                height="3.4rem"
+                viewBox="0 0 1024 1024"
+              >
+                <path
+                  fill={`url(#iconGradient-${founder.id})`}
+                  d={founder.iconPath}
+                  filter={`url(#strong-inner-${founder.id})`}
+                />
+                <defs>
+                  <linearGradient id={`iconGradient-${founder.id}`} x1="0" x2="0" y1="-1" y2="0.8">
+                    <stop offset="0%" stopColor={founder.gradientStops[0]} />
+                    <stop offset="100%" stopColor={founder.gradientStops[1]} />
+                  </linearGradient>
+                  <filter id={`strong-inner-${founder.id}`}>
+                    <feFlood floodColor="rgba(255,255,255,0.25)" />
+                    <feComposite operator="out" in2="SourceGraphic" />
+                    <feMorphology operator="dilate" radius="8" />
+                    <feGaussianBlur stdDeviation="32" />
+                    <feComposite operator="atop" in2="SourceGraphic" />
+                  </filter>
+                </defs>
+              </svg>
+            </div>
           </div>
 
-          {/* Name & Official Title */}
-          <div className="mt-5">
+          {/* Bottom Card Body with Name, Role, Bio, Toggle Switch & LinkedIn */}
+          <div className="rs-luminous-bottom">
             <h3
-              className="font-heading text-2xl font-normal text-white tracking-tight leading-tight"
+              className="rs-luminous-title font-heading"
               style={{ fontFamily: "'Exposure', Georgia, serif" }}
             >
-              {founder.name}
+              <span>{founder.name}</span>
             </h3>
-            <div className="mt-2 flex flex-wrap gap-1.5 items-center">
-              <span
-                className="inline-block px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider"
-                style={{
-                  backgroundColor: founder.accentBg,
-                  color: founder.accentColor,
-                  border: `1px solid ${founder.accentBorder}`,
-                }}
-              >
+
+            <div>
+              <span className="rs-luminous-role-badge">
                 {founder.role}
               </span>
             </div>
-          </div>
 
-          {/* Switchable Layer: Dossier Mode vs Telemetry Mode */}
-          {!isTelemetry ? (
-            <div className="mt-4 space-y-3 animate-in fade-in duration-200">
-              <p className="text-xs text-white/80 leading-relaxed font-medium">
-                {founder.bio}
-              </p>
+            <p className="rs-luminous-description">
+              {founder.description}
+            </p>
 
-              <div className="pt-2 border-t border-white/10">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-white/50 block mb-1">
-                  Primary Domain:
+            {/* Bottom Row: Tactile Toggle Switch & LinkedIn Connect */}
+            <div className="rs-luminous-toggle-row">
+              <a
+                href={founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-[#0077b5] text-white text-[11px] font-semibold tracking-tight transition-all hover:scale-105 shadow-sm border border-white/10"
+                title={`Connect with ${founder.name} on LinkedIn`}
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+                <span>LinkedIn</span>
+                <ArrowUpRight className="w-3 h-3 stroke-[2.5]" />
+              </a>
+
+              {/* Physical Skeuomorphic Tactile Switch */}
+              <div
+                className={`rs-luminous-toggle ${isActive ? "active" : ""}`}
+                title="Toggle Lumen Glow"
+              >
+                <div className="rs-luminous-handle" />
+                <span className="rs-luminous-toggle-label">
+                  {isActive ? "Lumen Active" : "Activate Lumen"}
                 </span>
-                <p className="text-xs font-bold text-white/90">
-                  {founder.focus}
-                </p>
-              </div>
-
-              {/* Skills tags */}
-              <div className="pt-2 flex flex-wrap gap-1.5">
-                {founder.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono text-white/70"
-                  >
-                    {skill}
-                  </span>
-                ))}
               </div>
             </div>
-          ) : (
-            <div className="mt-4 p-3 rounded-xl bg-black/60 border border-white/10 font-mono text-xs space-y-2 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-[10px] text-white/50 border-b border-white/10 pb-1.5">
-                <span>// LIVE KERNEL TELEMETRY</span>
-                <span className="text-emerald-400 font-bold">ONLINE</span>
-              </div>
-              <div className="space-y-1.5 text-[11px]" style={{ color: founder.accentColor }}>
-                {founder.terminalLogs.map((log, i) => (
-                  <div key={i} className="truncate">
-                    {log}
-                  </div>
-                ))}
-              </div>
-              <div className="pt-2 border-t border-white/10 text-[10px] text-white/40">
-                HOST: air-gap-node-0{founder.id.length}
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Bottom Action: Official LinkedIn Connection Pill */}
-        <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
-          <div className="flex items-center gap-1.5 text-[11px] font-mono text-white/50">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
-            <span>VERIFIED MEMBER</span>
           </div>
-
-          <a
-            href={founder.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0077b5] hover:bg-[#006097] text-white text-xs font-bold shadow-md hover:scale-105 active:scale-95 transition-all"
-            title={`View ${founder.name}'s LinkedIn Profile`}
-          >
-            {/* Official LinkedIn SVG glyph */}
-            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-            <span>LinkedIn</span>
-            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-          </a>
         </div>
       </div>
     </div>
